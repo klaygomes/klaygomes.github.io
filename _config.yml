@@ -1,0 +1,61 @@
+# Site wide configuration
+
+title:            Esta couver flor
+locale:           pt_BR
+url:
+
+
+# Jekyll configuration
+
+permalink:   /:categories/:title/
+markdown:    kramdown
+highlighter: pygments
+sass:
+  sass_dir: _sass
+  style: compressed
+gems:
+  - jekyll-sitemap
+
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  enable_coderay: false
+
+
+# Site owner
+owner:
+  name: Cleiton Loiola
+  avatar: bio-photo.jpg
+  bio: Software design is an art, and like any art it cannot be taught and learned as precise science, by means of theorems and formulas.
+  #email: #username
+  #disqus-shortname: #username
+  #twitter: @klaygomes
+  #facebook: @klaygomes
+  #google:
+#    plus: #username
+#    analytics:
+#    verify:
+#    ad-client:
+#    ad-slot:
+#  bing-verify:
+  github: #username
+  tackoverflow: 136258/cleiton
+  linkedin: #username
+  xing: #username
+  instagram: #username
+  lastfm: #username
+  tumblr: #username
+  pinterest: #username
+  foursquare: #username
+  steam: #username
+  dribbble: #username
+  youtube: #username
+  soundcloud: #username
+  weibo: #username
+  flickr: #username
+  codepen: #username
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]

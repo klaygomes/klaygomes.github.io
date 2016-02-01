@@ -1,0 +1,16 @@
+# Site navigation links
+
+- title: Sobre
+  url: /about/
+
+- title: Arquivo
+  url: /posts/
+  
+- title: Recreação
+  url: /hobby/
+
+#- title: Theme Setup
+#  url: /theme-setup/
+
+#- title: Made Mistakes
+#  url: http://mademistakes.com
