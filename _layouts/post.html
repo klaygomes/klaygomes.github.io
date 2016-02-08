@@ -23,7 +23,7 @@
     {% endif %}
   alt="{{ page.title }} feature image">
   {% if page.image.credit %}
-    <span class="image-credit">Crédito da foto: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a></span>
+    <span class="image-credit">Crédito: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a></span>
   {% endif %}
   </div><!-- /.image-wrap -->
 {% endif %}
@@ -45,7 +45,7 @@
       <hr />
       <footer role="contentinfo">
         {% if page.share != false %}{% include _social-share.html %}{% endif %}
-        <p class="byline"><strong>{{ page.title }}</strong> was published on <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>{% if page.modified %} e modificado em <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | date: "%B %d, %Y" }}</time>{% endif %}.</p>
+        <p class="byline"><strong>{{ page.title }}</strong> publicado em <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>{% if page.modified %} e modificado em <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | date: "%B %d, %Y" }}</time>{% endif %}.</p>
       </footer>
     </div><!-- /.article-wrap -->
   {% if site.owner.disqus-shortname and page.comments == true %}
@@ -57,7 +57,7 @@
 <div class="footer-wrap">
   {% if site.related_posts.size > 0 %}
   <div class="related-articles">
-  <h4>You might also enjoy <small class="pull-right">(<a href="{{ site.url }}/posts/">Ver todas as publicações</a>)</small></h4>
+  <h4>Não deixe de ver também <small class="pull-right">(<a href="{{ site.url }}/posts/">Ver todas as publicações</a>)</small></h4>
     <ul>
     {% for post in site.related_posts limit:3 %}
       <li><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
