@@ -14,9 +14,28 @@ A idéia é que possa publicar assuntos do meu interesse, compartilhar conhecime
 
 ## Livros que estou lendo:
 
-* EJSMONT, Artur. Web Scalability for Startup Engineers. 2015 by McGraw-Hill Education
+
 <!-- PARR, Terence, The Definitive ANTLR 4 Reference. 2012 The Pragmatic Programmers, LLC.-->
 
 ## Livros que já li
-Note que para alguns me dei o trabalho de fazer uma resenha :)
+
+### Engenharia
+
+* EJSMONT, Artur. Web Scalability for Startup Engineers. 2015 by McGraw-Hill Education
+
+### Linguagens de programação
+
+* Joseph Albahari & Ben Albahari, C# 6.0 in a Nutshell.  2016 by O’Reilly Media
+ * Este livro me serve como referência, sendo que releio sempre que desejo relembrar algum conceito.
+
+### Tools
+
+* MITRA, Mainak. Mastering Gradle. 2015 by Packt Publishing
+* PELGRIMS, Kevin. Gradle for Android. 2015 by Packt Publishing
+* REYNOLDS, Mark. - Xamarin Essentials.  2014 Packt Publishing
+
+### Diversos
+
+* ZINSSER, William - On Writing Well, The Classic Guide to Writing Nonfiction, 6e (2002)
+
 
