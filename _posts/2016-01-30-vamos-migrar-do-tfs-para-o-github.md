@@ -10,7 +10,7 @@ comments: true
 
 Quase 10 anos depois vamos começar a usar o GIT. Acompanhe nossa história e veja um pequeno manual para você aproveitar o que já sabe sobre o TFVC para aprender a usar o GIT no Visual Studio. Neste artigos abordo apenas sobre versionamento de arquivos, as ferramentas colaborativas, checkin police, issue tracker e etc terão sua vez assim que formos nos adaptando com o Github.
 
-##Nossa pequena história
+## Nossa pequena história
 
 Lembro como se fosse ontem a animação ao configurar o cliente do TFVC, naquela época estavamos migrando do então famigerado [Microsoft SourceSafe](https://msdn.microsoft.com/pt-br/library/3h0544kx%28v%3Dvs.80%29.aspx), para esse que então era promeça de dias melhores no ambiente de trabalho.
 
