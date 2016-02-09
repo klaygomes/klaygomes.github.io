@@ -16,7 +16,7 @@ A idéia é que possa publicar assuntos do meu interesse, compartilhar conhecime
 
 ## Livros que já li
 
-Apenas listo aqui os livros que consegui ler até o final e que seu conteúdo de alguma forma me ajudou na minha formação profissional.
+Apenas listo aqui os livros que consegui ler até o final, começando a partir de dezembro de 2015, e que seu conteúdo de alguma forma me ajudou na minha formação profissional.
 
 ### Engenharia
 
