@@ -79,6 +79,37 @@ Os commits no GIT são uma ferramenta importante, que permitem que os desenvolve
 
 Não se esqueça que **apenas os arquivos stageds** são gravados pelo commit.
 
+#### fetch
+
+Baixa os HEADs com nomes ou tags do repositório no servidor e seus objetos atualizando seu repositório local SEM que haja merge. 
+
+Uma super simplificação seria você pensar que os arquivos que estão no seu computador possuem links de referencias com uma versão de commit do servidor. Quando essa versão muda, você precisa atualizar essa referencia antes de poder enviar novas versões. O que o fetch faz é baixar as atualizações que ocorreram desde a última busca e salvar em uma 'área especial' que você poderá inspencionar, se quiser, antes de efetuar um merge. 
+
+#### pull
+
+Já o pull além de buscar os arquivos como o fetch também faz o merge automaticamente para você. Veja esse exemplo
+
+Imagine que este é o estado dos seus repositórios:
+
+```
+	  A---B---C master no servidor
+	 /
+    D---E---F---G master <- repositório local
+	^
+	origin/master último fetch (ou pull)
+```
+
+Após o PULL o git irá atualizar as referencias do commit G com B e C que foram realizados nos servidor gerando um novo a partir do merge chamado H.
+
+```
+	  A---B---C master no servidor
+	 /         \
+    D---E---F---G---H <- repositório local
+```
+
+
+
+
 
 [^1]: Computador com 16GB de RAM, SSD, processador I7 e conexão com a internet de 10MB em fibra ótica dedicada, usando os serviços do GitHub e Visual Studio Team Services.
 
