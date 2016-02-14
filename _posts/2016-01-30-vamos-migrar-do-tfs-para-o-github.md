@@ -37,6 +37,10 @@ será sua terminologia, alguns conceitos um pouco diferentes e falta e/ou inclus
 
 Um recurso obrigatório e muito importante no TFVC **não existe** no GIT. Para você começar a trabalhar com o GIT não é preciso que você crie workspaces, configurando diretórios, local de arquivos, permissões e etc. Apenas escolha um diretório no seu computador `clone` o repositório que você deseja trabalhar e mãos a obra.
 
+### Branch são mais simples
+
+Ele realmente brilha nesse quesito, ao contrário do TFVC que te obriga a copiar *todos* os arquivos do projeto atual em um diretório diferente para uma nova `branch`, O GIT é esperto o suficiente para gerenciar sozinho as diferenças entre os arquivos entre as branchs usando mesmo diretório. 
+
 ### Nada de Check in ou Check out's
 
 Git não possui conceito de `lock` de arquivos, você pode editar e 'submeter' qualquer arquivo a qualquer momento para o repositório central em qualquer `branch`[^2], mas atenção `checkout` no GIT tem [outro significado](https://git-scm.com/docs/git-checkout).
