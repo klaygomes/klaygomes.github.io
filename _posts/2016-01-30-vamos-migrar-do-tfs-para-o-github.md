@@ -107,7 +107,9 @@ Após o PULL o git irá atualizar as referencias do commit G com B e C que foram
     D---E---F---G---H <- repositório local
 ```
 
+#### sync
 
+Pense no sync como tudo que foi dito acima, mas feito a partir de uma operação de usuário. Ele fará o que for necessário para que o seu repositório local se torne igual ao remoto. Buscando atualizações(fetch), fazendo o merging(merge) e enviando suas alterações(push), deixando algum trabalho a ser feito por você apenas se houver algum conflito. 
 
 
 
