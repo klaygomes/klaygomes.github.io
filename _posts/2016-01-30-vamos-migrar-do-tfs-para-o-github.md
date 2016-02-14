@@ -107,6 +107,10 @@ Após o PULL o git irá atualizar as referencias do commit G com B e C que foram
     D---E---F---G---H <- repositório local
 ```
 
+#### push
+
+Quando você tiver concluído seu trabalho, corrigido aquele bug ou funcionalidade. Use este comando para enviar suas alterações para o repositório no servidor. Este comando irá pegar todas as alterações que foram commited localmente e os enviará para o servidor. Mas atenção, você só poderá 'enviar' se as referencias locais/remoto estiverem atualizadas, então uma boa idéia sempre conferir através do fetch. 
+
 #### sync
 
 Pense no sync como tudo que foi dito acima, mas feito a partir de uma operação de usuário. Ele fará o que for necessário para que o seu repositório local se torne igual ao remoto. Buscando atualizações(fetch), fazendo o merging(merge) e enviando suas alterações(push), deixando algum trabalho a ser feito por você apenas se houver algum conflito. 
