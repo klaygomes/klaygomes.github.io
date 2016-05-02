@@ -2,7 +2,7 @@
 layout: post
 title: Migrando do TFVC para o Git
 excerpt: Relato de como migrar do TFVC para o GIT na visão de um programador .NET
-modified: 2016-01-30
+modified: 2016-04-18
 tags: [github, tutorial, visual-studio]
 comments: true
 ---
@@ -118,6 +118,10 @@ Quando você tiver concluído seu trabalho, corrigido aquele bug ou funcionalida
 #### sync
 
 Pense no sync como tudo que foi dito acima, mas feito a partir de uma operação de usuário. Ele fará o que for necessário para que o seu repositório local se torne igual ao remoto. Buscando atualizações(fetch), fazendo o merging(merge) e enviando suas alterações(push), deixando algum trabalho a ser feito por você apenas se houver algum conflito. 
+
+## Conclusão
+
+Sem dúvida o GIT é uma exelente ferramenta que tornou nosso ciclo de desenvolvimento muito mais produtivo.
 
 
 
