@@ -6,7 +6,7 @@ modified: 2014-08-08T20:53:07.573882-04:00
 comments: false
 ---
 
-A idéia é que possa publicar assuntos do meu interesse, compartilhar conhecimento e ajudar comunidade de desenvolvedores do Brasil. Sou um ávido leitor de material técnico, experiênte programador .NET e um eterno estudante.
+A idéia é que possa publicar assuntos do meu interesse, compartilhar conhecimento e ajudar comunidade de desenvolvedores do Brasil. Sou um ávido leitor de material técnico, experiente programador .NET e um eterno estudante.
 
 ## Livros que estou lendo:
 
