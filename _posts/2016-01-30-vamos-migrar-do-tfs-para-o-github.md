@@ -12,11 +12,11 @@ Quase 10 anos depois vamos começar a usar o GIT. Acompanhe nossa história e ve
 
 ## Nossa pequena história
 
-Lembro como se fosse ontem a animação ao configurar o cliente do TFVC, naquela época estávamos migrando do então famigerado [Microsoft SourceSafe](https://msdn.microsoft.com/pt-br/library/3h0544kx%28v%3Dvs.80%29.aspx), para esse que então era promeça de dias melhores no ambiente de trabalho.
+Lembro como se fosse ontem a animação ao configurar o cliente do TFVC, naquela época estávamos migrando do então famigerado [Microsoft SourceSafe](https://msdn.microsoft.com/pt-br/library/3h0544kx%28v%3Dvs.80%29.aspx), para esse que então era promessade dias melhores no ambiente de trabalho.
 
 O Team Foundation Version Control era lindo, vinha com a promessa de ser a ferramenta ideal para o versionamento de arquivos para projetos maiores, robusto e totalmente configurável com seu maravilhoso `diff` e `merging` que realmente **funcionavam** fizeram sucesso (e ainda fazem) dentro da nossa equipe. 
 
-Dávamos a deus as anotações `\\DONEBY:` e as horas perdias com `mergins` praticamente manuais. Os ventos da mudança assobiavam no nosso escritório. 
+Dávamos a deus as anotações `\\DONEBY:` e as horas perdidas com `mergins` praticamente manuais. Os ventos da mudança assobiavam no nosso escritório. 
 
 Quase 10 anos depois, novamente movidos pela necessidade, estamos migrando, desta vez do, amado e companheiro TFVC, para o GIT. Mas por quê? Parece bobo, mas a principal razão é de ele não ser rápido o suficiente.
 
@@ -55,7 +55,7 @@ Assim como o TFVC possui repositórios locais e no servidor o GIT também, mas c
 
 No TFVC quando você usa a opção de repositório local, a cada operação (checkin, checkout, shelve etc) o TFVC verifica *o conteúdo de cada arquivo* no workspace com os arquivos que estão no repositório do servidor, já para repositórios no servidor a verificação é apenas no byte informativo de readonly.
 
-Já no GIT é diferente, você sempre trabalhará no seu repositório local enviando apenas para o servidor quando o trabalho estiver prontos.
+Já no GIT é diferente, você sempre trabalhará no seu repositório local enviando apenas para o servidor quando o trabalho estiver pronto.
 
 ### Commits, fetch, pull, push e sync
 
@@ -66,10 +66,10 @@ No TFVC existem basicamente duas formas de você trabalhar com arquivos:
    
 Já no GIT o fluxo de trabalho é diferente, primeiro é preciso que você entenda que o seus arquivos sempre estarão em um de quatro estados diferentes:
 
- - `untracked` como nome já diz, são arquivos em que o git não está acompanhando. Arquivos que não estavam presentes no último commit e ainda não foram `staged`.
- - `unmodified` arquivos que constavam no último commit e não foram modificados
- - `modified` arquivos que constavam no último commit e foram modificados mas ainda não foram stageds.
- - `staged` arquivos que estão prontos para fazer parte do próximo commit
+ - `untracked` como nome já diz, são arquivos que o git não está acompanhando. Arquivos que não estavam presentes no último commit e ainda não foram `staged`;
+ - `unmodified` arquivos que constavam no último commit e não foram modificados;
+ - `modified` arquivos que constavam no último commit e foram modificados mas ainda não foram stageds;
+ - `staged` arquivos que estão prontos para fazer parte do próximo commit;
 
 #### Fluxo de estados dos arquivos
 ![Fluxo de estados dos arquivos](/images/lifecycle.png)
@@ -79,7 +79,7 @@ Já no GIT o fluxo de trabalho é diferente, primeiro é preciso que você enten
 
 Uma boa analogia seria compará-los com o recurso de restauração do windows, onde 'pontos de restauração' são gravados antes de alterações importantes sejam feitas no sistema, permitindo que, caso as coisas deêm errado, você possa retornar a uma versão segura. 
 
-Os commits no GIT são uma ferramenta importante, que permitem que os desenvolvedores além de salvarem seu progresso demarcando pontos seguros, podem servir como uma exelente forma na [automatização de documetanção](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#commit). 
+Os commits no GIT são uma ferramenta importante que permitem que os desenvolvedores além de salvarem seu progresso demarcando pontos seguros em que poderão voltar caso algo de errado, eles também quando bem feitos podem servir como uma exelente meio para [automatização de documetanção](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#commit). 
 
 Não se esqueça que **apenas os arquivos stageds** são gravados pelo commit.
 
@@ -121,7 +121,7 @@ Pense no sync como tudo que foi dito acima, mas feito a partir de uma operação
 
 ## Conclusão
 
-Sem dúvida o GIT é uma exelente ferramenta que tornou nosso ciclo de desenvolvimento muito mais produtivo.
+Sem dúvida o GIT é uma exelente ferramenta que tornou nosso ciclo de desenvolvimento muito mais produtivo. Cada dia que passa e aprendemos mais, mais fácil fica seu uso diário. Realmente foi uma exelente decisão que durará por mais alguns anos. 
 
 
 
