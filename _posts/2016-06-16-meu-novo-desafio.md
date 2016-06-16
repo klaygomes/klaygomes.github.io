@@ -6,6 +6,9 @@ modified: 2016-06-16
 tags: [net, fSharp, programacao_funcional]
 comments: true
 ---
+{% include _toc.html %}
+
+##Novo desafio 
 
 Em julho decidi me desafiar aprender algo novo, desta vez será a linguagem F#. Para fazer isso, nada melhor do que começar lendo material que a gente gosta e praticar. 
 
