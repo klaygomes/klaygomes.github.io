@@ -30,6 +30,6 @@ Tanto as soluções da Google como da Microsoft são excelentes, altamente escal
 
 ## Resultado
 
-Novo projeto começa em Julho, vamos fazer em .NET em C#. A versão escolhida para desenvolvimento será 4.6.1, MVC 5 / WebAPI 2 com o uso do SignalR.
+Novo projeto começa em Julho, vamos fazer em .NET e em C#. A versão escolhida para desenvolvimento será 4.6.1, MVC 5 / WebAPI 2 com o uso do SignalR.
 
 Neste momento nossa equipe e eu estamos planejando a arquitetura, desenvolvendo infraestrutura e validando em cima de Sketchs com caso de usos complexos. Próximos artigos atualizarei com detalhes de como está ficando.
