@@ -2,8 +2,8 @@
 layout: post
 title: Meu novo desafio: Aprender F#
 excerpt: Index do conteúdo que encontrei na internet sobre programação funcional e F#.
-modified: 2016-05-05
-tags: [net, governanca]
+modified: 2016-06-16
+tags: [net, f#, programação funcional]
 comments: true
 ---
 
