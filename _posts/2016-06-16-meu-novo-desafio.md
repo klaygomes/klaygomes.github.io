@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Meu novo desafio: Aprender F#
-excerpt: Index do conteúdo que encontrei na internet sobre programação funcional e F#.
+title: Meu novo desafio: Aprender F Sharp
+excerpt: Index do conteúdo que encontrei na internet sobre programação funcional e FSharp.
 modified: 2016-06-16
-tags: [net, f#, programação funcional]
+tags: [net, fSharp, programacao_funcional]
 comments: true
 ---
 
