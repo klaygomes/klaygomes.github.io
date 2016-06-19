@@ -2,7 +2,7 @@
 layout: post
 title: Covariância e contravariância no C Sharp
 excerpt: Mais uma daquelas funcionalidades que você usa sem saber que elas existem.
-modified: 2016-06-16
+modified: 2016-06-18
 tags: [net, fSharp, programacao_funcional]
 comments: true
 ---
