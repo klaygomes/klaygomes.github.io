@@ -148,10 +148,8 @@ A palavra chave in, define tipos que são contravariantes.
 public interface IKlay<in T>
 {
 	void Receba(T algo);
-{% endhighlight %}
+}
 
-
-{% highlight csharp linenos %}
 IKlay<Camelo> klayEspecifico = new Klay<Animal>();
 klayEspecifico.Receba(new Gato());
 {% endhighlight %}
