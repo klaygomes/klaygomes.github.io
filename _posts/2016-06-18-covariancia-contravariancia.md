@@ -70,12 +70,16 @@ public static void Chame(Animal[] animais)
 		animal.BalanceRabo();
 }
 {% endhighlight %}
-![Herança simples](/images/covariancia.png)
+
 No exemplo acima, note que o tipo *System.Array*, container para os tipos Animal e Gato, permite sua metamorfose sempre que o tipo que ele guarda é um tipo base da outra *System.Array*, damos o nome dessa mutação  de covariância. 
+
+![Sentido covariancia](/images/covariancia.png)
 
 Trocando em miúdos, temos que covariância ocorre sempre quando um objeto container inicializado com um tipo mais especializado pode ser assinalado a um objeto container que possui um mais básico.
  
 Já a Contravariância é o contrário, onde apenas tipos especializados aceitam tipos mais básicos. 
+
+![Sentindo contravariancia](/images/contravariancia.png)
 
 Parece não fazer sentido, mas faz e você já deve ter utilizado contravariância no seu dia-a-dia, veja este exemplo:
 
@@ -108,7 +112,7 @@ public static void Main(string[] args)
 	
 }
 {% endhighlight %}
-![Herança simples](/images/contravariancia.png)
+
 No exemplo acima, a partir da assinatura de um método genérico, foi possível converte-lo para tipo mais específico.
  
 Agora vamos ver em que problemas estes tipos de metamorfoses podem nos levar. No primeiro exemplo, vimos que System.Array é covariante, tornando possível que código seguinte possa ser compilado, mas falhe miseravelmente em tempo de execução:
