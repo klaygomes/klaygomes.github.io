@@ -9,6 +9,7 @@ comments: true
 {% include _toc.html %}
 
 Primeiro precisamos definir o que seria variância e suas filhas covariância e contravariância. Para começar, você precisa entender que os sistemas de tipos da maioria das linguagens de programação orientada a objetos aceitam que tipos novos sejam criados a partir de outros usando herança, e que estes tipos novos podem ser usados em qualquer lugar onde se esperaria os tipos bases. 
+![Herança simples](/images/heranca.png)
 
 Exemplo:
 
@@ -69,7 +70,7 @@ public static void Chame(Animal[] animais)
 		animal.BalanceRabo();
 }
 {% endhighlight %}
-
+![Herança simples](/images/covariancia.png)
 No exemplo acima, note que o tipo *System.Array*, container para os tipos Animal e Gato, permite sua metamorfose sempre que o tipo que ele guarda é um tipo base da outra *System.Array*, damos o nome dessa mutação  de covariância. 
 
 Trocando em miúdos, temos que covariância ocorre sempre quando um objeto container inicializado com um tipo mais especializado pode ser assinalado a um objeto container que possui um mais básico.
@@ -107,7 +108,7 @@ public static void Main(string[] args)
 	
 }
 {% endhighlight %}
-
+![Herança simples](/images/contravariancia.png)
 No exemplo acima, a partir da assinatura de um método genérico, foi possível converte-lo para tipo mais específico.
  
 Agora vamos ver em que problemas estes tipos de metamorfoses podem nos levar. No primeiro exemplo, vimos que System.Array é covariante, tornando possível que código seguinte possa ser compilado, mas falhe miseravelmente em tempo de execução:
