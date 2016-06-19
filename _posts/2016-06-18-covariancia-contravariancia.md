@@ -9,6 +9,7 @@ comments: true
 {% include _toc.html %}
 
 Primeiro precisamos definir o que seria variância e suas filhas covariância e contravariância. Para começar, você precisa entender que os sistemas de tipos da maioria das linguagens de programação orientada a objetos aceitam que tipos novos sejam criados a partir de outros usando herança, e que estes tipos novos podem ser usados em qualquer lugar onde se esperaria os tipos bases. 
+
 ![Herança simples](/images/heranca.png)
 
 Exemplo:
