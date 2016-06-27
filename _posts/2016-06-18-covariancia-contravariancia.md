@@ -1,12 +1,11 @@
 ---
 layout: post
 title: Covariância e contravariância no C Sharp
-excerpt: Mais uma daquelas funcionalidades que você usa sem saber que elas existem.
+excerpt: Mais uma daquelas funcionalidades que você usa sem saber que existe.
 modified: 2016-06-18
-tags: [net, fSharp, programacao_funcional]
+tags: [net, CSharp, programacao_funcional, curiosidades]
 comments: true
 ---
-{% include _toc.html %}
 
 Primeiro precisamos definir o que seria variância e suas filhas covariância e contravariância. Para começar, você precisa entender que os sistemas de tipos da maioria das linguagens de programação orientada a objetos aceitam que tipos novos sejam criados a partir de outros usando herança, e que estes tipos novos podem ser usados em qualquer lugar onde se esperaria os tipos bases. 
 
@@ -140,7 +139,7 @@ animais[0] = new Camelo();//<--aqui terei um erro em tempo de execução (ArrayT
 
 Note que é **seguro ler** as propriedades e chamar métodos de containers covariantes, porém **perigoso escrever**. No exemplo acima, o método _Chame_ recebeu um Array de Gatos, mas tentou escrever um Camelo que obviamente não cabe, gerando erro em tempo de execução.
 
-No C# a partir da versão 4 podemos controlar a variâncias dos nossos tipos a partir das palavras chaves in e out. 
+No C# a partir da versão 4 podemos controlar a variâncias dos nossos tipos a partir das palavras chaves _in_ e _out_. 
 
 Este controle pode ser feito apenas a partir de interfaces genéricas ou delegates genéricos, não sendo permitido em classes e outros tipos, a forma como os tipos são expostos também são controlados, neste último caso para garantir a segurança dos dados expostos pelos containers. Veja:
 A palavra chave in, define tipos que são contravariantes. 
