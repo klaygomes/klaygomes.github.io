@@ -10,7 +10,7 @@ comments: true
 
 Esse ano, tivemos oportunidade de conhecer e decidir se seria ou não viável migrarmos de tecnologia Microsoft para ambiente Linux utilizando Python. Resolvi escrever este artigo como resumo de nossas reuniões e o porquê da minha decisão em continuar utilizando a stack da Microsoft.
 
-## Motivações técnicas
+## Motivações técnicas.
 
 **Conceitos avançados sobre aplicações escaláveis são abstraídas dos desenvolvedores**. No framework .NET temos suporte nativo a multithreading e paralelismo através de sintaxe de açúcar (async e await). Não é necessário que os programadores tenham conhecimento sobre essas técnicas mais avançadas para que façam uso delas. Já no Python, é necessário que a arquitetura e infraestrutura do projeto sejam escritas desde o início com isso em mente.
 
