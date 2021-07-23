@@ -6,38 +6,38 @@ modified: 2014-08-08T20:53:07.573882-04:00
 comments: false
 ---
 
-A idéia é que possa publicar assuntos do meu interesse, compartilhar conhecimento e ajudar comunidade de desenvolvedores do Brasil. Sou um ávido leitor de material técnico, experiente programador .NET e um eterno estudante.
+My first programming language was JavaScript, which I learned by myself after I had finished college in 2004. I had a lot of fun writing Greasemonkey scripts while improving the user experience of popular sites at that time(hinewscrap was an example of a popular one).
 
-## Livros que estou lendo:
+In 2006, I started working with .NET; I had the opportunity to work with some big projects for the government and private enterprises. Today I have been working primarily with React, Webpack, GO, C, Node, Docker on Linux based systems.
 
-* Cay S. Horstmann Gary Cornell. Core Java™ Volume I—Fundamentals Ninth Edition.
-    - Bem difícil a leitura até agora estou no capítulo "Chapter 12: Generic Programming", pulei os capítulos 7 e nove.
-<!-- PARR, Terence, The Definitive ANTLR 4 Reference. 2012 The Pragmatic Programmers, LLC.-->
+After all, I consider myself a passionate Frontend Developer person who loves to learn new things and work with edge technologies.
 
-## Livros que já li
+If you are looking for my resume, [you will be happy to find the most recent version here](https://stackoverflow.com/cv/klaygomes).
 
-Apenas listo aqui os livros que consegui ler até o final, começando a partir de dezembro de 2015, e que seu conteúdo de alguma forma me ajudou na minha formação profissional.
+# Programming Experience
+I work as a professional developer since 2004. Since then, I have learned many different languages and technologies; below is a list of some of them listed in the order of my personal preference.
+## Languages 
 
-### Engenharia
+- Javascript
+- Go
+- C#
+- C (C99)
+- Ruby
 
-* EJSMONT, Artur. Web Scalability for Startup Engineers. 2015 by McGraw-Hill Education
+## Web techologies
 
-### Linguagens de programação
+- React + Redux + Redux Sagas + Storybook and Enzyme
+- HTML, CSS and related technologies;
+- Web API Design 
+- ASP.NET MVC
 
-* Joseph Albahari & Ben Albahari, C# 6.0 in a Nutshell.  2016 by O’Reilly Media
-    - Este livro me serve como referência, sendo que releio sempre que desejo relembrar algum conceito.
-* SYED, Basarat Ali, TypeScript Deep Dive. [http://basarat.gitbooks.io/typescript/](http://basarat.gitbooks.io/typescript)
+## Industries
+- Financial
+- Construction
+- Insurance
+- Tourism
 
-### Tools
+## Hobby
 
-* MITRA, Mainak. Mastering Gradle. 2015 by Packt Publishing
-    - Título é pretencioso, mas dá uma boa base sobre como trabalhar com Gradle.
-* PELGRIMS, Kevin. Gradle for Android. 2015 by Packt Publishing
-    - Básico sobre processo de build para aplicações Android.
-* REYNOLDS, Mark. - Xamarin Essentials.  2014 Packt Publishing
-
-### Diversos
-
-* ZINSSER, William - On Writing Well, The Classic Guide to Writing Nonfiction, 6e (2002)
-
-
+I have a crush on embedded devices and development its development as a whole, so I spend a lot of spare time playing with them. I have a particular passion for ARM Cortext M3 processors, in special the STM32F1xxx series.
+I also like to play with PirateBus (3.6a), mocking some peripherals while learning its protocol. My dream is to discover some cool hack in some popular toy and publish it as open-source someday :)

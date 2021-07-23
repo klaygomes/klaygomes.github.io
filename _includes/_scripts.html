@@ -2,16 +2,16 @@
 <script>window.jQuery || document.write('<script src="{{ site.url }}/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
 <script src="{{ site.url }}/assets/js/scripts.min.js"></script>
 {% if site.owner.google.analytics %}
-<!-- Asynchronous Google Analytics snippet -->
+{% comment %}Asynchronous Google Analytics snippet {% endcomment %}
 <script>
   var _gaq = _gaq || [];
   var pluginUrl =
- '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+    '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
   _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
   _gaq.push(['_setAccount', '{{ site.owner.google.analytics }}']);
   _gaq.push(['_trackPageview']);
 
-  (function() {
+  (function () {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
@@ -19,5 +19,5 @@
 </script>
 {% endif %}
 {% if page.comments %}
-  {% include _disqus_comments.html %}
+{% include _disqus_comments.html %}
 {% endif %}

@@ -4,7 +4,6 @@ title:            Esta couve flor
 locale:           pt_BR
 url:
 
-
 # Jekyll configuration
 
 permalink:   /:categories/:title/
@@ -23,7 +22,6 @@ kramdown:
   toc_levels: 1..6
   enable_coderay: false
 
-
 # Site owner
 owner:
   name: Cleiton Loiola
@@ -33,20 +31,28 @@ owner:
   stackoverflow: 136258/cleiton
   facebook: klaygomes
   disqus-shortname: estacouveflor
-  linkedin: #username
-  xing: #username
-  instagram: #username
-  lastfm: #username
-  tumblr: #username
-  pinterest: #username
-  foursquare: #username
-  steam: #username
-  dribbble: #username
-  youtube: #username
-  soundcloud: #username
-  weibo: #username
-  flickr: #username
-  codepen: #username
+  linkedin: klaygomes
 
-include: [".htaccess"]
-exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE","run.bat", "README.md"]
+# Site includes
+
+include: 
+  - .htaccess
+exclude: 
+  - lib
+  - config.rb
+  - config
+  - log
+  - tmp
+  - less
+  - test
+  - spec
+  - Gruntfile.js
+  - package.json
+  - node_modules
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - Makefile
+  - README.md
+  - Gruntfile.js
+  - CNAME
