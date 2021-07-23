@@ -1,13 +1,10 @@
 # Site navigation links
 
-- title: Sobre
-  url: /about/
+- title: Home 
+  url: /
 
 - title: Arquivo
-  url: /archive/
-  
-#- title: Theme Setup
-#  url: /theme-setup/
+  url: /archive
 
-#- title: Made Mistakes
-#  url: http://mademistakes.com
+- title: Sobre
+  url: /about
