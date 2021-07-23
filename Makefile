@@ -1,3 +1,5 @@
-.PHONY: start
+.PHONY: start build
 start:
-	bundle exec jekyll serve
+	bundle exec jekyll serve --draft
+build:
+	yarn grunt
