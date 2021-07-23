@@ -2,13 +2,13 @@
 
 title:            Esta couve flor
 locale:           pt_BR
-url:
+url:              https://www.estacouveflor.com
 
 # Jekyll configuration
 
-permalink:   /:categories/:title/
-markdown:    kramdown
-highlighter: rouge
+permalink:        /:categories/:title/
+markdown:         kramdown
+highlighter:      rouge
 sass:
   sass_dir: _sass
   style: compressed
@@ -25,7 +25,7 @@ kramdown:
 # Site owner
 owner:
   name: Cleiton Loiola
-  avatar: http://github.com/klaygomes.png
+  avatar: https://github.com/klaygomes.png
   bio: Software design is an art, and like any art it cannot be taught and learned as precise science, by means of theorems and formulas.
   github: klaygomes
   stackoverflow: 136258/cleiton
