@@ -18,7 +18,10 @@ See what they say:
 
 > (credits http://mywiki.wooledge.org/BashGuide/TestsAndConditionals)
 
+In that moment everything that I thought it was weird with bash started making sense. before that I never realised why I can't write things like `if[$1 -lt 10]` (note I didn't use spaces) or execute commands inside the brakets like `if [ "$1" -eq $(cat file) ]`.
 
-I was so suprise by this little thing that I said to me if even I write anything to my blog I again should be about it. Well, 4 years later here am I :)
+The simpler fact that I know that `[` is a command, like any normal bash program and it *expects* parameters to be passed, made me never make this kind of mistake again. 
+
+I was so suprise by this little thing that I said to me if even I write anything to my blog I again should be about it. Well, years later here am I :)
 
 And you when you ever realized that `[` is a command?
