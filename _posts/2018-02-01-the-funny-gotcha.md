@@ -7,15 +7,15 @@ tags: [ti-life english]
 comments: true
 ---
 
-Did you ever remember when you realized that `[` is a built-in command in bash, like `echo`, `cd`?
+Did you ever remember when you realized that `[` is a built-in command in **bash**, like `echo`, `cd`?
 
-Well, we as humans tend to assume things, so I did for a long time. As I came from a Windows background and high-level languages, in the beginning, I just learned the necessary to be able to do my job as a frontend engineer.
+Well, we as humans tend to assume things, so I did for a long time. As I came from Windows, and my programming experience is with high-level languages, in the beginning, I just got the necessary to be able to do my job as a frontend engineer.
 
-So I learned how to create branch decisions using `if`, which is a shell keyword. I associate it with what I had learned in the past, associating `if [ commands ];` as syntax constraint as the other languages and never worried about what I was doing; after all, I had my work done at the end.
+So I learned how to create branch decisions using `if`, which is a **shell keyword**. I connected it with what I had learned in the past, associating `if [ commands ];` as syntax constraint like the other languages and never worried about what I was doing; after all, I had my work done at the end.
 
 As time went by, I realized that I had to learn more about this language; well, you know, it is impossible to work with Linux *effectively* without knowing it. 
 
-So I decided to start from scratch, assuming I know nothing about it, it was a great decision as with my mind open I started watching and reading basic tutorials, it is sad how there is bad content on the internet, you have to take much care when you decide to learn new things because the chances you got misleading content(or just wrong) is high.
+So I decided to start from scratch, assuming I know **nothing** about bash, it was a great decision, because with my mind open I started watching and reading basic tutorials; as a side note: it is sad how there is bad content on the internet, you have to take much care when you decide to learn new things because the chances you got misleading content(or just wrong) is high.
 
 Well, I was in luck when I found the [Bash Guide](http://mywiki.wooledge.org/BashGuide), written by LHunath and GreyCat. They do a great job explaining what you need to know effortlessly. 
 
@@ -28,7 +28,7 @@ See what they say:
 
 > (credits http://mywiki.wooledge.org/BashGuide/TestsAndConditionals)
 
-At that moment, everything that I thought was weird with bash started making sense. Before that, I never realized why I couldn't write things like `if[$1 -lt 10]` (note I didn't use spaces) or execute commands inside the brackets like `if ["$1" -eq $(cat file) ]`.
+Until that moment, everything that I thought weird about bash started making sense. Before that, I never realized why I couldn't write things like `if[$1 -lt 10]` (note I didn't use spaces) or execute commands inside the brackets like `if ["$1" -eq $(cat file) ]`.
 
 The simple fact that I know that `[` is a command, like any normal bash program, and it *expects* parameters to be passed, made me never make this kind of mistake again. 
 
