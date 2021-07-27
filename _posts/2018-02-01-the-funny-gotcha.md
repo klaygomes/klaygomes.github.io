@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The big gotcha that I know something about bash
+title: The small gotcha that make fell I know something 
 excerpt:  The moment I realized that I'm starting getting the linux felling
 modified: 2018-02-01
 tags: [ti-life english]
@@ -23,7 +23,7 @@ They were the first content where they take a step to make it clear that it is a
 
 See what they say:
 
-> `if` executes the command `[` (remember, you don't need an `if` to run the `[` command!) with the arguments 'a, =, b `and `]`. `[` uses these arguments to determine what must be checked. In this case, it checks whether the string a (the first argument) is equal (the second argument) to the string b (the third argument), and if this is the case, it will exit successfully. However, since the string "a" is not equal to the string "b", `[` will not exit successfully (its exit code will be 1). if sees that `[` terminated unsuccessfully and executes the code in the else block.
+> `if` executes the command `[` (remember, you don't need an `if` to run the `[` command!) with the arguments `a, =, b` and `]`. `[` uses these arguments to determine what must be checked. In this case, it checks whether the string a (the first argument) is equal (the second argument) to the string b (the third argument), and if this is the case, it will exit successfully. However, since the string "a" is not equal to the string "b", `[` will not exit successfully (its exit code will be 1). if sees that `[` terminated unsuccessfully and executes the code in the else block.
 > The last argument, "**]**", means nothing to `[`, but it is required. See what happens when you omit it.
 
 > (credits http://mywiki.wooledge.org/BashGuide/TestsAndConditionals)
