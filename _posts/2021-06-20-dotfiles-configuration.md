@@ -49,7 +49,7 @@ Bellow is my actual make file; Basically, it manages the creation and copy of co
 to the `~/.config` folder as they are changed on the repository folder, keep them in sync. I will 
 try to explain line by line what I'm doing and how you may change it to fit your needs.
 
-```Makefile
+`{% highlight make linenos %}
 CONFIG		:=	$(HOME)/.config/
 
 VIM 		:=	$(addprefix ${CONFIG}, $(wildcard nvim/* nvim/**/*))
@@ -118,11 +118,11 @@ zsh:  $(ZSH)
 
 node/globals: ;
 mac/install: ;
-```
+{% endhighlight %}
 
 Lines 1 to 10 are variables that hold the list of files. 
 
-The syntax `$(something)` is used as the same as `${something}`, which means you want to
+- The syntax `$(something)` is used as the same as `${something}`, which means you want to
 interpolate the current value of `something`, into its current value.
 
 But `$(something ${other}...)`, or `$(something $(other)...)` tells make you are calling the 
