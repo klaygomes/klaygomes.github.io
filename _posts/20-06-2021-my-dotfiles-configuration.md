@@ -1,3 +1,12 @@
+---
+layout: post
+title: Using GNU Make as your Dotfiles manager 
+excerpt: It tells you how you can manage your dotfiles without any external dependencies.
+tags: [make, dotfiles, linux, blog]
+comments: true
+---
+{% include _toc.html %}
+
 For the last years, I got used to set everything on my computer by hand. Yes, I know it is very 
 inefficient. But, I barely have to format my laptop. I can count on one hand how many times I have
 formatted my computer in the last 4 years.
