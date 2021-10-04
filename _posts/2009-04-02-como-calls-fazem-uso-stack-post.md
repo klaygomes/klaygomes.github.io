@@ -5,11 +5,8 @@ excerpt: "Este pequeno artigo fala sobre procedures(funções) e como elas usam 
 modified: 2009-04-02
 tags: [traducao, beginner, tutorial, IA32, assembly]
 comments: true
-image:
-  feature: sample-image-5.jpg
-  credit: WeGraphics
-  creditlink: http://wegraphics.net/downloads/free-ultimate-blurred-background-pack/
 ---
+{% include _toc.html %}
  
 	/_//_                                                    
 	/`\//_|/_/ 
