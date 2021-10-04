@@ -1,11 +1,11 @@
 /* ==========================================================================
-   Grid mixins
-   ========================================================================== */
+Grid mixins
+========================================================================== */
 
 /*
-   Define number of columns in the grid
-   Common values would be 12, 16 or 24
-   ========================================================================== */
+Define number of columns in the grid
+Common values would be 12, 16 or 24
+========================================================================== */
 
 $width: 100%;
 $def_grid: 12;
@@ -17,9 +17,9 @@ $margin: 0;
 }
 
 /*
-   Works out the width of elements based on total number of columns and width
-   number of columns being displayed. Removes 20px for margins.
-   ========================================================================== */
+Works out the width of elements based on total number of columns and width
+number of columns being displayed. Removes 20px for margins.
+========================================================================== */
 
 @mixin grid($grid:$def_grid,$cols:'',$float:left,$display:inline){
   display:$display;
@@ -28,45 +28,45 @@ $margin: 0;
 }
 
 /*
-   Add x amount of column padding before an element
-   Example: @include prefix(1,12);
-   ========================================================================== */
+Add x amount of column padding before an element
+Example: @include prefix(1,12);
+========================================================================== */
 
 @mixin prefix($grid:$def_grid,$cols:''){
   margin-left:(100%/$grid * $cols);
 }
 
 /*
-   Add x amount of column padding after an element
-   Example: @include suffix(2,12);
-   ========================================================================== */
+Add x amount of column padding after an element
+Example: @include suffix(2,12);
+========================================================================== */
 
 @mixin suffix($grid:$def_grid,$cols:''){
   margin-right:(100%/$grid * $cols);
 }
 
 /*
-   Remove left margin
-   Example: @include first;
-   ========================================================================== */
+Remove left margin
+Example: @include first;
+========================================================================== */
 
 @mixin first(){
   margin-left:0;
 }
 
 /*
-   Remove right margin
-   Example: @include last;
-   ========================================================================== */
+Remove right margin
+Example: @include last;
+========================================================================== */
 
 @mixin last(){
   margin-right:0;
 }
 
 /*
-   Push an element x amount of column(s) to the right
-   Example: @include push(2,12);
-   ========================================================================== */
+Push an element x amount of column(s) to the right
+Example: @include push(2,12);
+========================================================================== */
 
 @mixin push($grid:$def_grid,$move:'') {
   position:relative;
@@ -74,9 +74,9 @@ $margin: 0;
 }
 
 /*
-   Pull an element x amount of column(s) to the left
-   Example: @include pull(1,12);
-   ========================================================================== */
+Pull an element x amount of column(s) to the left
+Example: @include pull(1,12);
+========================================================================== */
 
 @mixin pull($grid:$def_grid,$move:''){
   position:relative;

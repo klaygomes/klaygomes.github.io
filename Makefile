@@ -1,5 +1,5 @@
 .PHONY: start build
 start:
-	bundle exec jekyll serve --draft
+	arch -x86_64 bundle exec jekyll serve --draft
 build:
-	yarn grunt
+	arch -x86_64 yarn grunt

@@ -1,11 +1,11 @@
 /* ==========================================================================
-   Utility mixins
-   ========================================================================== */
+Utility mixins
+========================================================================== */
 
 /*
-   Clearfix
-   For clearing floats like a boss h5bp.com/q
-   ========================================================================== */
+Clearfix
+For clearing floats like a boss h5bp.com/q
+========================================================================== */
 
 @mixin clearfix {
   *zoom: 1;
@@ -23,8 +23,8 @@
 }
 
 /*
-   Webkit-style focus
-   ========================================================================== */
+Webkit-style focus
+========================================================================== */
 
 @mixin tab-focus() {
   /* Default */
@@ -35,8 +35,8 @@
 }
 
 /*
-   Center-align a block level element
-   ========================================================================== */
+Center-align a block level element
+========================================================================== */
 
 @mixin center-block() {
   display: block;
@@ -45,14 +45,14 @@
 }
 
 /* ==========================================================================
-   Typography related mixins
-   ========================================================================== */
+Typography related mixins
+========================================================================== */
 
 /*
-   Maintains vertical rhythm by setting a font-sizes proportional to
-   line-height and bottom margin
-   example: @font-size(16);
-   ========================================================================== */
+Maintains vertical rhythm by setting a font-sizes proportional to
+line-height and bottom margin
+example: @font-size(16);
+========================================================================== */
 
 @mixin font-size($size) {
   font-size: 0px + $size;
@@ -63,9 +63,9 @@
 }
 
 /*
-   Just font-size (REMs + pixel fallback)
-   example: @include font-rem(16);
-   ========================================================================== */
+Just font-size (REMs + pixel fallback)
+example: @include font-rem(16);
+========================================================================== */
 
 @mixin font-rem($size) {
   font-size: 0px + $size;
@@ -73,9 +73,9 @@
 }
 
 /*
-   Just font-size (REMs + pixel fallback) and line-height
-   @include font(16);
-   ========================================================================== */
+Just font-size (REMs + pixel fallback) and line-height
+@include font(16);
+========================================================================== */
 
 @mixin font($size) {
   font-size: 0px + $size;
@@ -84,8 +84,8 @@
 }
 
 /*
-   Hide text overflow and end with ...
-   ========================================================================== */
+Hide text overflow and end with ...
+========================================================================== */
 
 @mixin text-overflow() {
   overflow: hidden;
@@ -98,8 +98,8 @@
 $indent-var: 0rem + ($doc-line-height / $doc-font-size);
 
 /* ==========================================================================
-   Gradient mixins
-   ========================================================================== */
+Gradient mixins
+========================================================================== */
 
 @mixin horizontal($startColor : $white, $endColor : $lightergrey) {
   background-color: $endColor;
@@ -110,7 +110,7 @@ $indent-var: 0rem + ($doc-line-height / $doc-font-size);
   background-image  : -o-linear-gradient(left, $startColor, $endColor);              // Opera 11.10
   background-image  : linear-gradient(left, $startColor, $endColor);               // W3C
   background-repeat : repeat-x;
- }
+}
 
 @mixin vertical($startColor : $white, $endColor:  $lightergrey) {
   background-image  : -webkit-gradient(linear, 0 0, 0 100%, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
@@ -142,24 +142,24 @@ $indent-var: 0rem + ($doc-line-height / $doc-font-size);
 }
 
 /* ==========================================================================
-   Rounded corners
-   ========================================================================== */
+Rounded corners
+========================================================================== */
 
 
 
 /*
-   Round all corners
-   example: @include rounded(4px);
-   ========================================================================== */
+Round all corners
+example: @include rounded(4px);
+========================================================================== */
 
 @mixin rounded($radius:4px) {
   border-radius : $radius;
 }
 
 /*
-   Round individual corners (top right, bottom right, bottom left, top left)
-   example: @include border-radius(4px, 0, 0, 4px);
-   ========================================================================== */
+Round individual corners (top right, bottom right, bottom left, top left)
+example: @include border-radius(4px, 0, 0, 4px);
+========================================================================== */
 
 @mixin border-radius($topright: 0, $bottomright: 0, $bottomleft: 0, $topleft: 0) {
   border-top-right-radius: $topright;
@@ -172,9 +172,9 @@ $indent-var: 0rem + ($doc-line-height / $doc-font-size);
 }
 
 /*
-   Box shadow
-   example: @include box-shadow(HORIZONTAL VERTICAL BLUR COLOR));
-   ========================================================================== */
+Box shadow
+example: @include box-shadow(HORIZONTAL VERTICAL BLUR COLOR));
+========================================================================== */
 
 @mixin box-shadow($shadow: 0 1px 3px rgba(0,0,0,.25)) {
   -webkit-box-shadow: $shadow;
@@ -183,9 +183,9 @@ $indent-var: 0rem + ($doc-line-height / $doc-font-size);
 }
 
 /*
-   Drop shadow
-   example: @include drop-shadow(HORIZONTAL, VERTICAL, BLUR, ALPHA);
-   ========================================================================== */
+Drop shadow
+example: @include drop-shadow(HORIZONTAL, VERTICAL, BLUR, ALPHA);
+========================================================================== */
 
 @mixin drop-shadow($x-axis: 0, $y-axis: 1px, $blur: 2px, $alpha: 0.1) {
   -webkit-box-shadow: $x-axis $y-axis $blur rgba(0, 0, 0, $alpha);
@@ -194,29 +194,29 @@ $indent-var: 0rem + ($doc-line-height / $doc-font-size);
 }
 
 /*
-   Text shadow
-   example: @include text-shadow(0 2px 3px rgba(0,0,0,.25));
-   ========================================================================== */
+Text shadow
+example: @include text-shadow(0 2px 3px rgba(0,0,0,.25));
+========================================================================== */
 
 @mixin text-shadow($shadow: 0 2px 3px rgba(0,0,0,.25)) {
 text-shadow: $shadow; }
 
 /*
-   Opacity
-   example: @include opacity(0.5); // 50% opacity
-   ========================================================================== */
+Opacity
+example: @include opacity(0.5); // 50% opacity
+========================================================================== */
 
 @mixin opacity($opacity: 0.5) {
   opacity: $opacity;
 }
 
 /* ==========================================================================
-   Transformations
-   ========================================================================== */
+Transformations
+========================================================================== */
 
 /*
-   @include rotate(VALUEdeg);
-   ========================================================================== */
+@include rotate(VALUEdeg);
+========================================================================== */
 
 @mixin rotate($deg) {
   -webkit-transform: rotate($deg);
@@ -227,8 +227,8 @@ text-shadow: $shadow; }
 }
 
 /*
-   @include scale(VALUE);
-   ========================================================================== */
+@include scale(VALUE);
+========================================================================== */
 
 @mixin scale($ratio) {
   -webkit-transform: scale($ratio);
@@ -239,8 +239,8 @@ text-shadow: $shadow; }
 }
 
 /*
-   @include skew(VALUE, VALUE);
-   ========================================================================== */
+@include skew(VALUE, VALUE);
+========================================================================== */
 
 @mixin skew($x: 0, $y: 0) {
   -webkit-transform: skew($x, $y);
@@ -251,8 +251,8 @@ text-shadow: $shadow; }
 }
 
 /*
-   @include transition(PROPERTY DURATION DELAY(OPTIONAL) TIMING-FINCTION);
-   ========================================================================== */
+@include transition(PROPERTY DURATION DELAY(OPTIONAL) TIMING-FINCTION);
+========================================================================== */
 
 @mixin transition($transition) {
   -webkit-transition: $transition;
@@ -263,8 +263,8 @@ text-shadow: $shadow; }
 }
 
 /*
-   @include translate(VALUE, VALUE);
-   ========================================================================== */
+@include translate(VALUE, VALUE);
+========================================================================== */
 
 @mixin translate($x: 0, $y: 0) {
   -webkit-transform: translate($x, $y);
@@ -289,20 +289,20 @@ text-shadow: $shadow; }
 }
 
 /* ==========================================================================
-   Background
-   ========================================================================== */
+Background
+========================================================================== */
 
 /*
-   @include background-alpha(VALUE VALUE);
-   ========================================================================== */
+@include background-alpha(VALUE VALUE);
+========================================================================== */
 
 @mixin background-alpha($color: $white, $alpha: 1) {
   background-color: hsla(hue($color), saturation($color), lightness($color), $alpha);
 }
 
 /*
-   @include background-size(VALUE VALUE);
-   ========================================================================== */
+@include background-size(VALUE VALUE);
+========================================================================== */
 
 @mixin background-size($size){
   -webkit-background-size: $size;
@@ -312,9 +312,9 @@ text-shadow: $shadow; }
 }
 
 /*
-   Box-sizing
-   example: @include box-sizing(VALUE); //(border-box, padding-box, content-box)
-   ========================================================================== */
+Box-sizing
+example: @include box-sizing(VALUE); //(border-box, padding-box, content-box)
+========================================================================== */
 
 @mixin box-sizing($boxsize: border-box) {
   -webkit-box-sizing: $boxsize;
@@ -324,8 +324,8 @@ text-shadow: $shadow; }
 }
 
 /* ==========================================================================
-   Image replacement
-   ========================================================================== */
+Image replacement
+========================================================================== */
 
 @mixin hide-text() {
   text-indent: 100%;
@@ -334,8 +334,8 @@ text-shadow: $shadow; }
 }
 
 /*
-   Hide from visual and speaking browsers
-   ========================================================================== */
+Hide from visual and speaking browsers
+========================================================================== */
 
 @mixin hidden {
   display: none;
@@ -343,18 +343,18 @@ text-shadow: $shadow; }
 }
 
 /*
-   Hide but maintain layout
-   ========================================================================== */
+Hide but maintain layout
+========================================================================== */
 
 @mixin invisible() {
   visibility: hidden;
 }
 
 /*
-   Resize
-   example: @include resize(VALUE); //(none, both, horizontal, vertical, inherit)
+Resize
+example: @include resize(VALUE); //(none, both, horizontal, vertical, inherit)
 
-   ========================================================================== */
+========================================================================== */
 
 @mixin resize($direction: both) {
   resize: $direction;
@@ -362,15 +362,15 @@ text-shadow: $shadow; }
 }
 
 /*
-   Hidden but available to speaking browsers
-   ========================================================================== */
+Hidden but available to speaking browsers
+========================================================================== */
 
 @mixin visuallyhidden() {
-overflow: hidden;
-position: absolute;
-clip: rect(0 0 0 0);
-height: 1px;
-width: 1px;
-margin: -1px;
-padding: 0;
+  overflow: hidden;
+  position: absolute;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
 border: 0; }
