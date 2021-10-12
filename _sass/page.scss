@@ -97,6 +97,9 @@ Header
         display: inline;
         padding: 0;
       }
+      &:hover {
+        color: darken(#FAD309, 5);
+      }
     }
   }
 }
@@ -233,6 +236,7 @@ $button-size: 1.5rem;
   margin-top: 2em;
   h1 {
     margin-top: 0;
+   
   }
   .post,
   .page {
@@ -250,8 +254,17 @@ $button-size: 1.5rem;
       @include grid(12,4.5);
     }
 
-    h2, h3 {
-      color: $primary;
+    h1, h2 {
+    color: $primary;
+    background-image: $gradient-color;
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+    background-clip: text;
+
     }
   }
 }
@@ -273,7 +286,7 @@ $button-size: 1.5rem;
   }
   h1 {
     color: $primary;
-  }
+      }
   h3 {
     margin: 0;
     padding-bottom: .5em;
@@ -285,7 +298,7 @@ $button-size: 1.5rem;
     h2 {
       margin-bottom: 4px;
       @include font-rem(20);
-      a { color: $textcolor; }
+      a { color: $textcolor; &:hover{ color: $primary }}
       &.link-post {
         margin-bottom: 0px + $doc-line-height;
         margin-bottom: 0rem + ($doc-line-height / $doc-font-size);
