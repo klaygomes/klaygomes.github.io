@@ -1,13 +1,13 @@
 {
-  "name": "BlogKlay",
-  "author": "Cleiton Loiola <cleiton@anapro.com.br>",
-  "homepage": "http://mmistakes.github.io/minimal-mistakes/",
+  "name": "esta-couve-flor",
+  "author": "Cleiton Loiola <email@cleiton.dev>",
+  "homepage": "https://www.estacouveflor.com",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mmistakes/minimal-mistakes.git"
+    "url": "https://github.com/klaygomes/klaygomes.github.io"
   },
   "bugs": {
-    "url": "https://github.com/mmistakes/minimal-mistakes/issues"
+    "url": "https://github.com/klaygomes/klaygomes.github.io"
   },
   "engines": {
     "node": ">= 0.10.0"

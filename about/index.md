@@ -6,22 +6,27 @@ modified: 2014-08-08T20:53:07.573882-04:00
 comments: false
 ---
 
-My first programming language was JavaScript, which I learned by myself after I had finished college in 2004. I had a lot of fun writing Greasemonkey scripts while improving the user experience of popular sites at that time(hinewscrap was an example of a popular one).
+My first programming language was JavaScript, which I learned by myself after I had finished
+college in 2004. I had a lot of fun writing Greasemonkey scripts while improving the user experience 
+of popular sites at that time(hinewscrap was an example of a popular one).
 
-In 2006, I started working with .NET; I had the opportunity to work with some big projects for the government and private enterprises. Today I have been working primarily with React, Webpack, GO, C, Node, Docker on Linux based systems.
+In 2006, I started working with .NET; I had the opportunity to work with some big projects for the 
+government and private enterprises. Today I have been working primarily with React, Webpack, GO, C,
+Node, Docker on Linux based systems.
 
-After all, I consider myself a passionate Frontend Developer person who loves to learn new things and work with edge technologies.
+After all, I consider myself a passionate Frontend Developer who loves to learn new things and work 
+with edge technologies.
 
 If you are looking for my resume, [you will be happy to find the most recent version here](https://stackoverflow.com/cv/klaygomes).
 
 ## Programming Experience
-I work as a professional developer since 2004. Since then, I have learned many different languages and technologies; below is a list of some of them listed in the order of my personal preference.
+I work as a professional developer since 2004. Since then, I have learned many different languages 
+and technologies; below is a list of some of them listed in the order of my personal preference.
 ### Languages 
 
 - Javascript
 - Go
 - C#
-- C (C99)
 - Ruby
 
 ### Web techologies
@@ -39,5 +44,7 @@ I work as a professional developer since 2004. Since then, I have learned many d
 
 ### Hobby
 
-I have a crush on embedded devices and development its development as a whole, so I spend a lot of spare time playing with them. I have a particular passion for ARM Cortext M3 processors, in special the STM32F1xxx series.
-I also like to play with PirateBus (3.6a), mocking some peripherals while learning its protocol. My dream is to discover some cool hack in some popular toy and publish it as open-source someday :)
+I have a crush on embedded devices and development its development as a whole, so I spend a lot of
+spare time playing with them. I have a particular passion for ARM Cortext M3 processors, in special
+the STM32F103xx series. I also like to play with PirateBus (3.6a), mocking some peripherals while 
+learning its protocol.

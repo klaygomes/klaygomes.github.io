@@ -49,7 +49,7 @@ Bellow is my actual make file; Basically, it manages the creation and copy of co
 to the `~/.config` folder as they are changed on the repository folder, keep them in sync. I will 
 try to explain line by line what I'm doing and how you may change it to fit your needs.
 
-`{% highlight make linenos %}
+{% highlight make linenos %}
 CONFIG		:=	$(HOME)/.config/
 
 VIM 		:=	$(addprefix ${CONFIG}, $(wildcard nvim/* nvim/**/*))
@@ -218,4 +218,4 @@ actual values, so I use it a lot throughout the entire file.
 It was an easy task, and I'm thrilled with the results as I had to learn a lot to make it possible.
 In the end, it was a clean solution that it will last a good time inside my workflow.
 
-You may also be interested in the final result [here](https://github.com/klaygomes/dotfiles) 
+You may also be interested in the final result [in my public dotfiles repository](https://github.com/klaygomes/dotfiles) 

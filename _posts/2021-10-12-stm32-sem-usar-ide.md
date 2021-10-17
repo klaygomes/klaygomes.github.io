@@ -210,22 +210,27 @@ manualmente.
 
 # CMSIS
 
-A melhor forma de possuir a versão mais atualizada das bibliotecas CMSIS é, primeiro, você baixar
-através do próprio Github a última versão do core e depois obter os arquivos complementares
-específico para o seu controlador através do site da STM32.
-Para baixar a [última versão disponível](https://github.com/ARM-software/CMSIS_5/releases) acesse
-o [link a seguir](https://github.com/ARM-software/CMSIS_5/releases).
+Você pode baixar direto do site da STM32 pelo
+[na area de software embarcado](https://www.st.com/en/embedded-software/stm32-standard-peripheral-libraries.html).
 
-Procure na última "release", a sessão "assets", nela baixe o arquivo "Source code.zip"
-
-Já os arquivos complementares você pode (baixar direto do site da STM32 pelo
-[link](https://www.st.com/en/embedded-software/stm32-standard-peripheral-libraries.html).
 Na página que for exibida, clique primeiro na imagem azul sobre o número da família de processadores
 que você possui, no meu caso eu cliquei em F1, na página que segue, clique em "Get latest".
 Faça o registro e depois, o download.
 
 Para as pessoas que estão seguindo vídeo aula do youtube, [segue o link direto para download da
-biblioteca da Blue Pill](/assets/en.stsw-stm32054_v3.5.0.zip).
+biblioteca para processadores STM32F10x](/assets/en.stsw-stm32054_v3.5.0.zip), mesmo usado em nossa
+Blue Pill.
+
+Vocês também podem baixar direto do terminal(mais rápido) copiando e colando:
+
+{% highlight bash %}
+curl -O https:///www.estacouveflor.com/assets/en.stsw-stm32054_v3.5.0.zip
+{% endhighlight %}
+
+MD5 Checksum (hash.md5)
+```sh
+8ba67d1050e4fb4c96260eb9947d216d en.stsw-stm32054_v3.5.0.zip
+``` 
 
 ## Conclusão
 
