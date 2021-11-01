@@ -210,27 +210,20 @@ manualmente.
 
 # CMSIS
 
-Você pode baixar direto do site da STM32 pelo
-[na area de software embarcado](https://www.st.com/en/embedded-software/stm32-standard-peripheral-libraries.html).
+A melhor forma de você obter a versão mais recente é direto através do repositório do github, pelo
+endereço https://github.com/STMicroelectronics/STM32CubeF1/tags. Você pode baixar os arquivos
+clicando diretamente no link "zip", que fica ao lado da data da última publicação. Se você quiser,
+pode `clonar` a última versão direto da `master` ou `main` do projeto.
 
-Na página que for exibida, clique primeiro na imagem azul sobre o número da família de processadores
-que você possui, no meu caso eu cliquei em F1, na página que segue, clique em "Get latest".
-Faça o registro e depois, o download.
-
-Para as pessoas que estão seguindo vídeo aula do youtube, [segue o link direto para download da
-biblioteca para processadores STM32F10x](/assets/en.stsw-stm32054_v3.5.0.zip), mesmo usado em nossa
-Blue Pill.
-
-Vocês também podem baixar direto do terminal(mais rápido) copiando e colando:
+Se você estiver seguindo nosso curso através do Youtube, execute o código abaixo no diretório 
+inicial do seu projeto:
 
 {% highlight bash %}
-curl -O https:///www.estacouveflor.com/assets/en.stsw-stm32054_v3.5.0.zip
+git clone --depth 1 ssh@github.com:STMicroelectronics/STM32CubeF1.git stm32 && rm -rf $_/.git
 {% endhighlight %}
 
-MD5 Checksum (hash.md5)
-```sh
-8ba67d1050e4fb4c96260eb9947d216d en.stsw-stm32054_v3.5.0.zip
-``` 
+Ele é reponsável em baixar os arquivos mais atuais dentro de um diretório chamado `stm32` onde for
+executado.
 
 ## Conclusão
 
