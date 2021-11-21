@@ -1,6 +1,4 @@
 source 'https://rubygems.org'
 
+gem "gemoji", "~> 3.0"
 gem 'jekyll'
-gem 'jekyll-sitemap'
-gem 'rouge'
-gem 'octopress'
