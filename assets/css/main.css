@@ -1,0 +1,104 @@
+--- 
+---
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-nav-color {
+  @apply bg-primaryColorDarker;
+}
+
+@layer utilities {
+  .bg-center-hero {
+    background: linear-gradient(90deg, #FAD30B 66.66%, #C63F75 44.45%);
+  }
+
+  .post-content ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 2em;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
+  }
+    .post-content ul li + li {
+      margin-top: .5em;
+    }
+  .post-content p {
+    @apply leading-6 font-molengo;
+  }
+
+  .post-content a {
+    @apply text-textContrastColor hover:underline after:content-['⧉'] after:text-purple-400 after:hover:no-underline;
+  }
+  
+  .post-content table {
+    @apply table-auto rounded border-collapse my-4 drop-shadow-md bg-backgroundColor;
+  }
+    .post-content table th{
+      @apply text-textContrastColorDarker;
+    }
+    .post-content table,
+    .post-content table th, 
+    .post-content table td, 
+    .post-content table tr {
+      @apply border border-slate-200 p-2;
+    }
+
+  .post-content h2 {
+    @apply text-4xl text-textContrastColorDarker font-molengo py-4 font-thin;
+    background-image: linear-gradient(167deg, #C63F75, #B61A54);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .post-content h3,
+  .post-content h4 {
+    @apply text-2xl text-primaryColor font-molengo py-4 font-light;
+    background-image: linear-gradient(167deg, #7E23B3, #480F7B);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .highlight {
+    @apply rounded-md shadow;
+  }
+
+  .post-content p+p {
+    @apply mt-4;
+  }
+  p.notice { 
+    @apply p-4 border-l-8 border-l-textContrastColorDarker drop-shadow-md bg-backgroundColor rounded;
+  }
+  #toc-destination {
+    @apply -ml-2 font-abel border-l-8 border-l-primaryColor;
+  }
+  #toc-destination ul {
+    @apply list-inside w-2/3;
+
+  }
+     #toc-destination ul li:first-child {
+      /*@apply bg-primaryColor text-bgContrastColor;*/
+     }
+    #toc-destination ul li {
+      @apply my-2 pl-2;
+    }
+        #toc-destination ul li:last-child {
+          @apply my-0;
+        }
+      #toc-destination ul li a {
+        @apply hover:underline;
+      }
+
+      .test {
+        background-image: linear-gradient(0deg, #FAD30B 0%, #FAD30B 100%);
+        background-repeat: no-repeat;
+        background-size: 100% 0.3em;
+        background-position: 0 88%;
+      }
+}

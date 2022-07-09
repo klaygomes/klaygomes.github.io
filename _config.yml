@@ -1,0 +1,41 @@
+title: Esta couve floor
+email: email@cleiton.dev
+description: >-
+  Software design is an art, and like any art it cannot be
+  taught and learned as precise science, by means of theorems
+  and formulas.
+url: "https://www.estacouveflor.com/"
+author:
+  name: Cleiton Loiola
+  email: email@cleiton.dev
+  username: klaygomes
+disqus-shortname: estacouveflor
+repository: git@github.com:klaygomes/klaygomes.github.io.git
+permalink: /:title/
+highlighter: rouge
+markdown: kramdown
+theme: minima
+
+plugins:
+  - jekyll-postcss
+
+postcss:
+  cache: false
+
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  parse_block_html: true
+  enable_coderay: false
+
+exclude:
+  - package.json
+  - postcss.config.js
+  - tailwind.config.js
+  - yarn.lock
+  - frontmatter.json
+  - Gemfil*
+  - readme.md
+  - CNAME

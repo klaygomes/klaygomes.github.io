@@ -1,0 +1,36 @@
+<div class="bg-nav-color  text-bgContrastColor text-3xl font-rubik font-extrabold overflow-visible">
+  <nav class="relative mx-auto container w-full overflow-visible h-20 md:flex md:items-center md:space-between" id="menu">
+    <div class="flex justify-between items-center overflow-visible pb-2 pl-2 md:pl-0 ">
+      <a class="mt-2 md:mr-8" href="{{ "/" | relative_url }}" title="{{ site.title }}"><img src="{{ '/assets/img/icon-stack.svg' | relative_url }}" class="h-16 mr-2" alt="{{ site.title }}"></a>
+      <a class="md:hidden" href="{{ "/" | relative_url }}" title="{{ site.title }}">Esta couve flor</a>
+      <button id="menu-click" aria-details="open menu" class="md:hidden">
+        <svg class="w-16 h-16 cursor-pointer" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <div class="bg-bgContrastColor h-0.5 mb-0.5 md:hidden"></div>
+    <div class="flex flex-col md:flex-row space-y-6 md:space-y-0 items-center py-4 bg-primaryColor md:bg-inherit md:space-x-4 md:grow">
+    <a class="hover:underline" href="{{ "/articles" | relative_url }}">Articles</a>
+      <a class="hover:underline" href="{{ "/about" | relative_url }}">About</a>
+    </div>
+    <div class="bg-bgContrastColor h-0.5 mb-0.5" md:hidden></div>
+    <div class="text-xl font-abel font-light p-2 pb-4 flex justify-center space-x-4">
+      <a href="https://stackoverflow.com/users/136258/cleiton" target="_blank" class="hover:underline"><img src="{{'/assets/img/stackoverflow.svg' | relative_url }}" class="inline-block mr-1"
+          aria-hidden="true" alt="Stackoverflow" />
+        Stackoverflow</a>
+      <a href="https://www.linkedin.com/in/klaygomes/" target="_blank" class="hover:underline">
+        <img src="{{ '/assets/img/linkedin.svg' | relative_url }}" class="inline-block mr-1" aria-hidden="true"
+          alt="Linkedin" />
+        Linkedin</a>
+      <a href="https://github.com/klaygomes"  target="_blank"  class="hover:underline">
+        <img src="{{'/assets/img/github.svg' | relative_url }}" class="inline-block mr-1" aria-hidden="true" alt="Github" />
+        Github</a>
+    </div>
+  </nav>
+</div>
+<script>
+  var menu = document.getElementById("menu");
+  var menuClick = document.getElementById("menu-click")
+  menuClick.addEventListener("click", function(){ menu.classList.toggle("h-20");});
+</script>
