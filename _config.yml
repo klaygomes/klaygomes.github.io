@@ -19,9 +19,6 @@ theme: minima
 plugins:
   - jekyll-postcss
 
-postcss:
-  cache: false
-
 kramdown:
   auto_ids: true
   footnote_nr: 1
