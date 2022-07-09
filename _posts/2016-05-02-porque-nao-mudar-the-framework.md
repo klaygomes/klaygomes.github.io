@@ -6,7 +6,7 @@ modified: 2016-05-05
 tags: [net, governanca]
 comments: true
 ---
-{% include _toc.html %}
+{% include toc.html %}
 
 Esse ano, tivemos oportunidade de conhecer e decidir se seria ou não viável migrarmos de tecnologia Microsoft para ambiente Linux utilizando Python. Resolvi escrever este artigo como resumo de nossas reuniões e o porquê da minha decisão em continuar utilizando a stack da Microsoft.
 

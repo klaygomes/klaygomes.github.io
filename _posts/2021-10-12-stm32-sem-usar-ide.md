@@ -6,7 +6,7 @@ tags: [make, openocd, gcc, gnu, choco]
 comments: true
 ---
 
-{% include _toc.html %}
+{% include toc.html %}
 
 Veja abaixo o passo á passo necessário para você baixar as ferramentas necessárias para
 desenvolvimento em controladores Cortex-M. Nesse artigo cito informações especificas

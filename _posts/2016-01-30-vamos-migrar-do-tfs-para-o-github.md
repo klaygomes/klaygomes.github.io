@@ -6,7 +6,7 @@ modified: 2016-04-18
 tags: [github, tutorial, visual-studio]
 comments: true
 ---
-{% include _toc.html %}
+{% include toc.html %}
 
 Quase 10 anos depois vamos começar a usar o GIT. Acompanhe nossa história e veja um pequeno manual para você aproveitar o que já sabe sobre o TFVC para aprender a usar o GIT no Visual Studio. Neste artigos abordo apenas sobre versionamento de arquivos, as ferramentas colaborativas, checkin police, issue tracker e etc terão sua vez assim que formos nos adaptando com o Github.
 

@@ -1,74 +1,49 @@
-<!doctype html>
-<html class="no-js" lang="en">
-
-<head>
-  {% include _head.html %}
-</head>
-
-<body class="post">
-
-  {% include _navigation.html %}
-
-  {% if page.image.feature %}
-  <div class="image-wrap">
-    <img src={% if page.image.feature contains 'http' %} "{{ page.image.feature }}" {% else
-      %} "{{ site.url }}/images/{{ page.image.feature }}" {% endif %} alt="{{ page.title }} feature image">
-    {% if page.image.credit %}
-    <span class="image-credit">Crédito: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a></span>
-    {% endif %}
-  </div><!-- /.image-wrap -->
-  {% endif %}
-
-  <div id="main" role="main">
-    <div class="article-author-side">
-      {% include _author-bio.html %}
+---
+layout: default
+---
+<div class="bg-violet-50 relative">
+  <section class="mx-auto container min-h-[calc(100vh-96px)] py-6 flex flex-row justify-between content-start">
+    <div class="hidden lg:block w-1/4 sticky top-0 h-fit">
+      <div class="text-xl text-textContrastColorDarker py-4 font-rubik uppercase -ml-2">On this page</div>
+      <div id="toc-destination"></div>
     </div>
-    <article class="post">
-      <div class="headline-wrap">
-        {% if page.link %}
-        <h1><a href="{{ page.link }}">{{ page.title }}</a></h1>
-        {% else %}
-        <h1><a href="{{ site.url }}{{ page.url }}" rel="bookmark" title="{{ page.title }}">{{ page.title }}</a></h1>
-        {% endif %}
-      </div>
-      <!--/ .headline-wrap -->
-      <div class="article-wrap">
-        {{ content }}
-        <hr />
-        <footer role="contentinfo">
-          {% if page.share != false %}{% include _social-share.html %}{% endif %}
-          <p class="byline"><strong>{{ page.title }}</strong> publicado em <time
-              datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>{% if
-            page.modified %} e modificado em <time datetime="{{ page.modified | date: " %Y-%m-%d" }}">{{ page.modified |
-              date: "%B %d, %Y" }}</time>{% endif %}.</p>
-        </footer>
-      </div><!-- /.article-wrap -->
-      {% if site.owner.disqus-shortname and page.comments == true %}
-      <section id="disqus_thread"></section><!-- /#disqus_thread -->
+    <div class="py-4 px-2 w-full lg:w-3/4">
+      <h1 class="text-5xl text-primaryColor font-rubik font-extrabold pb-1">{{ page.title | escape }}
+      </h1>
+      <p class="post-meta">
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+          {{ page.date | date: date_format }}
+        </time>
+        {%- if page.modified_date -%}
+        ~
+        {%- assign mdate = page.modified_date | date_to_xmlschema -%}
+        <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
+          {{ mdate | date: date_format }}
+        </time>
+        {%- endif -%}
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        • <span class="p-author h-card" itemprop="name">{{ site.author.name }}</span></span>
+      </p>
+      {% if page.description %}
+        <p class="post-description text-3xl text-textContrastColorDarker font-abel font-extralight pt-2">{{ page.description | escape }}</p>
       {% endif %}
-    </article>
-  </div><!-- /#main -->
-
-  <div class="footer-wrap">
-    {% if site.related_posts.size > 0 %}
-    <div class="related-articles">
-      <h4>Não deixe de ver também <small class="pull-right">(<a href="{{ site.url }}/posts/">Ver todas as
-            publicações</a>)</small></h4>
-      <ul>
-        {% for post in site.related_posts limit:3 %}
-        <li><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
-        {% endfor %}
-      </ul>
-      <hr />
-    </div><!-- /.related-articles -->
-    {% endif %}
-    <footer>
-      {% include _footer.html %}
-    </footer>
-  </div><!-- /.footer-wrap -->
-
-  {% include _scripts.html %}
-
-</body>
-
-</html>
+      <div class="post-content mt-4 overflow-scroll">
+      {{ content }}
+      </div>
+      <div class="post-coments">
+          {%- include disqus_comments.html -%}
+      </div>
+      {% if site.related_posts.size > 0 %}
+      <div class="related-articles shadow-lg p-4 px-6 mt-4 rounded bg-primaryColor">
+        <h4 class="text-bgContrastColor text-2xl my-4 font-rubik flex justify-between"><span>You may be looking for</span> <small class="text-sm"><a href="{{ site.url }}/posts/">See all</a></small></h4>
+        <ul class="list-disc list-inside">
+          {% for post in site.related_posts limit:3 %}
+          <li class="list-item pb-2 text-xl text-bgContrastColor font-abel hover:underline"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+</div>

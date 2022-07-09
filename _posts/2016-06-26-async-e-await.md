@@ -6,7 +6,7 @@ modified: 2016-06-26
 tags: [net, CSharp, async, curiosidades]
 comments: true
 ---
-{% include _toc.html %}
+{% include toc.html %}
 
 > Este artigo é uma tradução e adaptação autorizada do original "[Async and Await](http://blog.stephencleary.com/2012/02/async-and-await.html)", de autoria do MVP Stephen Cleary. 
 

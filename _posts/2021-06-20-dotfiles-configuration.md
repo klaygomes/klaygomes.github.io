@@ -6,7 +6,7 @@ tags: [make, dotfiles, linux, blog]
 modified: 20-06-2021
 comments: true
 ---
-{% include _toc.html %}
+{% include toc.html %}
 
 For the last years, I got used to set everything on my computer by hand. Yes, I know it is very 
 inefficient. But, I barely have to format my laptop. I can count on one hand how many times I have

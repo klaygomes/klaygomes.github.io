@@ -6,7 +6,7 @@ modified: 2009-04-02
 tags: [traducao, beginner, tutorial, IA32, assembly]
 comments: true
 ---
-{% include _toc.html %}
+{% include toc.html %}
  
 	/_//_                                                    
 	/`\//_|/_/ 

@@ -1,57 +1,41 @@
-# Site wide configuration
+title: Esta couve floor
+email: email@cleiton.dev
+description: >-
+  Software design is an art, and like any art it cannot be
+  taught and learned as precise science, by means of theorems
+  and formulas.
+url: "https://www.estacouveflor.com/"
+author:
+  name: Cleiton Loiola
+  email: email@cleiton.dev
+  username: klaygomes
+disqus-shortname: estacouveflor
+repository: git@github.com:klaygomes/klaygomes.github.io.git
+permalink: /:title/
+highlighter: rouge
+markdown: kramdown
+theme: minima
 
-title:            Esta couve flor
-locale:           pt_BR
-url:              https://www.estacouveflor.com
+plugins:
+  - jekyll-postcss
 
-# Jekyll configuration
-
-permalink:        /:categories/:title/
-markdown:         kramdown
-highlighter:      rouge
-sass:
-  sass_dir: _sass
-  style: compressed
-gems:
-  - jekyll-sitemap
+postcss:
+  cache: false
 
 kramdown:
   auto_ids: true
   footnote_nr: 1
   entity_output: as_char
   toc_levels: 1..6
+  parse_block_html: true
   enable_coderay: false
 
-# Site owner
-owner:
-  name: Cleiton Loiola
-  avatar: cleiton+loiola.jpeg 
-  bio: Software design is an art, and like any art it cannot be taught and learned as precise science, by means of theorems and formulas.
-  github: klaygomes
-  stackoverflow: 136258/cleiton
-  disqus-shortname: estacouveflor
-  linkedin: klaygomes
-
-# Site includes
-
-include: 
-  - .htaccess
-exclude: 
-  - lib
-  - config.rb
-  - config
-  - log
-  - tmp
-  - less
-  - test
-  - spec
-  - Gruntfile.js
+exclude:
   - package.json
-  - node_modules
-  - Gemfile
-  - Gemfile.lock
-  - LICENSE
-  - Makefile
-  - README.md
-  - Gruntfile.js
+  - postcss.config.js
+  - tailwind.config.js
+  - yarn.lock
+  - frontmatter.json
+  - Gemfil*
+  - readme.md
   - CNAME
