@@ -34,10 +34,6 @@ module.exports = {
       addComponents({
         '.container': {
           width: '100%',
-          // marginLeft: 'auto',
-          // marginRight: 'auto',
-          // paddingLeft: '2rem',
-          // paddingRight: '2rem',
           '@screen sm': {
             maxWidth: '640px',
           },
