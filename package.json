@@ -2,8 +2,12 @@
   "name": "estacouveflor",
   "version": "1.0.0",
   "license": "MIT",
-  "dependencies": {},
+  "scripts": {
+    "build": "NODE_ENV=production postcss assets/css/main.css -o assets/css/main.build.css"
+  },
   "devDependencies": {
+    "cross-env": "^7.0.3",
+    "postcss-cli": "^10.0.0",
     "autoprefixer": "^10.4.7",
     "cssnano": "^5.1.12",
     "postcss": "^8.4.14",
