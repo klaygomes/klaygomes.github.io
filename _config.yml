@@ -36,3 +36,4 @@ exclude:
   - Gemfil*
   - readme.md
   - CNAME
+  - assets
