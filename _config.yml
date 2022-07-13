@@ -14,7 +14,6 @@ repository: git@github.com:klaygomes/klaygomes.github.io.git
 permalink: /:title/
 highlighter: rouge
 markdown: kramdown
-theme: minima
 
 plugins:
   - jekyll-postcss
@@ -26,6 +25,13 @@ kramdown:
   toc_levels: 1..6
   parse_block_html: true
   enable_coderay: false
+
+postcss:
+  cache: false
+
+sass:
+  sass_dir: ./assets/css
+
 
 exclude:
   - package.json

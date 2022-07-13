@@ -10,7 +10,7 @@
 {% endif %}
 <article>
   <h2 class="text-3xl font-rubik text-textContrastColor hover:underline underline-offset-2"><a
-      href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
+      href="{{ post.url | relative }}" title="{{ post.title }}">{{ post.title }}</a></h2>
   <p class="text-xl font-molengo text-textColor pb-3">{{ post.excerpt | strip_html | truncate: 160 }}</p>
 </article>
 {% endfor %}

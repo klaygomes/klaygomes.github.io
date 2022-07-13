@@ -1,6 +1,6 @@
 .highlight {
   position: relative;
-  overflow-x: scroll;
+  width: 100%;
 }
 
 .highlight table,

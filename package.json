@@ -3,14 +3,16 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "NODE_ENV=production postcss assets/css/main.css -o assets/css/main.build.css"
+    "start": "bundle exec jekyll serve --livereload",
+    "build": "NODE_ENV=production postcss assets/css/main.postcss.css -o assets/css/main.build.css"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3",
-    "postcss-cli": "^10.0.0",
     "autoprefixer": "^10.4.7",
+    "cross-env": "^7.0.3",
     "cssnano": "^5.1.12",
     "postcss": "^8.4.14",
+    "postcss-cli": "^10.0.0",
+    "postcss-import": "^14.1.0",
     "tailwindcss": "^3.1.4"
   }
 }
