@@ -2,12 +2,12 @@
 layout: default
 ---
 <div class="bg-violet-50 relative w-fix">
-  <section class="mx-auto container min-h-[calc(100vh-96px)] py-6 flex flex-row justify-between content-start">
+  <section class="mx-auto container min-h-[calc(100vh-96px)] py-6 flex flex-row flex-nowrap justify-between content-start">
     <div class="hidden lg:block w-1/6 sticky top-0 h-fit">
       <div class="text-xl text-textContrastColorDarker py-4 font-rubik uppercase -ml-2">On this page</div>
       <div id="toc-destination"></div>
     </div>
-    <div class="py-4 px-2 lg:w-5/6">
+    <div class="py-4 px-2 w-full lg:w-5/6">
       <h1 class="text-5xl text-primaryColor font-rubik font-extrabold pb-1">{{ page.title | escape }}
       </h1>
       <p class="post-meta">
@@ -28,7 +28,7 @@ layout: default
       {% if page.description %}
         <p class="post-description text-3xl text-textContrastColorDarker font-abel font-extralight pt-2">{{ page.description | escape }}</p>
       {% endif %}
-      <div class="post-content mt-4">
+      <div class="post-content mt-4 w-full overflow-hidden">
       {{ content }}
       </div>
       <div class="post-coments">

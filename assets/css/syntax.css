@@ -1,6 +1,7 @@
 .highlight {
   position: relative;
   width: 100%;
+  overflow: auto;
 }
 
 .highlight table,
