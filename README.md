@@ -1,7 +1,7 @@
 # Welcome to estacouveflor
 
 <center>
-	<img src="./assets/img/logo.svg width=150 />
+	<img src="./assets/img/logo.svg width=150" />
 </center>
 
 Estacouveflor is a playing joke with the phonetics of these words in Brazilian Portuguese, when it is spoken fast resembles "Stackoverflow", it explains the log used :D
