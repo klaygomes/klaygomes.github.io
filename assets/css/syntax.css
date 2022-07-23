@@ -2,6 +2,7 @@
   position: relative;
   width: 100%;
   overflow: auto;
+  padding: 1em;
 }
 
 .highlight table,
@@ -153,12 +154,10 @@
   padding-left: 1rem;
 }
 
-.language-plaintext {
+code.language-plaintext {
   font-family: 'Courier New', Courier, monospace;
   color: #002b36;
-  background-color: #93a1a1;
-}
-
-.language-plaintext .highlight {
-    padding: 1rem;
+  background-color: #93a1a144;
+  border-radius: 5px;
+  padding: 0 .5rem;
 }

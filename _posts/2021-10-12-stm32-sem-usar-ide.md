@@ -12,12 +12,12 @@ Veja abaixo o passo á passo necessário para você baixar as ferramentas necess
 desenvolvimento em controladores Cortex-M. Nesse artigo cito informações especificas
 sobre a STM, mas o manual é válido para qualquer fornecedor.
 
-# Arm Embedded Tool Chain
+## Arm Embedded Tool Chain
 
 Contém conjunto de ferramentas necessárias para validação, teste e compilação de programas
 desenvolvidos para processadores Cortext de 32 bits. (Os modelos Cortex-M, Cortex-R e A).
 
-## GNU/Linux 
+### GNU/Linux 
 
 Baixe a última versão disponível no [site oficial.](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads)
 Salve o arquivo preferencialmente no diretório `/usr/share`.
@@ -54,7 +54,7 @@ arm-none-eabi-gdb --version
 arm-none-eabi-size --version
 ```
 
-## Windows
+### Windows
 
 Baixe o instalar do [site oficial.](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads)
 E execute e siga as instruções do Wizard.
@@ -68,7 +68,7 @@ arm-none-eabi-gdb --version
 arm-none-eabi-size --version
 ```
 
-## Mac
+### Mac
 
 A forma mais fácil de instalar essa e as outras ferramentas será utilizando a ferramenta `Brew`, 
 se você ainda não tem, você poderá instalar executando o comando a baixo:
@@ -92,14 +92,14 @@ arm-none-eabi-gdb --version
 arm-none-eabi-size --version
 ```
 
-# OpenOCD 
+## OpenOCD 
 
 É ferramenta que faz intermediação de comunicação entre o computador e o controlador, é usado
 principalmente como ferramenta para ajudar na depuração, mas também pode ser usado como gravador.
 Funciona como um servidor GDB, responsável por receber as solicitações feitas por clientes GDB e 
 também como um servidor telnet.
 
-## GNU/Linux
+### GNU/Linux
 
 Para as versões mais atuais do OpenOCD você precisará `libftdi` (mesmo que você possua um conector
 ST-Link).
@@ -128,7 +128,7 @@ For bug reports, read
 	http://openocd.org/doc/doxygen/bugs.html
 ```
 
-## Windows
+### Windows
 
 O jeito mais fácil é através da ferramenta [chocolatey](https://chocolatey.org/install) um 
 gerenciador de pacotes especifico para Windows.
@@ -158,8 +158,7 @@ For bug reports, read
 	http://openocd.org/doc/doxygen/bugs.html
 ```
 
-
-## Mac
+### Mac
 
 Para o Mac como sempre, a forma mais fácil de instalar será utilizando a ferramenta `Brew`, pelo
 comando:
@@ -183,17 +182,16 @@ For bug reports, read
 	http://openocd.org/doc/doxygen/bugs.html
 ```
 
-
-# GNU Make
+## GNU Make
 
 Ferramenta utilizada para ajudar na execução de tarefas repetitivas, ele também determina quais
 parte do programa precisam ser recompiladas e executa as tarefas relacionadas automaticamente.
 
-## Linux e Mac
+### Linux e Mac
 
 Ele já vem instalado por padrão nesses sistemas. 
 
-## Windows 
+### Windows 
 
 O jeito mais fácil é através da ferramenta [chocolatey](https://chocolatey.org/install) um 
 gerenciador de pacotes especifico para Windows.
@@ -208,7 +206,7 @@ Você também pode instalar direto através do [link](http://gnuwin32.sourceforg
 mas atenção, diferente do `choco`, você terá que instalar as dependências e fazer a configuração
 manualmente.
 
-# CMSIS
+## CMSIS
 
 A melhor forma de você obter a versão mais recente é direto através do repositório do github, pelo
 endereço https://github.com/STMicroelectronics/STM32CubeF1/tags. Você pode baixar os arquivos
@@ -231,4 +229,3 @@ Apenas com as ferramentas acima, você será capaz de desenvolver para qualquer 
 Cortex-M, A e R em todas as plataformas e sistemas operacionais. E como você pode ter notado, elas
 evoluíram muito e sua instalação esta cada vez mais fácil. Agora é só você baixar e começar a
 programar.
-

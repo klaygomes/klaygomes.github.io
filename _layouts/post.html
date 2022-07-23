@@ -2,32 +2,37 @@
 layout: default
 ---
 <div class="bg-violet-50 relative w-fix">
-  <section class="mx-auto container min-h-[calc(100vh-96px)] py-6 flex flex-row flex-nowrap justify-between content-start">
-    <div class="hidden lg:block w-1/6 sticky top-0 h-fit">
-      <div class="text-xl text-textContrastColorDarker py-4 font-rubik uppercase -ml-2">On this page</div>
-      <div id="toc-destination"></div>
-    </div>
-    <div class="py-4 px-2 w-full lg:w-5/6">
-      <h1 class="text-5xl text-primaryColor font-rubik font-extrabold pb-1">{{ page.title | escape }}
-      </h1>
-      <p class="post-meta">
+  <div class="bg-bgContrastColor bg-stackoverflow">
+    <div class="mx-auto container px-2 md:p-0 h-64 md:h-96 flex flex-col justify-center content-center">
+      <div class="text-primaryColor">
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-          {{ page.date | date: date_format }}
-        </time>
+        {%- if page.date -%}
+          <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+            Published {{ page.date | date: date_format }}
+          </time>
+        {%- endif -%}
         {%- if page.modified_date -%}
         ~
         {%- assign mdate = page.modified_date | date_to_xmlschema -%}
         <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
           {{ mdate | date: date_format }}
         </time>
-        {%- endif -%}
-        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-        • <span class="p-author h-card" itemprop="name">{{ site.author.name }}</span></span>
-      </p>
-      {% if page.description %}
-        <p class="post-description text-3xl text-textContrastColorDarker font-abel font-extralight pt-2">{{ page.description | escape }}</p>
+        {%- endif -%} written by <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <span class="p-author h-card" itemprop="name">{{ site.author.name }}</span></span>
+      </div>
+      <h1 class="text-2xl md:text-5xl text-primaryColor font-rubik font-extrabold pb-1  md:w-4/6">{{ page.title | escape }}</h1>
+      {% if page.excerpt %}
+      <p class="post-description text-xl md:text-3xl text-textContrastColorDarker font-abel font-extralight pt-2 md:w-4/6">{{ page.excerpt |
+        escape }}</p>
       {% endif %}
+    </div>
+  </div>
+  <section class="mx-auto container min-h-[calc(100vh-96px)] py-6 flex flex-row flex-nowrap justify-between content-start">
+    <div class="hidden lg:block w-1/6 sticky top-0 h-fit">
+      <div class="text-xl text-textContrastColorDarker py-4 font-rubik uppercase -ml-2">On this page</div>
+      <div id="toc-destination"></div>
+    </div>
+    <div class="py-4 px-2 w-full lg:w-5/6">
       <div class="post-content mt-4 w-full overflow-hidden">
       {{ content }}
       </div>
