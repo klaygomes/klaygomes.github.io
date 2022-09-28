@@ -72,13 +72,6 @@
     @apply rounded-md shadow my-2 p-0;
   }
 
-  div.bg-stackoverflow {
-    background-image: url('/assets/img/icon-overflow.svg');
-    background-size: 12rem;
-    background-repeat: no-repeat;
-    background-position: bottom 20px right 20px;
-  }
-
   .post-content p+p {
     @apply mt-4;
   }

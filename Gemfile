@@ -4,4 +4,3 @@ gem 'jekyll-postcss'
 gem "github-pages"
 gem "kramdown", "~> 2.3"
 gem "rouge", "~> 3.26"
-

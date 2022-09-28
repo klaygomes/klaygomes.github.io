@@ -1,16 +1,25 @@
-<h2 class="text-2xl font-rubik font-extrabold text-textContrastColorDarker py-4">Articles</h2>
-<p class="text-xl font-abel">Collection of articles grouped by year of publication.</p>
-{% for post in site.posts %}
-{% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
-{% if year != written_year %}
-<h3
-  class="text-2xl font-rubik font-bold text-textContrastColorDarker my-5 pb-2 border-b border-textContrastColorDarker">
-  {{ year }}</h3>
-{% capture written_year %}{{ year }}{% endcapture %}
-{% endif %}
-<article>
-  <h2 class="text-xl font-rubik text-textContrastColor hover:underline underline-offset-2"><a
-      href="{{ post.url | relative }}" title="{{ post.title }}">{{ post.title }}</a></h2>
-  <p class="text-sm font-molengo text-textColor pb-3">{{ post.excerpt | strip_html | truncate: 160 }}</p>
-</article>
-{% endfor %}
+{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+  {% for post in site.posts %}
+  <article>
+    <a href="{{ post.url | relative }}" class="relative block h-full p-8 overflow-hidden border border-gray-100 rounded-lg bg-bgContrastColor">
+      <span class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-bgContrastColor via-textContrastColorDarker to-primaryColor shadow-xl"></span>
+    
+      <div class="justify-between sm:flex">
+        <div>
+          <h5 class="text-xl font-bold text-primaryColor">
+            {{ post.title }}
+          </h5>
+          <p class="mt-1 text-xs font-medium text-primaryColorDarker">By {{ site.author.name }}</p>
+        </div>
+      </div>
+    
+      <div class="mt-4 sm:pr-8">
+        <p class="text-sm text-textContrastColorDarker">
+          {{ post.excerpt | strip_html | truncate: 260 }}
+        </p>
+      </div>
+    </a>
+  </article>
+  {% endfor %}
+</div>
