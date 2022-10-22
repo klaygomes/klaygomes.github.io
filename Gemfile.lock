@@ -265,4 +265,4 @@ DEPENDENCIES
   rouge (~> 3.26)
 
 BUNDLED WITH
-   2.1.4
+   2.3.24
