@@ -7,50 +7,75 @@ comments: true
 ---
 {% include toc.html %}
 
-Aprenda a programar o seu STM32 é um curso para você que quer dar um passo à frente no seu aprendizado ou já é experiente e deseja entender mais sobre ferramentas gratuitas e como elas são utilizadas nos grandes projetos de firmware open source.
+Este é um curso para você que quer dar um passo à frente no seu aprendizado ou já é experiente e deseja entender mais sobre ferramentas gratuitas e como elas são utilizadas nos grandes projetos de firmware open source.
 
 
-## 1  - Introdução
+## Agenda
+
+As aulas são publicadas semanalmente.
+
+## Material de apoio
+
+[Clique aqui](/stm32-material.zip) para fazer o download do material de apoio do curso.
 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/EBRhNbFfEUM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+## Conteúdo do curso
 
-## 2  - Conhecendo as ferramentas
+Assista a seguir as aulas publicadas e se inscreva no [canal do curso](https://www.youtube.com/channel/UCMw-yIC0Mib2PBNHki5Z3wg) para ser notificado quando novas aulas forem publicadas!
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/sly3cELme8c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<details class="mt-4 bg-white border border-gray-200" open>
+  <summary class="px-3 cursor-pointer"><h3 class="ml-2 inline-block">1. Introdução</h3></summary>
+  <p class="p-3 mb-0 border-t border-gray-200">
+    Aprenda como programar um STM32F1x usando VSCode e ferramentas GNU como Make, GDB e Arm Toolchain. Ensinaremos também sobre CMSIS, HAL e AL e como encontrar as informações em datasheets.
+  </p>
+  <iframe class="p-3" width="100%" height="600" src="https://www.youtube.com/embed/EBRhNbFfEUM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+  </iframe>
+</details>
 
-## 3 - Instalando as ferramentas usando console
+<details class="mt-4 bg-white border border-gray-200" open>
+  <summary class="px-3 cursor-pointer"><h3 class="ml-2 inline-block">2. Conhecendo as ferramentas</h3></summary>
+  <p class="p-3 mb-0 border-t border-gray-200">
+    Neste vídeo detalho quais ferramentas utilizaremos em nosso curso. Você conhecerá GNU Make, GDB, OpenOCD, GNU ARM Embedded Toolchain. Você também entenderá o que cada um faz e como eles podem ser usados.
+  </p>
+  <iframe class="p-3" width="100%" height="600" src="https://www.youtube.com/embed/sly3cELme8c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+  </iframe>
+</details>
 
-Em breve.
+<details class="mt-4 bg-white border border-gray-200" open>
+  <summary class="px-3 cursor-pointer"><h3 class="ml-2 inline-block">3. Instalando as ferramentas usando o console</h3></summary>
+  <p class="p-3 mb-0 border-t border-gray-200">
+    Nesta aula você aprenderá como instalar as ferramentas GNU e OpenOCD através do console usando gerenciadores de pacotes: para Windows Chocolatey; no Mac e Linux Brew. No final ensinamos como baixar o CMSIS w nosso material de suporte.
+  </p>
+  <iframe class="p-3" width="100%" height="600" src="https://www.youtube.com/embed/ZQlmDtA8Cjc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+  </iframe>
+</details>
 
-## 4 - Criando estrutura do projeto do zero
+<details class="mt-4 bg-white border border-gray-200">
+  <summary class="px-3 cursor-pointer"><h3 class="ml-2 inline-block">4. Criando estrutura do projeto</h3></summary>
+  <p class="p-3 mb-0 border-t border-gray-200">Em breve.</p>
+</details>
 
-Em breve.
+<details class="mt-4 bg-white border border-gray-200">
+  <summary class="px-3 cursor-pointer"><h3 class="ml-2 inline-block">5. Criando seu primeiro programa</h3></summary>
+  <p class="p-3 mb-0 border-t border-gray-200">Em breve.</p>
+</details>
 
-## 5 - Criando seu primeiro Hello World
+<details class="mt-4 bg-white border border-gray-200">
+  <summary class="px-3 cursor-pointer"><h3 class="ml-2 inline-block">6. Automatizando as tarefas com Make</h3></summary>
+  <p class="p-3 mb-0 border-t border-gray-200">Em breve.</p>
+</details>
 
-Em breve.
+<details class="mt-4 bg-white border border-gray-200">
+  <summary class="px-3 cursor-pointer"><h3 class="ml-2 inline-block">7. O que é o GCC e por que preciso saber? </h3></summary>
+  <p class="p-3 mb-0 border-t border-gray-200">Em breve.</p>
+</details>
 
-## 6 - Tudo o que você precisa saber sobre o Make
+<details class="mt-4 bg-white border border-gray-200">
+  <summary class="px-3 cursor-pointer"><h3 class="ml-2 inline-block">8. GDB, o Debugger numero 1!</h3></summary>
+  <p class="p-3 mb-0 border-t border-gray-200">Em breve.</p>
+</details>
 
-Em breve.
-
-## 7 - O que é o GCC e por que preciso saber 
-
-Em breve.
-
-## 8 - GDB o Debugger numero 1
-
-Em breve.
-
-## 9 - OpenOCD o faz tudo da eletronica
-
-Em breve.
-
-### Material de apoio
-
-[Clique aqui](/stm32-material.zip) para fazer o download do material de apoio.
-
-Os vídeos estão sendo publicados semanalmente no YouTube. Então fique ligado se inscrevendo no canal para receber notificação das novas aulas!
-
-
+<details class="mt-4 bg-white border border-gray-200">
+  <summary class="px-3 cursor-pointer"><h3 class="ml-2 inline-block">9. OpenOCD, o faz tudo da eletrônica!</h3></summary>
+  <p>Em breve.</p>
+</details>

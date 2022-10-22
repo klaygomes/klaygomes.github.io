@@ -8,7 +8,7 @@
 
 @layer utilities {
   .bg-center-hero {
-    background: linear-gradient(90deg, #FAD30B 66.66%, #C63F75 44.45%);
+    background: linear-gradient(90deg, #fad30b 66.66%, #c63f75 44.45%);
   }
 
   .post-content ul {
@@ -20,9 +20,9 @@
     margin-inline-end: 0;
     padding-inline-start: 0;
   }
-    .post-content ul li + li {
-      margin-top: .5em;
-    }
+  .post-content ul li + li {
+    margin-top: 0.5em;
+  }
   .post-content p {
     @apply leading-6 font-molengo;
   }
@@ -30,35 +30,49 @@
   .post-content a {
     @apply text-textContrastColor hover:underline after:content-['⧉'] after:text-purple-400 after:hover:no-underline;
   }
-  
+
   .post-content table {
     @apply table-auto rounded border-collapse my-4 drop-shadow-md bg-backgroundColor;
   }
-    .post-content table th{
-      @apply text-textContrastColorDarker;
-    }
-    .post-content table,
-    .post-content table th, 
-    .post-content table td, 
-    .post-content table tr {
-      @apply border border-slate-200 p-2;
-    }
+  .post-content table th {
+    @apply text-textContrastColorDarker;
+  }
+  .post-content table,
+  .post-content table th,
+  .post-content table td,
+  .post-content table tr {
+    @apply border border-slate-200 p-2;
+  }
+
+  .post-content h1 {
+    @apply text-3xl;
+  }
 
   .post-content h2 {
-    @apply text-xl text-textContrastColorDarker font-molengo py-4 font-thin;
-    background-image: linear-gradient(167deg, #C63F75, #B61A54);
+    @apply text-3xl text-textContrastColorDarker font-molengo py-4 font-thin;
+    background-image: linear-gradient(167deg, #c63f75, #b61a54);
     background-size: 100%;
     background-repeat: repeat;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
+  .post-content h3 {
+    @apply text-2xl;
+  }
+
+  .post-content h4,
+  .post-content h5,
+  .post-content h6 {
+    @apply text-xl;
+  }
+
   .post-content h3,
   .post-content h4,
   .post-content h5,
   .post-content h6 {
-    @apply text-xl text-primaryColor font-molengo py-4 font-light;
-    background-image: linear-gradient(167deg, #7E23B3, #480F7B);
+    @apply text-primaryColor font-molengo py-4 font-light;
+    background-image: linear-gradient(167deg, #7e23b3, #480f7b);
     background-size: 100%;
     background-repeat: repeat;
     -webkit-background-clip: text;
@@ -72,10 +86,10 @@
     @apply rounded-md shadow my-2 p-0;
   }
 
-  .post-content p+p {
+  .post-content p + p {
     @apply mt-4;
   }
-  p.notice { 
+  p.notice {
     @apply p-4 border-l-8 border-l-textContrastColorDarker drop-shadow-md bg-backgroundColor rounded;
   }
   #toc-destination {
@@ -83,18 +97,17 @@
   }
   #toc-destination ul {
     @apply list-inside w-2/3;
-
   }
-     #toc-destination ul li:first-child {
-      /*@apply bg-primaryColor text-bgContrastColor;*/
-     }
-    #toc-destination ul li {
-      @apply my-2 pl-2;
-    }
-        #toc-destination ul li:last-child {
-          @apply my-0;
-        }
-      #toc-destination ul li a {
-        @apply hover:underline;
-      }
+  #toc-destination ul li:first-child {
+    /*@apply bg-primaryColor text-bgContrastColor;*/
+  }
+  #toc-destination ul li {
+    @apply my-2 pl-2;
+  }
+  #toc-destination ul li:last-child {
+    @apply my-0;
+  }
+  #toc-destination ul li a {
+    @apply hover:underline;
+  }
 }
