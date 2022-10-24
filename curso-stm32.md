@@ -35,7 +35,7 @@ Assista a seguir as aulas publicadas e se inscreva no [canal do curso](https://w
 <details class="mt-4 bg-white border border-gray-200" open>
   <summary class="px-3 cursor-pointer"><h3 class="ml-2 inline-block">2. Conhecendo as ferramentas</h3></summary>
   <p class="p-3 mb-0 border-t border-gray-200">
-    Neste vídeo detalho quais ferramentas utilizaremos em nosso curso. Você conhecerá GNU Make, GDB, OpenOCD, GNU ARM Embedded Toolchain. Você também entenderá o que cada um faz e como eles podem ser usados.
+    Neste vídeo detalho quais ferramentas utilizaremos em nosso curso. Você conhecerá GNU Make, GDB, OpenOCD, GNU ARM Embedded Toolchain. Você também entenderá o que cada uma faz e como elas podem ser utilizadas.
   </p>
   <iframe class="p-3" width="100%" height="600" src="https://www.youtube.com/embed/sly3cELme8c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
   </iframe>
@@ -44,15 +44,19 @@ Assista a seguir as aulas publicadas e se inscreva no [canal do curso](https://w
 <details class="mt-4 bg-white border border-gray-200" open>
   <summary class="px-3 cursor-pointer"><h3 class="ml-2 inline-block">3. Instalando as ferramentas usando o console</h3></summary>
   <p class="p-3 mb-0 border-t border-gray-200">
-    Nesta aula você aprenderá como instalar as ferramentas GNU e OpenOCD através do console usando gerenciadores de pacotes: para Windows Chocolatey; no Mac e Linux Brew. No final ensinamos como baixar o CMSIS w nosso material de suporte.
+    Nesta aula você aprenderá como instalar as ferramentas GNU e OpenOCD através do console usando gerenciadores de pacotes: para Windows Chocolatey; no Mac e Linux Brew. No final ensinamos como baixar o CMSIS e nosso material de suporte.
   </p>
   <iframe class="p-3" width="100%" height="600" src="https://www.youtube.com/embed/ZQlmDtA8Cjc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
   </iframe>
 </details>
 
-<details class="mt-4 bg-white border border-gray-200">
+<details class="mt-4 bg-white border border-gray-200" open>
   <summary class="px-3 cursor-pointer"><h3 class="ml-2 inline-block">4. Criando estrutura do projeto</h3></summary>
-  <p class="p-3 mb-0 border-t border-gray-200">Em breve.</p>
+  <p class="p-3 mb-0 border-t border-gray-200">
+    Nessa aula explico como criar estrutura de diretório inicial do nosso projeto mais informações sobre os arquivos disponibilizadas pela CMSIS.
+    Fica faltando pouco para criarmos nosso hello world para a bluepill com stm32f103.
+  </p>
+  <iframe class="p-3" width="100%" height="600" src="https://www.youtube.com/embed/zlHsXD-Auek" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </details>
 
 <details class="mt-4 bg-white border border-gray-200">
