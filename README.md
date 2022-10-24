@@ -19,13 +19,13 @@ But I also know a lot about frontend technologies, good software patterns, and a
 Getting the project dependencies up and running is as follows:
 
 ```bash
-yarn start
+yarn install
 ```
 
 This command will serve the application:
 
 ```bash
-yarn install
+yarn start
 ```
 
 Your changes should automatically reload the page.
