@@ -59,9 +59,13 @@ Assista a seguir as aulas publicadas e se inscreva no [canal do curso](https://w
   <iframe class="p-3" width="100%" height="600" src="https://www.youtube.com/embed/zlHsXD-Auek" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </details>
 
-<details class="mt-4 bg-white border border-gray-200">
+<details class="mt-4 bg-white border border-gray-200" open>
   <summary class="px-3 cursor-pointer"><h3 class="ml-2 inline-block">5. Criando seu primeiro programa</h3></summary>
-  <p class="p-3 mb-0 border-t border-gray-200">Em breve.</p>
+  <p class="p-3 mb-0 border-t border-gray-200">
+    Melhore a qualidade e o tamanho do seu código programando utilizando apenas registradores e a CMSIS sem utilizar o STM32CubeMX. 
+    Neste vídeo configuramos a GPIO C em modo Push-Pull de modo a fazer o led da porta PC13 da placa blue pill ativar.
+  </p>
+  <iframe class="p-3" width="100%" height="600" src="https://www.youtube.com/embed/YPVz3nV1ID4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </details>
 
 <details class="mt-4 bg-white border border-gray-200">
