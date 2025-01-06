@@ -42,4 +42,5 @@ exclude:
   - Gemfil*
   - readme.md
   - CNAME
+  - vendor
   - assets/css/main.css
