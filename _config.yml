@@ -16,7 +16,7 @@ highlighter: rouge
 markdown: kramdown
 
 plugins:
-  - jekyll-postcss
+  - jekyll-postcss-v2
 
 kramdown:
   auto_ids: true
