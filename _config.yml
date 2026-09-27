@@ -40,7 +40,10 @@ exclude:
   - yarn.lock
   - frontmatter.json
   - Gemfil*
-  - readme.md
+  - README.md
+  - docs
+  - node_modules
+  - codedb.snapshot
   - CNAME
   - vendor
   - assets/css/main.css
