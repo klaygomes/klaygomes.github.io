@@ -1,92 +1,94 @@
 ---
 layout: post
-title: Curso avançado de STM32F1
-tags: [curso, STM32F1, arduino, embbeded, make, vscode]
+title: Advanced STM32F1 course
+tags: [course, STM32F1, arduino, embbeded, make, vscode]
 modified: 2022-10-16
 comments: true
 ---
 {% include toc.html %}
 
-Este é um curso para você que quer dar um passo à frente no seu aprendizado ou já é experiente e deseja entender mais sobre ferramentas gratuitas e como elas são utilizadas nos grandes projetos de firmware open source.
+This course is for you if you want to take a step forward in your learning, or if you are already experienced and want to understand more about free tools and how they are used in big open source firmware projects.
+
+> **Heads-up:** the video lessons are recorded in Portuguese.
 
 
-## Agenda
+## Schedule
 
-As aulas são publicadas semanalmente.
+New lessons are published every week.
 
-## Material de apoio
+## Course material
 
-[Clique aqui](/stm32-material.zip) para fazer o download do material de apoio do curso.
+[Click here](/stm32-material.zip) to download the course's support material.
 
 
-## Conteúdo do curso
+## Course content
 
-Assista a seguir as aulas publicadas e se inscreva no [canal do curso](https://www.youtube.com/channel/UCMw-yIC0Mib2PBNHki5Z3wg) para ser notificado quando novas aulas forem publicadas!
+Watch the published lessons below and subscribe to the [course channel](https://www.youtube.com/channel/UCMw-yIC0Mib2PBNHki5Z3wg) to be notified when new lessons come out!
 
-<details class="mt-4 bg-white border border-gray-200" open>
-  <summary class="px-3 cursor-pointer"><h3 class="ml-2 inline-block">1. Introdução</h3></summary>
-  <p class="p-3 mb-0 border-t border-gray-200">
-    Aprenda como programar um STM32F1x usando VSCode e ferramentas GNU como Make, GDB e Arm Toolchain. Ensinaremos também sobre CMSIS, HAL e AL e como encontrar as informações em datasheets.
+<details open>
+  <summary><h3>1. Introduction</h3></summary>
+  <p>
+    Learn how to program an STM32F1x using VSCode and GNU tools like Make, GDB and the Arm Toolchain. We will also teach you about CMSIS, HAL and AL, and how to find information in datasheets.
   </p>
-  <iframe class="p-3" width="100%" height="600" src="https://www.youtube.com/embed/EBRhNbFfEUM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+  <iframe loading="lazy" src="https://www.youtube.com/embed/EBRhNbFfEUM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
   </iframe>
 </details>
 
-<details class="mt-4 bg-white border border-gray-200" open>
-  <summary class="px-3 cursor-pointer"><h3 class="ml-2 inline-block">2. Conhecendo as ferramentas</h3></summary>
-  <p class="p-3 mb-0 border-t border-gray-200">
-    Neste vídeo detalho quais ferramentas utilizaremos em nosso curso. Você conhecerá GNU Make, GDB, OpenOCD, GNU ARM Embedded Toolchain. Você também entenderá o que cada uma faz e como elas podem ser utilizadas.
+<details open>
+  <summary><h3>2. Getting to know the tools</h3></summary>
+  <p>
+    In this video I go through the tools we will use in our course. You will get to know GNU Make, GDB, OpenOCD and the GNU ARM Embedded Toolchain. You will also understand what each one does and how they can be used.
   </p>
-  <iframe class="p-3" width="100%" height="600" src="https://www.youtube.com/embed/sly3cELme8c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+  <iframe loading="lazy" src="https://www.youtube.com/embed/sly3cELme8c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
   </iframe>
 </details>
 
-<details class="mt-4 bg-white border border-gray-200" open>
-  <summary class="px-3 cursor-pointer"><h3 class="ml-2 inline-block">3. Instalando as ferramentas usando o console</h3></summary>
-  <p class="p-3 mb-0 border-t border-gray-200">
-    Nesta aula você aprenderá como instalar as ferramentas GNU e OpenOCD através do console usando gerenciadores de pacotes: para Windows Chocolatey; no Mac e Linux Brew. No final ensinamos como baixar o CMSIS e nosso material de suporte.
+<details open>
+  <summary><h3>3. Installing the tools using the console</h3></summary>
+  <p>
+    In this lesson you will learn how to install the GNU tools and OpenOCD from the console using package managers: Chocolatey for Windows; Brew on Mac and Linux. At the end we show how to download CMSIS and our support material.
   </p>
-  <iframe class="p-3" width="100%" height="600" src="https://www.youtube.com/embed/ZQlmDtA8Cjc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+  <iframe loading="lazy" src="https://www.youtube.com/embed/ZQlmDtA8Cjc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
   </iframe>
 </details>
 
-<details class="mt-4 bg-white border border-gray-200" open>
-  <summary class="px-3 cursor-pointer"><h3 class="ml-2 inline-block">4. Criando estrutura do projeto</h3></summary>
-  <p class="p-3 mb-0 border-t border-gray-200">
-    Nessa aula explico como criar estrutura de diretório inicial do nosso projeto mais informações sobre os arquivos disponibilizadas pela CMSIS.
-    Fica faltando pouco para criarmos nosso hello world para a bluepill com stm32f103.
+<details open>
+  <summary><h3>4. Creating the project structure</h3></summary>
+  <p>
+    In this lesson I explain how to create the initial directory structure of our project, plus more information about the files provided by CMSIS.
+    We are very close to creating our hello world for the bluepill with the stm32f103.
   </p>
-  <iframe class="p-3" width="100%" height="600" src="https://www.youtube.com/embed/zlHsXD-Auek" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe loading="lazy" src="https://www.youtube.com/embed/zlHsXD-Auek" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </details>
 
-<details class="mt-4 bg-white border border-gray-200" open>
-  <summary class="px-3 cursor-pointer"><h3 class="ml-2 inline-block">5. Criando seu primeiro programa</h3></summary>
-  <p class="p-3 mb-0 border-t border-gray-200">
-    Melhore a qualidade e o tamanho do seu código programando utilizando apenas registradores e a CMSIS sem utilizar o STM32CubeMX. 
-    Neste vídeo configuramos a GPIO C em modo Push-Pull de modo a fazer o led da porta PC13 da placa blue pill ativar.
+<details open>
+  <summary><h3>5. Creating your first program</h3></summary>
+  <p>
+    Improve the quality and size of your code by programming with only registers and CMSIS, without using STM32CubeMX. 
+    In this video we configure GPIO C in Push-Pull mode to turn on the LED on pin PC13 of the blue pill board.
   </p>
-  <iframe class="p-3" width="100%" height="600" src="https://www.youtube.com/embed/YPVz3nV1ID4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe loading="lazy" src="https://www.youtube.com/embed/YPVz3nV1ID4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </details>
 
-<details class="mt-4 bg-white border border-gray-200" open>
-  <summary class="px-3 cursor-pointer"><h3 class="ml-2 inline-block">6. Automatizando as tarefas com Make</h3></summary>
-  <p class="p-3 mb-0 border-t border-gray-200">
-    Nesse vídeo, mostraremos como automatizar tudo com o Make. Cobrirei como usar o Make para automatizar o nosso projeto e gerenciar suas dependências, aproveitamos também para ensinar sobre GCC e como utilizá-lo para desenvolvimento de software para embarcados.
+<details open>
+  <summary><h3>6. Automating tasks with Make</h3></summary>
+  <p>
+    In this video, we show how to automate everything with Make. I will cover how to use Make to automate our project and manage its dependencies; we also take the chance to teach about GCC and how to use it for embedded software development.
   </p>
-  <iframe class="p-3" width="100%" height="600" src="https://www.youtube.com/embed/jgUuABfnuGM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe loading="lazy" src="https://www.youtube.com/embed/jgUuABfnuGM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </details>
 
-<details class="mt-4 bg-white border border-gray-200">
-  <summary class="px-3 cursor-pointer"><h3 class="ml-2 inline-block">7. O que é o GCC e por que preciso saber? </h3></summary>
-  <p class="p-3 mb-0 border-t border-gray-200">Em breve.</p>
+<details>
+  <summary><h3>7. What is GCC and why do I need to know it? </h3></summary>
+  <p>Coming soon.</p>
 </details>
 
-<details class="mt-4 bg-white border border-gray-200">
-  <summary class="px-3 cursor-pointer"><h3 class="ml-2 inline-block">8. GDB, o Debugger numero 1!</h3></summary>
-  <p class="p-3 mb-0 border-t border-gray-200">Em breve.</p>
+<details>
+  <summary><h3>8. GDB, the number 1 debugger!</h3></summary>
+  <p>Coming soon.</p>
 </details>
 
-<details class="mt-4 bg-white border border-gray-200">
-  <summary class="px-3 cursor-pointer"><h3 class="ml-2 inline-block">9. OpenOCD, o faz tudo da eletrônica!</h3></summary>
-  <p>Em breve.</p>
+<details>
+  <summary><h3>9. OpenOCD, the jack-of-all-trades of electronics!</h3></summary>
+  <p>Coming soon.</p>
 </details>

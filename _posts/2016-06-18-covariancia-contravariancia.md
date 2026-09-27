@@ -1,89 +1,89 @@
 ---
 layout: post
-title: Covariância e contravariância no C Sharp
-excerpt: Mais uma daquelas funcionalidades que você usa sem saber que existe.
+title: Covariance and contravariance in C Sharp
+excerpt: One more of those features you use without knowing it exists.
 modified: 2016-06-18
-tags: [net, CSharp, programacao_funcional, curiosidades]
+tags: [net, CSharp, functional_programming, curiosities]
 comments: true
 ---
 
 {% include toc.html %}
 
-Primeiro precisamos definir o que seria variância e suas filhas covariância e contravariância. Para começar, você precisa entender que os sistemas de tipos da maioria das linguagens de programação orientada a objetos aceitam que tipos novos sejam criados a partir de outros usando herança, e que estes tipos novos podem ser usados em qualquer lugar onde se esperaria os tipos bases. 
+First, we need to define what variance is, along with its daughters, covariance and contravariance. To start, you need to understand that the type systems of most object-oriented programming languages allow new types to be created from other ones using inheritance, and that these new types can be used anywhere the base types would be expected. 
 
-![Herança simples](/images/heranca.png)
+![Simple inheritance](/images/heranca.png)
 
-Exemplo:
+Example:
 
-Se você tem uma classe _Gato_ que herda de _Animal_, poderá usá-la em qualquer método que aceite apenas _Animal_ como parâmetro:
-
-{% highlight csharp linenos %}
-public abstract class Animal
-{
-	public abstract void BalanceRabo();
-}
-public class Gato : Animal
-{
-	public override void BalanceRabo()
-	{
-		System.Console.WriteLine("abalançando freneticamente");
-	}
-}
-public static void Chame(Animal animal)
-{
-	animal.BalanceRabo();
-}
-public static void Main(string[] args)
-{
-	var gato = new Gato();
-	Chame(gato);// <<--compila sem problemas
-}
-{% endhighlight %}
- 
-
-Este comportamento é chamado de **Polimorfismo** e provavelmente você já deve ter ouvido falar, mas o que fazer se o método ao invés de apenas um _Animal_ esperasse uma lista de _Animal_? 
-
-Quando estamos trabalhando com containers de tipos, traduzindo: classes que só existem como uma espécie de caixas moldadas exclusivamente para acesso a tipos específicos, estas metamorfoses passam a ser chamadas de *variâncias* e são classificadas em três subgrupos **covariância**, **contravariância** e **invariância**. 
-
-Agora que você já sabe que isso existe, vamos nos aprofundar um pouco, veja o exemplo a seguir:
+If you have a class _Cat_ that inherits from _Animal_, you can use it in any method that accepts only _Animal_ as a parameter:
 
 {% highlight csharp linenos %}
 public abstract class Animal
 {
-	public abstract void BalanceRabo();
+	public abstract void WagTail();
 }
-public class Gato : Animal
+public class Cat : Animal
 {
-	public override void BalanceRabo()
+	public override void WagTail()
 	{
-		System.Console.WriteLine("abalançando freneticamente");
+		System.Console.WriteLine("wagging frantically");
+	}
+}
+public static void Call(Animal animal)
+{
+	animal.WagTail();
+}
+public static void Main(string[] args)
+{
+	var cat = new Cat();
+	Call(cat);// <<--compiles without problems
+}
+{% endhighlight %}
+ 
+
+This behavior is called **Polymorphism**, and you have probably heard about it already, but what do you do if the method, instead of just one _Animal_, expected a list of _Animal_? 
+
+When we are working with type containers (in plain words: classes that only exist as a kind of box shaped exclusively to give access to specific types), these metamorphoses start being called *variances*, and they are classified into three subgroups: **covariance**, **contravariance**, and **invariance**. 
+
+Now that you know this exists, let's dig a little deeper; look at the following example:
+
+{% highlight csharp linenos %}
+public abstract class Animal
+{
+	public abstract void WagTail();
+}
+public class Cat : Animal
+{
+	public override void WagTail()
+	{
+		System.Console.WriteLine("wagging frantically");
 	}
 }
 
 public static void Main(string[] args)
 {
-	Gato[] gatos = new Gato[] { new Gato(), new Gato()};
-	Chame(gatos);// <<--gatos que é do tipo Gato[] é convertido para Animal[], tipo mais genérico
+	Cat[] cats = new Cat[] { new Cat(), new Cat()};
+	Call(cats);// <<--cats, which is of type Cat[], is converted to Animal[], a more generic type
 }
 
-public static void Chame(Animal[] animais)
+public static void Call(Animal[] animals)
 {
-	foreach(var animal in animais)
-		animal.BalanceRabo();
+	foreach(var animal in animals)
+		animal.WagTail();
 }
 {% endhighlight %}
 
-No exemplo acima, note que o tipo *System.Array*, container para os tipos Animal e Gato, permite sua metamorfose sempre que o tipo que ele guarda é um tipo base da outra *System.Array*, damos o nome dessa mutação  de covariância. 
+In the example above, note that the *System.Array* type, the container for the Animal and Cat types, allows its metamorphosis whenever the type it holds is a base type of the other *System.Array*'s type; we call this mutation covariance. 
 
-![Sentido covariancia](/images/covariancia.png)
+![Covariance direction](/images/covariancia.png)
 
-Trocando em miúdos, temos que covariância ocorre sempre quando um objeto container inicializado com um tipo mais especializado pode ser assinalado a um objeto container que possui um mais básico.
+In other words, covariance happens whenever a container object initialized with a more specialized type can be assigned to a container object that holds a more basic one.
  
-Já a Contravariância é o contrário, onde apenas tipos especializados aceitam tipos mais básicos. 
+Contravariance, on the other hand, is the opposite, where only specialized types accept more basic types. 
 
-![Sentindo contravariancia](/images/contravariancia.png)
+![Contravariance direction](/images/contravariancia.png)
 
-Parece não fazer sentido, mas faz e você já deve ter utilizado contravariância no seu dia-a-dia, veja este exemplo:
+It doesn't seem to make sense, but it does, and you have probably already used contravariance in your day-to-day work; look at this example:
 
 {% highlight csharp linenos %}
 public static void Log(object data)
@@ -106,7 +106,7 @@ public class Writter
 
 public static void Main(string[] args)
 {
-	Action<string> callLogAsString = Log; //<-- Log é do tipo Action<Object> convertido para Action<string>, note que string é mais especifico que object.
+	Action<string> callLogAsString = Log; //<-- Log is of type Action<Object>, converted to Action<string>; note that string is more specific than object.
 	Action<Writter> callLogAsWritter = Log;
 	
 	callLogAsString("foo");
@@ -115,58 +115,57 @@ public static void Main(string[] args)
 }
 {% endhighlight %}
 
-No exemplo acima, a partir da assinatura de um método genérico, foi possível converte-lo para tipo mais específico.
+In the example above, starting from the signature of a generic method, it was possible to convert it to a more specific type.
  
-Agora vamos ver em que problemas estes tipos de metamorfoses podem nos levar. No primeiro exemplo, vimos que System.Array é covariante, tornando possível que código seguinte possa ser compilado, mas falhe miseravelmente em tempo de execução:
+Now let's see what problems these kinds of metamorphoses can get us into. In the first example, we saw that System.Array is covariant, which makes it possible for the following code to compile but fail miserably at runtime:
 
 {% highlight csharp linenos %}
-public class Camelo : Animal
+public class Camel : Animal
 {
-	public override void BalanceRabo()
+	public override void WagTail()
 	{
-		System.Console.WriteLine("abalançando levemente");
+		System.Console.WriteLine("wagging gently");
 	}
-	public void BebaAgua()
+	public void DrinkWater()
 	{
-		System.Console.WriteLine("Bebendo 5 litros de água");
+		System.Console.WriteLine("Drinking 5 liters of water");
 	}
 }
-public static void Chame(Animal[] animais)
+public static void Call(Animal[] animals)
 {
-	foreach(var animal in animais)
-		animal.BalanceRabo();
-animais[0] = new Camelo();//<--aqui terei um erro em tempo de execução (ArrayTypeMismatchException)
+	foreach(var animal in animals)
+		animal.WagTail();
+animals[0] = new Camel();//<--here I will get a runtime error (ArrayTypeMismatchException)
 }
 {% endhighlight %}
 
-Note que é **seguro ler** as propriedades e chamar métodos de containers covariantes, porém **perigoso escrever**. No exemplo acima, o método _Chame_ recebeu um Array de Gatos, mas tentou escrever um Camelo que obviamente não cabe, gerando erro em tempo de execução.
+Note that it is **safe to read** properties and call methods of covariant containers, but **dangerous to write**. In the example above, the _Call_ method received an Array of Cats, but tried to write a Camel, which obviously doesn't fit, causing a runtime error.
 
-No C# a partir da versão 4 podemos controlar a variâncias dos nossos tipos a partir das palavras chaves _in_ e _out_. 
+In C#, starting from version 4, we can control the variance of our types using the _in_ and _out_ keywords. 
 
-Este controle pode ser feito apenas a partir de interfaces genéricas ou delegates genéricos, não sendo permitido em classes e outros tipos, a forma como os tipos são expostos também são controlados, neste último caso para garantir a segurança dos dados expostos pelos containers. Veja:
-A palavra chave in, define tipos que são contravariantes. 
+This control can only be done on generic interfaces or generic delegates; it is not allowed on classes and other types. The way the types are exposed is also controlled, in this last case to guarantee the safety of the data exposed by the containers. Look:
+The in keyword defines types that are contravariant. 
 
 {% highlight csharp linenos %}
 public interface IKlay<in T>
 {
-	void Receba(T algo);
+	void Receive(T something);
 }
 
-IKlay<Camelo> klayEspecifico = new Klay<Animal>();
-klayEspecifico.Receba(new Gato());
+IKlay<Camel> specificKlay = new Klay<Animal>();
+specificKlay.Receive(new Cat());
 {% endhighlight %}
 
-Embora sejam de tipos diferentes é seguro já que o método só conhece animais (de quem gato é derivado) e não esqueça que quem realizará o trabalho será Klay<Animal> e não Klay<Camelo>.
-A palavra out, define tipos covariantes que só são seguros quando lidos dos containers. Por isso, só é possível definir tipos covariantes como retorno de métodos:
+Although they are of different types, it is safe, since the method only knows about animals (which cat derives from), and don't forget that the one doing the work will be Klay<Animal> and not Klay<Camel>.
+The out keyword defines covariant types, which are only safe when read from the containers. That's why it is only possible to define covariant types as method return types:
 
 {% highlight csharp linenos %}
 public interface IKlay<out T>
 {
-	T Envie();
+	T Send();
 }
-IKlay<Animal > klayGenerico  = new Klay< Camelo >();
-Animal enviado = klayGenerico.Envie();
+IKlay<Animal > genericKlay  = new Klay< Camel >();
+Animal sent = genericKlay.Send();
 {% endhighlight %}
 
-Totalmente seguro ler o tipo enviado pelo tipo genérico covariante.
-
+It is totally safe to read the type sent by the covariant generic type.

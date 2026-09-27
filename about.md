@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A little bit about me 
-tags: [sobre, livros, autor]
+tags: [about, books, author]
 modified: 2014-08-08T20:53:07.573882-04:00
 comments: false
 ---

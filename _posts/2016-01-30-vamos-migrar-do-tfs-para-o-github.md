@@ -1,132 +1,132 @@
 ---
 layout: post
-title: Migrando do TFVC para o Git
-excerpt: Relato de como migrar do TFVC para o GIT na visão de um programador .NET
+title: Migrating from TFVC to Git
+excerpt: How we migrated from TFVC to Git, from the point of view of a .NET developer
 modified: 2016-04-18
 tags: [github, tutorial, visual-studio]
 comments: true
 ---
 {% include toc.html %}
 
-Quase 10 anos depois vamos começar a usar o GIT. Acompanhe nossa história e veja um pequeno manual para você aproveitar o que já sabe sobre o TFVC para aprender a usar o GIT no Visual Studio. Neste artigos abordo apenas sobre versionamento de arquivos, as ferramentas colaborativas, checkin police, issue tracker e etc terão sua vez assim que formos nos adaptando com o Github.
+Almost 10 years later, we are going to start using GIT. Follow our story and see a small manual so you can use what you already know about TFVC to learn how to use GIT in Visual Studio. In this article I only talk about file versioning; the collaborative tools, checkin policy, issue tracker, etc. will have their turn as soon as we get used to GitHub.
 
-## Nossa pequena história
+## Our little story
 
-Lembro como se fosse ontem a animação ao configurar o cliente do TFVC, naquela época estávamos migrando do então famigerado [Microsoft SourceSafe](https://msdn.microsoft.com/pt-br/library/3h0544kx%28v%3Dvs.80%29.aspx), para esse que então era promessade dias melhores no ambiente de trabalho.
+I remember as if it were yesterday the excitement of setting up the TFVC client; back then we were migrating from the infamous [Microsoft SourceSafe](https://msdn.microsoft.com/en-us/library/3h0544kx%28v%3Dvs.80%29.aspx) to what was, at that time, the promise of better days at work.
 
-O Team Foundation Version Control era lindo, vinha com a promessa de ser a ferramenta ideal para o versionamento de arquivos para projetos maiores, robusto e totalmente configurável com seu maravilhoso `diff` e `merging` que realmente **funcionavam** fizeram sucesso (e ainda fazem) dentro da nossa equipe. 
+Team Foundation Version Control was beautiful; it came with the promise of being the ideal tool for versioning files in bigger projects, robust and fully configurable, and its wonderful `diff` and `merging`, which really **worked**, were a success (and still are) inside our team.
 
-Dávamos a deus as anotações `\\DONEBY:` e as horas perdidas com `mergins` praticamente manuais. Os ventos da mudança assobiavam no nosso escritório. 
+We said goodbye to the `\\DONEBY:` annotations and to the hours lost with practically manual `merges`. The winds of change were whistling in our office.
 
-Quase 10 anos depois, novamente movidos pela necessidade, estamos migrando, desta vez do, amado e companheiro TFVC, para o GIT. Mas por quê? Parece bobo, mas a principal razão é de ele não ser rápido o suficiente.
+Almost 10 years later, once again driven by necessity, we are migrating, this time from our beloved companion TFVC to GIT. But why? It sounds silly, but the main reason is that it is not fast enough.
 
-Embora não exista um limite para a quantidade de itens que você possa ter em um mesmo `workspace`, quando este número cresce, a performance do Visual Studio reduz drasticamente, isso é indiscutível. Claro, existem [formas de reduzir este efeito](http://stackoverflow.com/questions/28022712/visual-studio-2013-tfs-slow), mas o fato é que há um momento que não adianta mais, e assim somos obrigados a buscar novas opções.
+Although there is no limit to the number of items you can have in the same `workspace`, when this number grows, Visual Studio's performance drops drastically; that is indisputable. Of course, there are [ways to reduce this effect](http://stackoverflow.com/questions/28022712/visual-studio-2013-tfs-slow), but the fact is that there comes a moment when nothing helps anymore, and so we are forced to look for new options.
 
-Agora o GIT, que além de ser um excelente controlador de versões, robusto, mantido por uma comunidade enorme, tem como principal promessa ser [extremamente rápido](https://git-scm.com/about/small-and-fast).
+Now GIT, besides being an excellent version control system, robust and maintained by a huge community, has as its main promise being [extremely fast](https://git-scm.com/about/small-and-fast).
 
-E como tem sido! Nossos testes iniciais mostraram que usá-lo com o Visual Studio tornará nosso trabalho incontáveis minutos mais rápidos. Exemplo claro fica quando decidimos mudar de uma `branch` para outra, processo que no TFS levava em média até um minuto completo, com o GIT acontece quase que instantaneamente[^1]. 
+And it has been! Our initial tests showed that using it with Visual Studio will make our work countless minutes faster. A clear example is when we decide to switch from one `branch` to another; a process that in TFS took on average up to a full minute happens almost instantly with GIT[^1].
 
-Provando ser uma escolha natural para quem se acostumou com um produto que é fácil de usar e funciona.
+It proves to be a natural choice for those who got used to a product that is easy to use and just works.
 
-## Passos iniciais com o GIT para um Desenvolvedor TFVC
+## First steps with GIT for a TFVC Developer
 
-Git é muito mais simples do que o TFVC e a primeira coisa que você perceberá ao a usá-lo 
-será sua terminologia, alguns conceitos um pouco diferentes e falta e/ou inclusão de recursos, que acabam fazendo com que tudo pareça confuso, mas fique tranquilo, abaixo listo as principais diferenças entre os dois.
+Git is much simpler than TFVC, and the first thing you will notice when you start using it
+will be its terminology, some slightly different concepts, and missing and/or extra features, which end up making everything look confusing; but don't worry, below I list the main differences between the two.
 
-### Adeus workspaces
+### Goodbye workspaces
 
-Um recurso obrigatório e muito importante no TFVC **não existe** no GIT. Para você começar a trabalhar com o GIT não é preciso que você crie workspaces, configurando diretórios, local de arquivos, permissões e etc. Apenas escolha um diretório no seu computador `clone` o repositório que você deseja trabalhar e mãos a obra.
+A mandatory and very important feature in TFVC **does not exist** in GIT. To start working with GIT you don't need to create workspaces, configuring directories, file locations, permissions, etc. Just choose a directory on your computer, `clone` the repository you want to work on, and get to work.
 
-### Branch são mais simples
+### Branches are simpler
 
-Ele realmente brilha nesse quesito, ao contrário do TFVC que te obriga a copiar *todos* os arquivos do projeto atual em um diretório diferente para uma nova `branch`, O GIT é esperto o suficiente para gerenciar sozinho as diferenças entre os arquivos entre as branchs usando mesmo diretório. 
+It really shines here; unlike TFVC, which forces you to copy *all* the files of the current project into a different directory for a new `branch`, GIT is smart enough to manage by itself the differences between the files of each branch using the same directory.
 
-### Nada de Check in ou Check out's
+### No more Check ins or Check outs
 
-Git não possui conceito de `lock` de arquivos, você pode editar e 'submeter' qualquer arquivo a qualquer momento para o repositório central em qualquer `branch`[^2], mas atenção `checkout` no GIT tem [outro significado](https://git-scm.com/docs/git-checkout).
+Git has no concept of file `lock`; you can edit and 'submit' any file at any time to the central repository on any `branch`[^2], but be careful: `checkout` in GIT has [another meaning](https://git-scm.com/docs/git-checkout).
 
-Isso tem um efeito interessante, para evitar dores de cabeças futuras desde o início as equipes se veem na obrigação de concordarem entre sim e trabalharem seguindo determinado padrão para garantir que não hajam problemas de conflitos. 
+This has an interesting effect: to avoid future headaches, from the very beginning teams find themselves obliged to agree among themselves and work following a certain pattern to make sure there are no conflict problems.
 
-Dentre eles o mais conhecido e utilizado é o [git-flow](http://nvie.com/posts/a-successful-git-branching-model/) que basicamente usa `branchs` para organizar as atualizações sobre a base de código. 
+Among them, the most known and used is [git-flow](http://nvie.com/posts/a-successful-git-branching-model/), which basically uses `branches` to organize the updates to the code base.
 
-### Repositórios locais e no servidor
+### Local and server repositories
 
-Assim como o TFVC possui repositórios locais e no servidor o GIT também, mas conceitualmente diferentes. 
+Just like TFVC has local and server repositories, so does GIT, but they are conceptually different.
 
-No TFVC quando você usa a opção de repositório local, a cada operação (checkin, checkout, shelve etc) o TFVC verifica *o conteúdo de cada arquivo* no workspace com os arquivos que estão no repositório do servidor, já para repositórios no servidor a verificação é apenas no byte informativo de readonly.
+In TFVC, when you use the local repository option, on every operation (checkin, checkout, shelve, etc.) TFVC checks *the content of each file* in the workspace against the files in the server repository; for server repositories, the check is only on the read-only flag.
 
-Já no GIT é diferente, você sempre trabalhará no seu repositório local enviando apenas para o servidor quando o trabalho estiver pronto.
+In GIT it is different: you will always work on your local repository, sending to the server only when the work is ready.
 
-### Commits, fetch, pull, push e sync
+### Commits, fetch, pull, push and sync
 
-No TFVC existem basicamente duas formas de você trabalhar com arquivos:
+In TFVC there are basically two ways to work with files:
 
- - `check out` que basicamente diz ao TFVC que você deseja editar o arquivo e o `check in` onde você envia as alterações feitas para o repositório central visível a todos.
- - `shelve` and `unshelve` análogo ao anterior, porém as alterações ficam apenas disponíveis para você.
+ - `check out`, which basically tells TFVC that you want to edit the file, and `check in`, where you send the changes you made to the central repository, visible to everyone.
+ - `shelve` and `unshelve`, similar to the previous one, but the changes are available only to you.
    
-Já no GIT o fluxo de trabalho é diferente, primeiro é preciso que você entenda que o seus arquivos sempre estarão em um de quatro estados diferentes:
+In GIT the workflow is different; first you need to understand that your files will always be in one of four different states:
 
- - `untracked` como nome já diz, são arquivos que o git não está acompanhando. Arquivos que não estavam presentes no último commit e ainda não foram `staged`;
- - `unmodified` arquivos que constavam no último commit e não foram modificados;
- - `modified` arquivos que constavam no último commit e foram modificados mas ainda não foram stageds;
- - `staged` arquivos que estão prontos para fazer parte do próximo commit;
+ - `untracked`: as the name says, these are files that git is not tracking. Files that were not present in the last commit and have not been `staged` yet;
+ - `unmodified`: files that were in the last commit and were not modified;
+ - `modified`: files that were in the last commit and were modified but have not been staged yet;
+ - `staged`: files that are ready to be part of the next commit;
 
-#### Fluxo de estados dos arquivos
-![Fluxo de estados dos arquivos](/images/lifecycle.png)
-<small>De onde e para onde um arquivo pode 'pular' durante seu ciclo, fonte: https://git-scm.com/</small>
+#### File state flow
+![File state flow](/images/lifecycle.png)
+<small>Where from and where to a file can 'jump' during its lifecycle, source: https://git-scm.com/</small>
 
 #### commit
 
-Uma boa analogia seria compará-los com o recurso de restauração do windows, onde 'pontos de restauração' são gravados antes de alterações importantes sejam feitas no sistema, permitindo que, caso as coisas deêm errado, você possa retornar a uma versão segura. 
+A good analogy would be to compare them with the Windows restore feature, where 'restore points' are saved before important changes are made to the system, allowing you, in case things go wrong, to go back to a safe version.
 
-Os commits no GIT são uma ferramenta importante que permitem que os desenvolvedores além de salvarem seu progresso demarcando pontos seguros em que poderão voltar caso algo de errado, eles também quando bem feitos podem servir como uma exelente meio para [automatização de documetanção](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#commit). 
+Commits in GIT are an important tool; besides letting developers save their progress by marking safe points they can go back to if something goes wrong, when well done they can also be an excellent way to [automate documentation](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#commit).
 
-Não se esqueça que **apenas os arquivos stageds** são gravados pelo commit.
+Don't forget that **only staged files** are recorded by the commit.
 
 #### fetch
 
-Baixa os HEADs com nomes ou tags do repositório no servidor e seus objetos atualizando seu repositório local SEM que haja merge. 
+Downloads the named HEADs or tags from the server repository, along with their objects, updating your local repository WITHOUT doing a merge.
 
-Uma super simplificação seria você pensar que os arquivos que estão no seu computador possuem links de referencias com uma versão de commit do servidor. Quando essa versão muda, você precisa atualizar essa referencia antes de poder enviar novas versões. O que o fetch faz é baixar as atualizações que ocorreram desde a última busca e salvar em uma 'área especial' que você poderá inspecionar, se quiser, antes de efetuar um merge. 
+A super simplification would be to think that the files on your computer have reference links to a commit version on the server. When this version changes, you need to update this reference before you can send new versions. What fetch does is download the updates that happened since the last fetch and save them in a 'special area' that you can inspect, if you want, before doing a merge.
 
 #### pull
 
-Já o pull além de buscar os arquivos como o fetch também faz o merge automaticamente para você. Veja esse exemplo
+Pull, besides fetching the files like fetch does, also does the merge automatically for you. See this example.
 
-Imagine que este é o estado dos seus repositórios:
+Imagine this is the state of your repositories:
 
 ```
-	  A---B---C master no servidor
+	  A---B---C master on the server
 	 /
-    D---E---F---G master <- repositório local
+    D---E---F---G master <- local repository
 	^
-	origin/master último fetch (ou pull)
+	origin/master last fetch (or pull)
 ```
 
-Após o PULL o git irá atualizar as referencias do commit G com B e C que foram realizados nos servidor gerando um novo a partir do merge chamado H.
+After the PULL, git will update the references of commit G with B and C, which were made on the server, creating a new one from the merge called H.
 
 ```
-	  A---B---C master no servidor
+	  A---B---C master on the server
 	 /         \
-    D---E---F---G---H <- repositório local
+    D---E---F---G---H <- local repository
 ```
 
 #### push
 
-Quando você tiver concluído seu trabalho, corrigido aquele bug ou funcionalidade. Use este comando para enviar suas alterações para o repositório no servidor. Este comando irá pegar todas as alterações que foram commited localmente e os enviará para o servidor. Mas atenção, você só poderá 'enviar' se as referencias locais/remoto estiverem atualizadas, então uma boa idéia sempre conferir através do fetch. 
+When you have finished your work, fixed that bug or feature, use this command to send your changes to the server repository. This command will take all the changes that were committed locally and send them to the server. But be careful: you can only 'send' if the local/remote references are up to date, so it is always a good idea to check using fetch.
 
 #### sync
 
-Pense no sync como tudo que foi dito acima, mas feito a partir de uma operação de usuário. Ele fará o que for necessário para que o seu repositório local se torne igual ao remoto. Buscando atualizações(fetch), fazendo o merging(merge) e enviando suas alterações(push), deixando algum trabalho a ser feito por você apenas se houver algum conflito. 
+Think of sync as everything said above, but done from a single user operation. It will do whatever is needed so that your local repository becomes equal to the remote one: fetching updates (fetch), merging (merge) and sending your changes (push), leaving some work for you to do only if there is a conflict.
 
-## Conclusão
+## Conclusion
 
-Sem dúvida o GIT é uma exelente ferramenta que tornou nosso ciclo de desenvolvimento muito mais produtivo. Cada dia que passa e aprendemos mais, mais fácil fica seu uso diário. Realmente foi uma exelente decisão que durará por mais alguns anos. 
+Without a doubt GIT is an excellent tool that made our development cycle much more productive. Every day that goes by we learn more, and the easier its daily use gets. It really was an excellent decision that will last for a few more years.
 
 
 
-[^1]: Computador com 16GB de RAM, SSD, processador I7 e conexão com a internet de 10MB em fibra ótica dedicada, usando os serviços do GitHub e Visual Studio Team Services.
+[^1]: Computer with 16GB of RAM, SSD, I7 processor and a dedicated 10MB fiber optic internet connection, using GitHub and Visual Studio Team Services.
 
-[^2]: Se você possui permissão de escrita é claro.
-[^3]: shelve se refere a opção de você enviar alterações que só podem ser vistas por você no repositório central.
+[^2]: If you have write permission, of course.
+[^3]: shelve refers to the option of sending changes to the central repository that can only be seen by you.
 

@@ -1,42 +1,42 @@
 ---
 layout: post
-title: Ferramentas livres para desenvolvimento embarcado
-excerpt: Passo a passo detalhado de como instalar ferramentas livres para desenvolvimento Cortex-M 
+title: Free tools for embedded development
+excerpt: A detailed step-by-step guide on how to install free tools for Cortex-M development
 tags: [make, openocd, gcc, gnu, choco]
 comments: true
 ---
 
 {% include toc.html %}
 
-Veja abaixo o passo á passo necessário para você baixar as ferramentas necessárias para
-desenvolvimento em controladores Cortex-M. Nesse artigo cito informações especificas
-sobre a STM, mas o manual é válido para qualquer fornecedor.
+Below is the step-by-step you need to follow to download the tools required for development on
+Cortex-M controllers. In this article I mention some information specific to STM, but the guide
+works for any vendor.
 
 ## Arm Embedded Tool Chain
 
-Contém conjunto de ferramentas necessárias para validação, teste e compilação de programas
-desenvolvidos para processadores Cortext de 32 bits. (Os modelos Cortex-M, Cortex-R e A).
+It contains the set of tools needed to validate, test and compile programs developed for 32-bit
+Cortex processors (the Cortex-M, Cortex-R and A models).
 
 ### GNU/Linux 
 
-Baixe a última versão disponível no [site oficial.](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads)
-Salve o arquivo preferencialmente no diretório `/usr/share`.
+Download the latest version available on the [official site.](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads)
+Preferably, save the file in the `/usr/share` directory.
 
-Feito isso descompacte os arquivos e exclua o arquivo zipado:
+Once that is done, extract the files and delete the compressed file:
 
 ```
 sudo tar xjf gcc-arm-none-eabi-your-version.bz2 -C /usr/share/
 rm gcc-arm-none-eabi-your-version.bz2
 ```
 
-Apos isso você deverá criar links simbólicos para que esses programas fiquem disponíveis através do
-sistema inteiro:
+After that, you should create symbolic links so these programs are available across the whole
+system:
 
 ```
 sudo ln -s /usr/share/gcc-arm-none-eabi-your-version/bin/* /usr/bin/
 ```
 
-Pode ser que seja necessário também instalar ferramentas adicionais como `libncurses` e `libtinfo`.
+You may also need to install some additional tools, like `libncurses` and `libtinfo`.
 
 ```
 arm-none-eabi-gcc --version
@@ -45,7 +45,7 @@ arm-none-eabi-gdb --version
 arm-none-eabi-size --version
 ```
 
-Para verificar a instalação abra uma nova janela do terminal e digite:
+To check the installation, open a new terminal window and type:
 
 ```
 arm-none-eabi-gcc --version
@@ -56,10 +56,10 @@ arm-none-eabi-size --version
 
 ### Windows
 
-Baixe o instalar do [site oficial.](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads)
-E execute e siga as instruções do Wizard.
+Download the installer from the [official site.](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads)
+Then run it and follow the Wizard's instructions.
 
-Para verificar a instalação abra uma janela CMD (Tecla Windows + R, digite CMD) e digite:
+To check the installation, open a CMD window (Windows key + R, type CMD) and type:
 
 ```
 arm-none-eabi-gcc --version
@@ -70,20 +70,20 @@ arm-none-eabi-size --version
 
 ### Mac
 
-A forma mais fácil de instalar essa e as outras ferramentas será utilizando a ferramenta `Brew`, 
-se você ainda não tem, você poderá instalar executando o comando a baixo:
+The easiest way to install this and the other tools is using `Brew`; if you don't have it yet,
+you can install it by running the command below:
 
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-Após sua instalação você precisará apenas executar o comando a baixo:
+Once it is installed, you only need to run the command below:
 
 ```
 brew install --cask gcc-arm-embedded
 ```
 
-Para verificar a instalação abra uma nova janela do terminal e digite:
+To check the installation, open a new terminal window and type:
 
 ```
 arm-none-eabi-gcc --version
@@ -94,32 +94,31 @@ arm-none-eabi-size --version
 
 ## OpenOCD 
 
-É ferramenta que faz intermediação de comunicação entre o computador e o controlador, é usado
-principalmente como ferramenta para ajudar na depuração, mas também pode ser usado como gravador.
-Funciona como um servidor GDB, responsável por receber as solicitações feitas por clientes GDB e 
-também como um servidor telnet.
+It is the tool that handles the communication between the computer and the controller; it is used
+mainly to help with debugging, but it can also be used as a flasher. It works as a GDB server,
+which receives the requests made by GDB clients, and also as a telnet server.
 
 ### GNU/Linux
 
-Para as versões mais atuais do OpenOCD você precisará `libftdi` (mesmo que você possua um conector
-ST-Link).
+For the most recent versions of OpenOCD, you will need `libftdi` (even if you have an ST-Link
+connector).
 
-A forma mais fácil de instalar é usando seu gerenciador de pacotes.
+The easiest way to install it is using your package manager.
 
-No Debian por exemplo, você precisa executar:
+On Debian, for example, you need to run:
 ```
 sudo apt install openocd
 ```
 
-Verifique qual é o seu gerenciador de pacotes, provavelmente não será muito diferente disso.
+Check which package manager you have; it probably won't be much different from this.
 
-Para verificar se foi instalado corretamente, digite:
+To check that it was installed correctly, type:
 
 ```
 openocd --version
 ```
 
-A resposta deve ser algo como:
+The output should be something like:
 
 ```
 Open On-Chip Debugger 0.11.0
@@ -130,26 +129,26 @@ For bug reports, read
 
 ### Windows
 
-O jeito mais fácil é através da ferramenta [chocolatey](https://chocolatey.org/install) um 
-gerenciador de pacotes especifico para Windows.
-Baixe o choco através desse link, faça a sua instalação depois execute o comando no prompt de
-comando:
+The easiest way is through [chocolatey](https://chocolatey.org/install), a package manager made
+specifically for Windows.
+Download choco through that link, install it, and then run this command in the command
+prompt:
 
 ```
 choco install openocd 
 ```
 
-Você pode baixar também a versão mais recente diretamente do repositório através [deste link](https://github.com/openocd-org/openocd/releases/).
-O arquivo se encontra no final da página e terá nome parecido com `openocd-v0.x.x-i686-w64-mingw32.tar.gz`
-onde `x.x` será o número da última versão disponível.
+You can also download the latest version straight from the repository through [this link](https://github.com/openocd-org/openocd/releases/).
+The file is at the end of the page and its name will be something like `openocd-v0.x.x-i686-w64-mingw32.tar.gz`,
+where `x.x` is the number of the latest version available.
 
-Para verificar se foi instalado corretamente, abra o prompt e digite:
+To check that it was installed correctly, open the prompt and type:
 
 ```
 openocd --version
 ```
 
-A resposta deve ser algo como:
+The output should be something like:
 
 ```
 Open On-Chip Debugger 0.11.0
@@ -160,20 +159,20 @@ For bug reports, read
 
 ### Mac
 
-Para o Mac como sempre, a forma mais fácil de instalar será utilizando a ferramenta `Brew`, pelo
-comando:
+On the Mac, as always, the easiest way to install it is using `Brew`, with the
+command:
 
 ```
 brew install open-ocd
 ```
 
-Para verificar se foi instalado corretamente, digite:
+To check that it was installed correctly, type:
 
 ```
 openocd --version
 ```
 
-A resposta deve ser algo como:
+The output should be something like:
 
 ```
 Open On-Chip Debugger 0.11.0
@@ -184,48 +183,47 @@ For bug reports, read
 
 ## GNU Make
 
-Ferramenta utilizada para ajudar na execução de tarefas repetitivas, ele também determina quais
-parte do programa precisam ser recompiladas e executa as tarefas relacionadas automaticamente.
+A tool used to help run repetitive tasks; it also figures out which parts of the program need to
+be recompiled and runs the related tasks automatically.
 
-### Linux e Mac
+### Linux and Mac
 
-Ele já vem instalado por padrão nesses sistemas. 
+It already comes installed by default on these systems. 
 
 ### Windows 
 
-O jeito mais fácil é através da ferramenta [chocolatey](https://chocolatey.org/install) um 
-gerenciador de pacotes especifico para Windows.
-Baixe o choco através desse link, faça a sua instalação depois execute o comando no prompt de
-comando:
+The easiest way is through [chocolatey](https://chocolatey.org/install), a package manager made
+specifically for Windows.
+Download choco through that link, install it, and then run this command in the command
+prompt:
 
 ```
 choco install make
 ```
 
-Você também pode instalar direto através do [link](http://gnuwin32.sourceforge.net/install.html),
-mas atenção, diferente do `choco`, você terá que instalar as dependências e fazer a configuração
-manualmente.
+You can also install it directly through this [link](http://gnuwin32.sourceforge.net/install.html),
+but pay attention: unlike `choco`, you will have to install the dependencies and do the
+configuration by hand.
 
 ## CMSIS
 
-A melhor forma de você obter a versão mais recente é direto através do repositório do github, pelo
-endereço https://github.com/STMicroelectronics/STM32CubeF1/tags. Você pode baixar os arquivos
-clicando diretamente no link "zip", que fica ao lado da data da última publicação. Se você quiser,
-pode `clonar` a última versão direto da `master` ou `main` do projeto.
+The best way to get the most recent version is straight from the GitHub repository, at
+https://github.com/STMicroelectronics/STM32CubeF1/tags. You can download the files by clicking
+the "zip" link, right next to the date of the latest release. If you want, you can also `clone`
+the latest version straight from the project's `master` or `main` branch.
 
-Se você estiver seguindo nosso curso através do Youtube, execute o código abaixo no diretório 
-inicial do seu projeto:
+If you are following our course on YouTube, run the code below in the root directory of your
+project:
 
 {% highlight bash %}
 git clone --depth 1 ssh@github.com:STMicroelectronics/STM32CubeF1.git stm32 && rm -rf $_/.git
 {% endhighlight %}
 
-Ele é reponsável em baixar os arquivos mais atuais dentro de um diretório chamado `stm32` onde for
-executado.
+It downloads the most recent files into a directory called `stm32`, wherever you run it.
 
-## Conclusão
+## Conclusion
 
-Apenas com as ferramentas acima, você será capaz de desenvolver para qualquer processador da linha
-Cortex-M, A e R em todas as plataformas e sistemas operacionais. E como você pode ter notado, elas
-evoluíram muito e sua instalação esta cada vez mais fácil. Agora é só você baixar e começar a
-programar.
+With just the tools above, you will be able to develop for any processor in the Cortex-M, A and R
+lines, on every platform and operating system. And as you may have noticed, they have evolved a
+lot, and installing them gets easier every time. Now you just need to download them and start
+programming.

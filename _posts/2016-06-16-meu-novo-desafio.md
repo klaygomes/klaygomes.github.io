@@ -1,20 +1,19 @@
 ---
 layout: post
-title: "Meu novo desafio: Aprender F Sharp"
-excerpt: Index do conteúdo que encontrei na internet sobre programação funcional e FSharp.
+title: "My new challenge: Learning F Sharp"
+excerpt: An index of the content I found on the internet about functional programming and FSharp.
 modified: 2016-06-16
-tags: [net, fSharp, programacao_funcional]
+tags: [net, fSharp, functional_programming]
 comments: true
 ---
 {% include toc.html %}
 
-## Novo desafio 
+## New challenge 
 
-Em julho decidi me desafiar aprender algo novo, desta vez será a linguagem F#. Para fazer isso, nada melhor do que começar lendo material que a gente gosta e praticar. 
+In July, I decided to challenge myself to learn something new; this time it will be the F# language. To do that, there is nothing better than starting by reading material we enjoy and practicing. 
 
-Motivo desse novo desafio: Além de fortalecer a minha base de opções como arquiteto de soluções, poder aplicar estes novos conceitos nas ferramentas que já utilizo.  
+The reason for this new challenge: besides strengthening my set of options as a solutions architect, I want to be able to apply these new concepts to the tools I already use.  
 
-Iniciei a leitura do livro "The book of F# - Breaking free with managed functional programming" do Dave Fancher. Este livro possui apenas 314 páginas, gostei da abordagem sendo que o autor vai direto ao ponto, já no primeiro capitulo ele deixa claro, apresentando um parser simples de notação polonesa inversa. O que o torna não muito indicado para aqueles que tiveram pouco contato com o mundo da programação.
+I started reading the book "The book of F# - Breaking free with managed functional programming" by Dave Fancher. This book has only 314 pages, and I liked the approach, since the author goes straight to the point; right in the first chapter he makes that clear by presenting a simple reverse Polish notation parser. That makes it not very suitable for those who have had little contact with the programming world.
 
-Como neste início ainda estou bastante verde e sem assunto, começarei traduzindo o melhor conteúdo que encontrar na internet e publicarei aqui, sem esquecer é claro, de dar os devidos créditos a seus verdadeiros autores. Conforme for me familiarizando, publicarei conteúdo próprio sobre possíveis gotchas ou informações aleatórias sobre a linguagem.
-
+As I am still pretty green at this beginning and don't have much to write about, I will start by translating the best content I find on the internet and publishing it here, without forgetting, of course, to give proper credit to its real authors. As I get more familiar with it, I will publish my own content about possible gotchas or random information about the language.

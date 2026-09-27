@@ -1,12 +1,15 @@
 ---
 layout: post
-title: Introdução a async e await
-excerpt: Pequena introdução do uso do async e await no .NET (Artigo traduzido)
+lang: pt-BR
+title: Introduction to async and await (in Portuguese)
+excerpt: A short introduction to async and await in .NET. My Portuguese translation of Stephen Cleary's article.
 modified: 2016-06-26
-tags: [net, CSharp, async, curiosidades]
+tags: [net, CSharp, async, curiosities]
 comments: true
 ---
 {% include toc.html %}
+
+> **English readers:** this is my authorized Portuguese translation and adaptation of "[Async and Await](http://blog.stephencleary.com/2012/02/async-and-await.html)" by Stephen Cleary. The original is in English, so go read it there.
 
 > Este artigo é uma tradução e adaptação autorizada do original "[Async and Await](http://blog.stephencleary.com/2012/02/async-and-await.html)", de autoria do MVP Stephen Cleary. 
 

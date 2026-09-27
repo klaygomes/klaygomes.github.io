@@ -1,12 +1,16 @@
 ---
 layout: post
-title: "CALL's - Como elas fazem uso da Stack"
-excerpt: "Este pequeno artigo fala sobre procedures(funções) e como elas usam a pilha para passar variáveis."
+lang: pt-BR
+title: "CALLs: how they use the stack (in Portuguese)"
+excerpt: "A small article about procedures (functions) and how they use the stack to pass variables. My Portuguese translation of a classic beginner tutorial."
 modified: 2009-04-02
-tags: [traducao, beginner, tutorial, IA32, assembly]
+tags: [translation, beginner, tutorial, IA32, assembly]
 comments: true
 ---
 {% include toc.html %}
+
+> **English readers:** this is my 2009 Portuguese translation of a beginner's tutorial on how CALLs use the stack. The original is in English at [woodmann.com](http://www.woodmann.com/krobar/beginner/168.htm), so go read it there.
+
  
 	/_//_                                                    
 	/`\//_|/_/ 

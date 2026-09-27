@@ -1,74 +1,74 @@
 ---
 layout: post
-title: "Entendendo o Coração do STM32: O Sistema de Clock"
-excerpt: O sistema de clock do STM32 é seu coração. Ele usa fontes como HSI/HSE e o PLL para gerar o SYSCLK de 72 MHz, ditando o ritmo de todo o MCU.
+title: "Understanding the Heart of the STM32: The Clock System"
+excerpt: The STM32 clock system is its heart. It uses sources like HSI/HSE and the PLL to generate the 72 MHz SYSCLK, setting the pace for the whole MCU.
 tags: [stm32, hsi, hse, pll, sysclk]
 comments: true
 ---
 
 {% include toc.html %}
 
-O sistema de clock é como o pulso do seu microcontrolador (MCU), o coração que dita o ritmo de tudo. No caso do STM32, que é um chip bem complexo e cheio de periféricos, entender como esse "coração" funciona é fundamental.
+The clock system is like the pulse of your microcontroller (MCU), the heart that sets the pace for everything. In the case of the STM32, which is a pretty complex chip full of peripherals, understanding how this "heart" works is essential.
 
-Pensa comigo: nem tudo no seu projeto precisa rodar na velocidade máxima. Um simples LED piscando não precisa da mesma velocidade que um processamento de dados via USB. Além disso, quanto mais rápido o clock, mais energia o chip consome e mais sensível ele fica a interferências.
+Think about it with me: not everything in your project needs to run at full speed. A simple blinking LED doesn't need the same speed as processing data over USB. Besides that, the faster the clock, the more power the chip consumes and the more sensitive it gets to interference.
 
-## As Fontes de Clock do STM32
-O STM32 tem cinco fontes de clock, que são como as "usinas de energia" que geram o ritmo para o chip.
+## The STM32 Clock Sources
+The STM32 has five clock sources, which are like the "power plants" that generate the rhythm for the chip.
 
-> **Nota:** O diagrama a seguir ilustra a árvore de clocks do STM32. Ele mostra como as fontes de clock (HSI, HSE, LSI, LSE) são selecionadas, multiplicadas pelo PLL e distribuídas para os diferentes barramentos e periféricos.
+> **Note:** The diagram below shows the STM32 clock tree. It shows how the clock sources (HSI, HSE, LSI, LSE) are selected, multiplied by the PLL, and distributed to the different buses and peripherals.
 
-![Diagrama de clock do STM32, como a Figura 11 do manual de referência RM0008](/images/stm32-clock-tree-RM0008.png)
+![STM32 clock diagram, like Figure 11 of the RM0008 reference manual](/images/stm32-clock-tree-RM0008.png)
 
-Olhando o diagrama, a gente pode dividir essas fontes em duas categorias:
+Looking at the diagram, we can split these sources into two categories:
 
-- **Velocidade**: Fontes de alta velocidade (para performance) e de baixa velocidade (para economia de energia).
-- **Origem**: Fontes internas (já vêm no chip) e externas (você precisa conectar um cristal de quartzo).
+- **Speed**: High-speed sources (for performance) and low-speed sources (for saving power).
+- **Origin**: Internal sources (they already come in the chip) and external ones (you need to connect a quartz crystal).
 
-### Vamos conhecer cada uma delas:
+### Let's get to know each one of them:
 
-- **`HSI` (High Speed Internal)**: Um oscilador interno de 8 MHz. É prático porque já está lá, pronto para usar, mas não é o mais preciso.
+- **`HSI` (High Speed Internal)**: An 8 MHz internal oscillator. It is handy because it is already there, ready to use, but it is not the most accurate.
 
-- **`HSE` (High Speed External)**: O oscilador externo de alta velocidade (geralmente de 4 a 16 MHz). Você conecta um cristal do lado de fora, e ele te dá um sinal de clock bem mais estável e preciso que o `HSI`. É o mais recomendado para a maioria das aplicações sérias.
+- **`HSE` (High Speed External)**: The high-speed external oscillator (usually from 4 to 16 MHz). You connect a crystal on the outside, and it gives you a clock signal much more stable and accurate than the `HSI`. It is the recommended one for most serious applications.
 
-- **`LSI` (Low Speed Internal)**: Um "reloginho" interno de 40 kHz. Ele consome pouca energia e serve para alimentar periféricos que não precisam de velocidade, como o Watchdog (`IWDG`), que "vigia" o sistema pra ver se ele não travou.
+- **`LSI` (Low Speed Internal)**: A little 40 kHz internal "clock". It uses little power and is meant to feed peripherals that don't need speed, like the Watchdog (`IWDG`), which "watches" the system to check it hasn't frozen.
 
-- **`LSE` (Low Speed External)**: Outro relógio de baixa velocidade, mas este é externo e super preciso, com 32.768 kHz. É a escolha ideal para o Relógio de Tempo Real (`RTC`), que precisa marcar as horas e datas corretamente, mesmo que o resto do chip esteja "dormindo".
+- **`LSE` (Low Speed External)**: Another low-speed clock, but this one is external and very accurate, at 32.768 kHz. It is the ideal choice for the Real-Time Clock (`RTC`), which needs to keep the time and date right, even while the rest of the chip is "sleeping".
 
-- **`PLL` (Phase-Locked Loop)**: Esse cara não é uma fonte original, mas sim um multiplicador. Ele pega o sinal do `HSI` ou do `HSE` e o multiplica para gerar uma frequência bem mais alta, podendo chegar a 72 MHz. É o truque para fazer o STM32 rodar a toda velocidade.
+- **`PLL` (Phase-Locked Loop)**: This guy is not an original source, but a multiplier. It takes the signal from the `HSI` or the `HSE` and multiplies it to generate a much higher frequency, reaching up to 72 MHz. It is the trick to make the STM32 run at full speed.
 
-## O Caminho do Clock: Do Início ao Fim
-O diagrama que vimos antes mostra todo o fluxo do clock. Vamos seguir o caminho:
+## The Clock Path: From Start to End
+The diagram we saw before shows the whole clock flow. Let's follow the path:
 
-1.  **Seleção do Clock Principal (`SYSCLK`)**: As fontes de alta velocidade (`HSI`, `HSE` e o `PLL`) chegam a uma chave seletora. Aqui, o sistema escolhe qual delas será o `SYSCLK`, o clock principal que vai alimentar quase tudo no chip. Na maioria das vezes, a gente configura para usar o `PLL` a 72 MHz.
+1.  **Selecting the Main Clock (`SYSCLK`)**: The high-speed sources (`HSI`, `HSE` and the `PLL`) arrive at a selector switch. Here, the system chooses which one will be the `SYSCLK`, the main clock that will feed almost everything in the chip. Most of the time, we configure it to use the `PLL` at 72 MHz.
 
-2.  **Distribuição para os Barramentos**: Depois de escolhido, o `SYSCLK` é distribuído. Ele passa por divisores de frequência (prescalers) para gerar clocks mais lentos para diferentes partes do chip:
+2.  **Distribution to the Buses**: Once it is chosen, the `SYSCLK` is distributed. It goes through frequency dividers (prescalers) to generate slower clocks for different parts of the chip:
 
-    - **`HCLK`**: É o clock do barramento `AHB`, onde estão a CPU, a memória e o `DMA`. Geralmente, ele roda na mesma velocidade do `SYSCLK` (72 MHz).
-    - **`PCLK1`**: É o clock do barramento `APB1`, onde ficam os periféricos mais lentos (até 36 MHz), como `I2C`, `USARTs` e o `CAN`.
-    - **`PCLK2`**: Clock do barramento `APB2`, que alimenta os periféricos mais rápidos (até 72 MHz), como a `GPIO`, o `SPI1` e o `ADC`.
+    - **`HCLK`**: It is the clock of the `AHB` bus, where the CPU, the memory and the `DMA` live. Usually, it runs at the same speed as the `SYSCLK` (72 MHz).
+    - **`PCLK1`**: It is the clock of the `APB1` bus, where the slower peripherals are (up to 36 MHz), like `I2C`, the `USARTs` and `CAN`.
+    - **`PCLK2`**: Clock of the `APB2` bus, which feeds the faster peripherals (up to 72 MHz), like `GPIO`, `SPI1` and the `ADC`.
 
-### Clocks Especiais:
+### Special Clocks:
 
-- **`USB`**: O periférico USB precisa de um clock exato de 48 MHz. Esse sinal vem direto do `PLL`, passando por um divisor especial.
-- **`RTC`**: O relógio de tempo real tem sua própria chave seletora, podendo usar o `LSE`, o `LSI` ou até o `HSE` dividido por 128.
-- **`MCO` (Microcontroller Clock Output)**: Uma mão na roda para debugar! Você pode configurar um pino (o `PA8`) para "cuspir" um dos clocks internos. Assim, você pode medi-lo com um osciloscópio e ter certeza de que tudo está configurado certo.
+- **`USB`**: The USB peripheral needs an exact 48 MHz clock. This signal comes straight from the `PLL`, going through a special divider.
+- **`RTC`**: The real-time clock has its own selector switch, and it can use the `LSE`, the `LSI` or even the `HSE` divided by 128.
+- **`MCO` (Microcontroller Clock Output)**: A real lifesaver for debugging! You can configure a pin (`PA8`) to "spit out" one of the internal clocks. That way, you can measure it with an oscilloscope and be sure everything is configured right.
 
-## Configurando Tudo no Código (`SystemInit`)
-Toda essa configuração é feita no início da execução do seu código, dentro de uma função chamada `SystemInit`. Por padrão, os projetos do STM32 já vêm com essa função configurada para o seguinte cenário:
+## Configuring Everything in Code (`SystemInit`)
+All this configuration is done at the start of your code's execution, inside a function called `SystemInit`. By default, STM32 projects already come with this function configured for the following scenario:
 
-1.  Habilitar o `HSE` (assumindo um cristal externo de 8 MHz).
-2.  Configurar o `PLL` para multiplicar o `HSE` por 9 (8 MHz * 9 = 72 MHz).
-3.  Selecionar o `PLL` como a fonte do `SYSCLK`.
-4.  Configurar os divisores dos barramentos `AHB`, `APB1` e `APB2`.
+1.  Enable the `HSE` (assuming an 8 MHz external crystal).
+2.  Configure the `PLL` to multiply the `HSE` by 9 (8 MHz * 9 = 72 MHz).
+3.  Select the `PLL` as the `SYSCLK` source.
+4.  Configure the dividers of the `AHB`, `APB1` and `APB2` buses.
 
-O resultado final é o que a gente vê na maioria dos projetos:
+The final result is what we see in most projects:
 
-| Nome do Clock                  | Velocidade Padrão |
+| Clock Name                     | Default Speed     |
 | ------------------------------ | ----------------- |
-| `SYSCLK` (Clock do Sistema)      | 72 MHz            |
-| `HCLK` (Clock do Barramento AHB) | 72 MHz            |
-| `PCLK1` (Clock do Barramento APB1)| 36 MHz            |
-| `PCLK2` (Clock do Barramento APB2)| 72 MHz            |
-| Clock do `PLL`                   | 72 MHz            |
+| `SYSCLK` (System Clock)          | 72 MHz            |
+| `HCLK` (AHB Bus Clock)           | 72 MHz            |
+| `PCLK1` (APB1 Bus Clock)         | 36 MHz            |
+| `PCLK2` (APB2 Bus Clock)         | 72 MHz            |
+| `PLL` Clock                      | 72 MHz            |
 
-E o mais importante de tudo: **nenhum periférico funciona se o seu clock não estiver habilitado!** Sempre que for usar um timer, uma porta serial ou qualquer outra coisa, a primeira coisa a fazer no código é ligar o "relógio" dele.
+And the most important thing of all: **no peripheral works if its clock is not enabled!** Whenever you are going to use a timer, a serial port or anything else, the first thing to do in code is to turn on its "clock".
