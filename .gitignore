@@ -10,3 +10,5 @@ node_modules
 _asset_bundler_cache
 _examples
 .jekyll-cache
+
+.env
