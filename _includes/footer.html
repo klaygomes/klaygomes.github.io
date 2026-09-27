@@ -1,7 +1,7 @@
 <footer class="site-footer h-card mt-auto bg-brand-strong text-highlight">
   <div class="container flex flex-col gap-8 pt-12 md:flex-row md:items-end md:justify-between md:pt-10">
     <div class="flex items-end gap-5">
-      <div class="footer-gag relative -mb-px shrink-0" data-webm="{{ '/assets/video/cleiton-idea.webm' | relative_url }}" data-hevc="{{ '/assets/video/cleiton-idea.mp4' | relative_url }}">
+      <div class="footer-gag relative -mb-px shrink-0" data-webm="{{ '/assets/video/cleiton-idea.webm' | relative_url }}?v={{ site.time | date: '%s' }}" data-hevc="{{ '/assets/video/cleiton-idea.mp4' | relative_url }}?v={{ site.time | date: '%s' }}">
         <img class="footer-gag-still block h-28 w-auto md:h-32" src="{{ '/assets/img/cleiton-footer.png' | relative_url }}" width="200" height="180" alt="{{ site.author.name }}, hand on chin, looking up thoughtfully">
       </div>
       <div class="pb-6">

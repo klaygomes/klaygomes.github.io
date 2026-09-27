@@ -35,7 +35,7 @@ layout: default
 
     <div class="hero-figure relative h-80 md:col-span-4 md:h-auto">
       <div class="parallax absolute bottom-0 right-0 w-[min(88vw,26rem)] md:-right-6 md:w-[min(46vw,34rem)]" style="--depth: 14">
-        <button type="button" class="hero-gag block w-full" aria-label="Replay the cauliflower gag" data-webm="{{ '/assets/video/cleiton-mascot.webm' | relative_url }}" data-hevc="{{ '/assets/video/cleiton-mascot.mp4' | relative_url }}" data-still="{{ '/assets/img/cleiton-mascot.webp' | relative_url }}">
+        <button type="button" class="hero-gag block w-full" aria-label="Replay the cauliflower gag" data-webm="{{ '/assets/video/cleiton-mascot.webm' | relative_url }}?v={{ site.time | date: '%s' }}" data-hevc="{{ '/assets/video/cleiton-mascot.mp4' | relative_url }}?v={{ site.time | date: '%s' }}" data-still="{{ '/assets/img/cleiton-mascot.webp' | relative_url }}?v={{ site.time | date: '%s' }}">
           <span class="hero-photo relative block">
             <img class="hero-gag-photo block w-full" src="{{ '/assets/img/cleiton-pointing.png' | relative_url }}" srcset="{{ '/assets/img/cleiton-pointing-400.png' | relative_url }} 400w, {{ '/assets/img/cleiton-pointing.png' | relative_url }} 800w" sizes="(min-width: 768px) 34rem, 88vw" width="800" height="720" alt="">
           </span>
