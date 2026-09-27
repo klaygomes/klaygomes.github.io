@@ -1,6 +1,5 @@
 source "https://rubygems.org"
-gem "minima", "~> 2.5"
-gem 'jekyll-postcss-v2'
-gem "github-pages"
-gem "kramdown", "~> 2.3"
-gem "rouge", "~> 3.26"
+
+gem "jekyll", "~> 4.4"
+gem "jekyll-postcss-v2"
+gem "webrick"
