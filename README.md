@@ -24,6 +24,16 @@ A few posts worth starting with:
 - [Using GNU Make as your dotfiles manager](https://www.estacouveflor.com/dotfiles-configuration/): one command to set up a fresh Mac.
 - [The STM32 course](https://www.estacouveflor.com/curso-stm32/): free video lessons on VSCode, GDB, CMSIS and the Arm toolchain.
 
+## Under the hood
+
+It is a small site, but I treated it like a product.
+
+- **Stack.** Jekyll, Tailwind CSS and PostCSS, deployed to GitHub Pages by Actions. No JavaScript framework.
+- **Design tokens.** Every color, radius, shadow and easing lives in [`assets/css/tokens.css`](assets/css/tokens.css) and reaches Tailwind through `var()`, so most of a rebrand happens in one file.
+- **Motion.** A first-visit intro and two small video gags with transparent backgrounds (VP9 for Chrome and Firefox, HEVC for Safari), 300 to 500 KB each, loaded only when needed.
+- **Respectful by default.** Nothing moves for people who ask for reduced motion, the hero gag skips Save-Data connections and is a real button you can replay from the keyboard.
+- **Phones first.** Every page is checked at 390 px wide with zero sideways scrolling.
+
 <div align="center">
 <img src="docs/phone.webp" alt="The home page on a phone" height="420">&nbsp;&nbsp;
 <img src="docs/post.webp" alt="A post with the on-this-page tracker and the STM32 clock tree" height="420">
@@ -31,7 +41,7 @@ A few posts worth starting with:
 
 ## Running it locally
 
-You need Ruby 3.1 with Bundler and Node 24.
+You need Ruby 3.1 with Bundler, and Node 24 (the version is pinned in [`.nvmrc`](.nvmrc)).
 
 ```bash
 bundle install
@@ -39,15 +49,21 @@ yarn install
 yarn start        # serves on http://localhost:4000 with live reload
 ```
 
-After changing templates or CSS classes, run `yarn build` and commit `assets/css/main.build.css` with your change.
+The site serves the compiled stylesheet `assets/css/main.build.css` as it is committed; CI does not rebuild it. After changing templates or CSS classes, run:
+
+```bash
+yarn build
+```
+
+and commit the result together with your change.
 
 ```text
 _posts/            the articles
 _layouts/          page, post and home templates
 _includes/         nav, footer, table of contents, article list
-assets/css/        stylesheets
-assets/video/      videos
-docs/              README images
+assets/css/        tokens.css, main.css and the compiled main.build.css
+assets/video/      the transparent clips behind the gags
+docs/              images for this README (not published)
 ```
 
 ## Say hi
