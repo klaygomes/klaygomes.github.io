@@ -35,24 +35,23 @@ It is a small site, but I treated it like a product.
 - **Phones first.** Every page is checked at 390 px wide with zero sideways scrolling.
 
 <div align="center">
-<img src="docs/phone.webp" alt="The home page on a phone" height="420">&nbsp;&nbsp;
-<img src="docs/post.webp" alt="A post with the on-this-page tracker and the STM32 clock tree" height="420">
+<img src="docs/phone.webp" alt="The home page on a phone" height="420">
 </div>
 
 ## Running it locally
 
-You need Ruby 3.1 with Bundler, and Node 24 (the version is pinned in [`.nvmrc`](.nvmrc)).
+You need Ruby 3.4 with Bundler, and Node 24 (both pinned in [`.ruby-version`](.ruby-version) and [`.nvmrc`](.nvmrc)).
 
 ```bash
 bundle install
-yarn install
-yarn start        # serves on http://localhost:4000 with live reload
+npm ci
+npm start         # serves on http://localhost:4000 with live reload
 ```
 
 The site serves the compiled stylesheet `assets/css/main.build.css` as it is committed; CI does not rebuild it. After changing templates or CSS classes, run:
 
 ```bash
-yarn build
+npm run build
 ```
 
 and commit the result together with your change.
