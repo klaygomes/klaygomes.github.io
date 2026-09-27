@@ -1,0 +1,57 @@
+:root {
+  /* Primitives: raw palette, stored as RGB channels so Tailwind can apply alpha */
+  --purple-900: 72 15 123;
+  --purple-700: 126 35 179;
+  --yellow-400: 250 211 11;
+  --magenta-500: 198 63 117;
+  --magenta-700: 182 26 84;
+  --green-800: 62 107 15;
+  --ink-950: 37 6 60;
+  --lilac-50: 247 242 251;
+  --lilac-100: 237 227 245;
+  --white-50: 253 253 253;
+
+  /* Semantic colors */
+  --color-brand: var(--purple-700);
+  --color-brand-strong: var(--purple-900);
+  --color-highlight: var(--yellow-400);
+  --color-accent: var(--magenta-500);
+  --color-accent-strong: var(--magenta-700);
+  --color-leaf: var(--green-800);
+  --color-ink: var(--ink-950);
+  --color-surface: var(--lilac-50);
+  --color-surface-sunken: var(--lilac-100);
+  --color-surface-raised: var(--white-50);
+
+  /* Typography */
+  --font-display: "Rubik", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Literata", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --measure: 68ch;
+
+  /* Shape */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+
+  /* Elevation: shadows tinted with the brand purple, light from above */
+  --shadow-card: 0 1px 2px rgb(var(--purple-900) / 0.08), 0 8px 24px -12px rgb(var(--purple-900) / 0.25);
+  --shadow-lift: 0 2px 4px rgb(var(--purple-900) / 0.1), 0 18px 40px -16px rgb(var(--purple-900) / 0.35);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 200ms;
+  --duration-base: 300ms;
+  --duration-slow: 700ms;
+  --intro-step: 140ms;
+
+  /* Layers */
+  --z-nav: 30;
+  --z-skip: 50;
+}
+
+.intro-quick {
+  --duration-slow: 450ms;
+  --intro-step: 50ms;
+}

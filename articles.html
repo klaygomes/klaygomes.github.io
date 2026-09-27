@@ -1,8 +1,14 @@
 ---
 layout: default
+title: Articles
+excerpt: Everything published on Esta couve flor, newest first.
 ---
-<div class="bg-violet-50 relative">
-  <section class="mx-auto container min-h-[calc(100vh-96px)] pt-2 pb-6 px-4 md:px-0">
+<section class="py-16 md:py-24">
+  <div class="container">
+    <header class="mb-12 md:mb-16">
+      <h1 class="font-display text-4xl font-extrabold tracking-tight text-brand-strong md:text-6xl">Articles</h1>
+      <p class="mt-4 max-w-prose font-display text-lg text-ink/75">{{ site.posts.size }} posts on embedded development, .NET, frontend and tooling, newest first.</p>
+    </header>
     {%- include article-list.html -%}
-  </section>
-</div>
+  </div>
+</section>

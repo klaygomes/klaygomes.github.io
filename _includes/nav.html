@@ -1,37 +1,61 @@
-<div class="bg-nav-color  text-bgContrastColor text-3xl font-rubik font-extrabold overflow-visible">
-  <nav class="relative mx-auto container w-full overflow-visible h-20 md:flex md:items-center md:space-between" id="menu">
-    <div class="flex justify-between items-center overflow-visible pb-2 pl-2 md:pl-0 ">
-      <a class="mt-2 md:mr-8" href="{{ "/" | relative_url }}" title="{{ site.title }}"><img src="{{ '/assets/img/icon-stack.svg' | relative_url }}" class="h-16 mr-2" alt="{{ site.title }}"></a>
-      <a class="md:hidden" href="{{ "/" | relative_url }}" title="{{ site.title }}">Esta couve flor</a>
-      <button id="menu-click" aria-details="open menu" class="md:hidden">
-        <svg class="w-16 h-16 cursor-pointer" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
+{%- assign nav_links = "About:/about/,Articles:/articles/,STM32 Course:/curso-stm32/" | split: "," -%}
+<header class="sticky top-0 z-nav bg-brand-strong/95 text-highlight shadow-[0_1px_0_rgb(var(--color-highlight)/0.15)] backdrop-blur">
+  <nav class="container flex h-16 items-center gap-6 md:h-20" aria-label="Main">
+    <a class="group flex shrink-0 items-center gap-3 rounded-md" href="{{ "/" | relative_url }}" title="{{ site.title }}">
+      <img src="{{ '/assets/img/icon-stack.svg' | relative_url }}" class="h-11 w-11 transition-transform duration-300 ease-out group-hover:-rotate-6 group-hover:scale-105 md:h-14 md:w-14" alt="" width="56" height="56">
+      <span class="font-display text-xl font-extrabold tracking-tight">Esta couve flor</span>
+    </a>
+
+    <div class="ml-4 hidden items-center gap-1 md:flex">
+      {%- for link in nav_links -%}
+        {%- assign parts = link | split: ":" -%}
+        {%- assign href = parts[1] -%}
+        {%- assign is_current = false -%}
+        {%- if page.url == href -%}{%- assign is_current = true -%}{%- endif -%}
+        <a class="nav-link" href="{{ href | relative_url }}" {% if is_current %}aria-current="page"{% endif %}>{{ parts[0] }}</a>
+      {%- endfor -%}
     </div>
-    <div class="bg-bgContrastColor h-0.5 mb-0.5 md:hidden"></div>
-    <div class="flex flex-col md:flex-row space-y-6 md:space-y-0 items-center py-4 bg-primaryColor md:bg-inherit md:space-x-4 md:grow">
-      <a class="hover:underline" href="{{ "/about" | relative_url }}">About</a>
-    <a class="hover:underline" href="{{ "/articles" | relative_url }}">Articles</a>
-    <a class="hover:underline" href="{{ "/curso-stm32" | relative_url }}">Curso STM32</a>
-    </div>
-    <div class="bg-bgContrastColor h-0.5 mb-0.5" md:hidden></div>
-    <div class="text-xl font-abel font-light p-2 pb-4 flex justify-center space-x-4">
-      <a href="https://stackoverflow.com/users/136258/cleiton" target="_blank" class="hover:underline"><img src="{{'/assets/img/stackoverflow.svg' | relative_url }}" class="inline-block mr-1"
-          aria-hidden="true" alt="Stackoverflow" />
-        Stackoverflow</a>
-      <a href="https://www.linkedin.com/in/klaygomes/" target="_blank" class="hover:underline">
-        <img src="{{ '/assets/img/linkedin.svg' | relative_url }}" class="inline-block mr-1" aria-hidden="true"
-          alt="Linkedin" />
-        Linkedin</a>
-      <a href="https://github.com/klaygomes"  target="_blank"  class="hover:underline">
-        <img src="{{'/assets/img/github.svg' | relative_url }}" class="inline-block mr-1" aria-hidden="true" alt="Github" />
-        Github</a>
-    </div>
+
+    <ul class="ml-auto hidden items-center gap-5 font-display text-sm font-medium lg:flex">
+      <li><a href="https://stackoverflow.com/users/136258/cleiton" rel="noopener" class="social-link"><img src="{{ '/assets/img/stackoverflow.svg' | relative_url }}" alt="" width="14" height="14">Stack Overflow</a></li>
+      <li><a href="https://www.linkedin.com/in/klaygomes/" rel="noopener" class="social-link"><img src="{{ '/assets/img/linkedin.svg' | relative_url }}" alt="" width="14" height="14">LinkedIn</a></li>
+      <li><a href="https://github.com/klaygomes" rel="noopener" class="social-link"><img src="{{ '/assets/img/github.svg' | relative_url }}" alt="" width="14" height="14">GitHub</a></li>
+    </ul>
+
+    <button id="menu-toggle" type="button" class="ml-auto -mr-2 rounded-lg p-2 transition-colors hover:bg-white/10 active:scale-95 md:hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+      <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path class="menu-icon-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h10" />
+        <path class="menu-icon-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M18 6L6 18" />
+      </svg>
+    </button>
   </nav>
-</div>
+
+  <div id="mobile-menu" class="hidden border-t border-highlight/20 bg-brand-strong md:hidden">
+    <div class="container flex flex-col py-4">
+      {%- for link in nav_links -%}
+        {%- assign parts = link | split: ":" -%}
+        {%- assign href = parts[1] -%}
+        <a class="nav-link py-3 text-2xl" href="{{ href | relative_url }}" {% if page.url == href %}aria-current="page"{% endif %}>{{ parts[0] }}</a>
+      {%- endfor -%}
+      <div class="mt-4 flex flex-wrap gap-x-5 gap-y-2 border-t border-highlight/20 pt-4 font-display text-sm font-medium">
+        <a href="https://stackoverflow.com/users/136258/cleiton" rel="noopener" class="social-link"><img src="{{ '/assets/img/stackoverflow.svg' | relative_url }}" alt="" width="14" height="14">Stack Overflow</a>
+        <a href="https://www.linkedin.com/in/klaygomes/" rel="noopener" class="social-link"><img src="{{ '/assets/img/linkedin.svg' | relative_url }}" alt="" width="14" height="14">LinkedIn</a>
+        <a href="https://github.com/klaygomes" rel="noopener" class="social-link"><img src="{{ '/assets/img/github.svg' | relative_url }}" alt="" width="14" height="14">GitHub</a>
+      </div>
+    </div>
+  </div>
+</header>
 <script>
-  var menu = document.getElementById("menu");
-  var menuClick = document.getElementById("menu-click")
-  menuClick.addEventListener("click", function(){ menu.classList.toggle("h-20");});
+  (function () {
+    var toggle = document.getElementById("menu-toggle");
+    var menu = document.getElementById("mobile-menu");
+    toggle.addEventListener("click", function () {
+      var open = toggle.getAttribute("aria-expanded") !== "true";
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      menu.classList.toggle("hidden", !open);
+      toggle.querySelector(".menu-icon-open").classList.toggle("hidden", open);
+      toggle.querySelector(".menu-icon-close").classList.toggle("hidden", !open);
+    });
+  })();
 </script>

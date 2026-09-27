@@ -153,11 +153,3 @@
 .highlight .gutter {
   padding-left: 1rem;
 }
-
-code.language-plaintext {
-  font-family: 'Courier New', Courier, monospace;
-  color: #002b36;
-  background-color: #93a1a144;
-  border-radius: 5px;
-  padding: 0 .5rem;
-}

@@ -44,3 +44,4 @@ exclude:
   - CNAME
   - vendor
   - assets/css/main.css
+  - assets/css/tokens.css

@@ -1,13 +1,38 @@
 <nav class="hidden">
   * Auto generated table of contents
   {:toc}
-  test
 </nav>
 
 <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var toc = document.getElementById("markdown-toc");
+    var destination = document.getElementById("toc-destination");
+    if (!toc || !destination) return;
+    destination.appendChild(toc);
 
-  var tocOrigin = document.getElementById("markdown-toc");
-  var tocDest = document.getElementById("toc-destination"); 
-  tocDest.appendChild(tocOrigin);
+    var links = Array.prototype.slice.call(toc.querySelectorAll("a[href^='#']"));
+    var headings = links
+      .map(function (link) { return document.getElementById(decodeURIComponent(link.hash.slice(1))); })
+      .filter(Boolean);
+    if (!("IntersectionObserver" in window) || headings.length === 0) return;
 
+    var visible = new Set();
+    var setActive = function (id) {
+      links.forEach(function (link) {
+        link.classList.toggle("is-active", decodeURIComponent(link.hash.slice(1)) === id);
+      });
+    };
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) visible.add(entry.target);
+        else visible.delete(entry.target);
+      });
+      var current = headings.filter(function (heading) { return visible.has(heading); })[0];
+      if (!current) {
+        current = headings.filter(function (heading) { return heading.getBoundingClientRect().top < 0; }).pop();
+      }
+      if (current) setActive(current.id);
+    }, { rootMargin: "-96px 0px -55% 0px" });
+    headings.forEach(function (heading) { observer.observe(heading); });
+  });
 </script>

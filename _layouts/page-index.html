@@ -1,19 +1,80 @@
 ---
 layout: default
 ---
-<div class="md:bg-center-hero bg-bgContrastColor z-10 relative">
-  <section class="relative mx-auto container h-[calc(100vh-80px)] md:h-[36rem]">
-    <div class="relative z-10 md:px-0 md:w-5/6 flex flex-col justify-center h-full pl-2 md:pl-0">
-      <h1 class="text-5xl font-rubik font-extrabold text-textContrastColorDarker pb-2">Welcome to <ruby>Esta<span class="text-green-800">couve</span><span class="md:text-primaryColorDarker lg:text-textContrastColorDarker">flor</span>
-        <br /><rt class="font-molengo" aria-hidden="true">/stæ kōʹvə flōr/</rt></ruby>
+{%- assign latest = site.posts.first -%}
+<section class="hero relative isolate overflow-hidden bg-highlight" aria-labelledby="hero-title">
+  <div class="hero-panel absolute inset-x-0 bottom-0 h-80 bg-accent md:inset-y-0 md:left-auto md:h-auto md:w-[36%]" aria-hidden="true"></div>
+
+  <div class="container relative grid md:min-h-[min(calc(100dvh-5rem),52rem)] md:grid-cols-12 md:grid-rows-1">
+    <div class="relative z-10 flex flex-col justify-center pb-12 pt-12 md:col-span-8 md:py-24">
+      <p class="hero-rise font-display text-lg font-medium text-brand-strong md:text-xl" style="--d: 0">Welcome to</p>
+
+      <h1 id="hero-title" class="mt-2 font-display font-extrabold leading-[0.9] tracking-[-0.035em] text-accent-strong" aria-label="Esta couve flor">
+        <span class="hero-line" aria-hidden="true">
+          <span class="hero-word" style="--d: 1"><ruby>Esta<rt>stæ</rt></ruby></span><span class="hero-word text-leaf" style="--d: 2"><ruby>couve<rt>kōʹvə</rt></ruby></span><span class="hero-word" style="--d: 3"><ruby>flor<rt>flōr</rt></ruby></span>
+          <svg class="hero-underline" viewBox="0 0 600 30" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M4 20 C 110 6, 210 26, 320 14 S 520 6, 596 16" pathLength="1" />
+          </svg>
+        </span>
       </h1>
-      <p class="text-2xl font-rubik pt-14 md:w-4/6">React Frontend, mixed with bare metal embedded development, ARM and low level development.</p>
+
+      <p class="hero-rise mt-10 max-w-[34ch] text-pretty font-display text-xl leading-snug text-ink md:text-2xl" style="--d: 4">
+        React frontend, mixed with bare-metal embedded development on ARM and other low-level things.
+      </p>
+
+      <div class="hero-rise mt-10 flex flex-wrap items-center gap-x-6 gap-y-4" style="--d: 5">
+        {%- if latest %}
+        <a href="{{ latest.url | relative_url }}" class="btn-primary group">
+          Read the latest post
+          <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </a>
+        {%- endif %}
+        <a href="{{ '/curso-stm32/' | relative_url }}" class="link-underline font-display text-lg font-semibold text-brand-strong">STM32 Course</a>
+      </div>
     </div>
-    <img src="assets/img/cleiton-pointing.png" class="absolute hidden md:block right-0 bottom-0 h-64 md:h-96" />
-  </section>
-</div>
-<div class="bg-purple-100">
-<section class="mx-auto container py-6 px-4 md:px-0">
-  {%- include article-list.html -%}
-</div>
+
+    <div class="hero-figure relative h-80 md:col-span-4 md:h-auto" aria-hidden="true">
+      <div class="parallax absolute bottom-0 right-0 w-[min(88vw,26rem)] md:-right-6 md:w-[min(46vw,34rem)]" style="--depth: 14">
+        <img class="hero-photo w-full" src="{{ '/assets/img/cleiton-pointing.png' | relative_url }}" srcset="{{ '/assets/img/cleiton-pointing-400.png' | relative_url }} 400w, {{ '/assets/img/cleiton-pointing.png' | relative_url }} 800w" sizes="(min-width: 768px) 34rem, 88vw" width="800" height="720" alt="">
+      </div>
+    </div>
+  </div>
 </section>
+
+<section class="relative bg-surface py-20 md:py-28" aria-labelledby="posts-title">
+  <div class="container">
+    <div class="mb-10 flex items-end justify-between gap-6 md:mb-14">
+      <h2 id="posts-title" class="font-display text-3xl font-extrabold tracking-tight text-brand-strong md:text-5xl">Latest writing</h2>
+      <a href="{{ '/articles/' | relative_url }}" class="link-underline shrink-0 font-display font-semibold text-accent-strong">All articles</a>
+    </div>
+    {%- include article-list.html featured=true -%}
+  </div>
+</section>
+
+<script>
+  (function () {
+    try { localStorage.setItem("ecf-intro-seen", "1"); } catch (e) {}
+
+    var hero = document.querySelector(".hero");
+    var fine = window.matchMedia("(pointer: fine)").matches;
+    var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!hero || !fine || calm) return;
+
+    var frame = null;
+    hero.addEventListener("pointermove", function (event) {
+      var box = hero.getBoundingClientRect();
+      var x = (event.clientX - box.left) / box.width - 0.5;
+      var y = (event.clientY - box.top) / box.height - 0.5;
+      if (frame) cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(function () {
+        hero.style.setProperty("--px", x.toFixed(3));
+        hero.style.setProperty("--py", y.toFixed(3));
+      });
+    });
+    hero.addEventListener("pointerleave", function () {
+      hero.style.setProperty("--px", 0);
+      hero.style.setProperty("--py", 0);
+    });
+  })();
+
+</script>

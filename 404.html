@@ -1,0 +1,23 @@
+---
+layout: default
+title: "Page not found"
+excerpt: "This page moved somewhere else or never existed."
+sitemap: false
+permalink: /404.html
+---
+<section class="relative overflow-hidden bg-highlight">
+  <div class="container grid min-h-[70dvh] items-center gap-10 py-16 md:grid-cols-12 md:py-24">
+    <div class="md:col-span-7">
+      <p class="font-display text-sm font-semibold uppercase tracking-[0.14em] text-accent-strong">Erro 404</p>
+      <h1 class="mt-4 max-w-[16ch] text-balance font-display text-5xl font-extrabold leading-[0.95] tracking-[-0.03em] text-brand-strong md:text-7xl">Hmm, this page isn't here.</h1>
+      <p class="mt-6 max-w-[42ch] text-pretty text-xl leading-relaxed text-ink/80">It moved somewhere else or never existed. Maybe what you are looking for is down one of these paths:</p>
+      <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+        <a href="{{ '/' | relative_url }}" class="btn-primary group">Back to the home page</a>
+        <a href="{{ '/articles/' | relative_url }}" class="link-underline font-display text-lg font-semibold text-brand-strong">See all articles</a>
+      </div>
+    </div>
+    <div class="flex justify-center md:col-span-5 md:justify-end">
+      <img class="w-44 md:w-52" src="{{ '/assets/img/cleiton-footer.png' | relative_url }}" width="200" height="180" alt="{{ site.author.name }}, hand on chin, looking up as if trying to remember where the page went">
+    </div>
+  </div>
+</section>
