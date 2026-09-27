@@ -328,6 +328,27 @@
   to { opacity: 1; transform: none; }
 }
 
+/* Footer gag: registered to the still, bottom-anchored, so the lightbulb rises above the photo */
+
+.footer-gag-video {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 300 / 406;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.footer-gag.is-playing .footer-gag-video {
+  opacity: 1;
+}
+
+.footer-gag.is-playing .footer-gag-still {
+  visibility: hidden;
+}
+
 /* Article body */
 
 .post-content {

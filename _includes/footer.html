@@ -1,7 +1,9 @@
 <footer class="site-footer h-card mt-auto bg-brand-strong text-highlight">
   <div class="container flex flex-col gap-8 pt-12 md:flex-row md:items-end md:justify-between md:pt-10">
     <div class="flex items-end gap-5">
-      <img class="block h-28 w-auto md:h-32 -mb-px shrink-0" src="{{ '/assets/img/cleiton-footer.png' | relative_url }}" width="200" height="180" alt="{{ site.author.name }}, hand on chin, looking up thoughtfully">
+      <div class="footer-gag relative -mb-px shrink-0" data-webm="{{ '/assets/video/cleiton-idea.webm' | relative_url }}" data-hevc="{{ '/assets/video/cleiton-idea.mp4' | relative_url }}">
+        <img class="footer-gag-still block h-28 w-auto md:h-32" src="{{ '/assets/img/cleiton-footer.png' | relative_url }}" width="200" height="180" alt="{{ site.author.name }}, hand on chin, looking up thoughtfully">
+      </div>
       <div class="pb-6">
         <p class="p-name font-display text-lg font-bold">{{ site.author.name | escape }}</p>
         <a class="u-email link-underline mt-1 inline-block font-display text-sm text-highlight/80" href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
@@ -18,3 +20,49 @@
     </div>
   </div>
 </footer>
+<script>
+  (function () {
+    var gag = document.querySelector(".footer-gag");
+    if (!gag || !("IntersectionObserver" in window)) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    try { if (localStorage.getItem("ecf-idea-seen") === "1") return; } catch (e) { return; }
+
+    var webkit = navigator.vendor === "Apple Computer, Inc.";
+    var video = null;
+
+    var load = function () {
+      video = document.createElement("video");
+      video.className = "footer-gag-video";
+      video.muted = true;
+      video.playsInline = true;
+      video.preload = "auto";
+      video.setAttribute("aria-hidden", "true");
+      video.src = webkit ? gag.dataset.hevc : gag.dataset.webm;
+      video.addEventListener("playing", function () {
+        gag.classList.add("is-playing");
+        try { localStorage.setItem("ecf-idea-seen", "1"); } catch (e) {}
+      });
+      video.addEventListener("error", function () {
+        gag.classList.remove("is-playing");
+        video.remove();
+      });
+      gag.appendChild(video);
+    };
+
+    var preload = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      preload.disconnect();
+      if (!video) load();
+    }, { rootMargin: "0px 0px 600px 0px" });
+
+    var trigger = new IntersectionObserver(function (entries) {
+      if (entries[0].intersectionRatio < 0.9) return;
+      trigger.disconnect();
+      if (!video) load();
+      video.play().catch(function () { video.remove(); });
+    }, { threshold: 0.9 });
+
+    preload.observe(gag);
+    trigger.observe(gag);
+  })();
+</script>
