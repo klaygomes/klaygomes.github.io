@@ -33,9 +33,13 @@ layout: default
       </div>
     </div>
 
-    <div class="hero-figure relative h-80 md:col-span-4 md:h-auto" aria-hidden="true">
+    <div class="hero-figure relative h-80 md:col-span-4 md:h-auto">
       <div class="parallax absolute bottom-0 right-0 w-[min(88vw,26rem)] md:-right-6 md:w-[min(46vw,34rem)]" style="--depth: 14">
-        <img class="hero-photo w-full" src="{{ '/assets/img/cleiton-pointing.png' | relative_url }}" srcset="{{ '/assets/img/cleiton-pointing-400.png' | relative_url }} 400w, {{ '/assets/img/cleiton-pointing.png' | relative_url }} 800w" sizes="(min-width: 768px) 34rem, 88vw" width="800" height="720" alt="">
+        <button type="button" class="hero-gag block w-full" aria-label="Replay the cauliflower gag" data-webm="{{ '/assets/video/cleiton-mascot.webm' | relative_url }}" data-hevc="{{ '/assets/video/cleiton-mascot.mp4' | relative_url }}" data-still="{{ '/assets/img/cleiton-mascot.webp' | relative_url }}">
+          <span class="hero-photo relative block">
+            <img class="hero-gag-photo block w-full" src="{{ '/assets/img/cleiton-pointing.png' | relative_url }}" srcset="{{ '/assets/img/cleiton-pointing-400.png' | relative_url }} 400w, {{ '/assets/img/cleiton-pointing.png' | relative_url }} 800w" sizes="(min-width: 768px) 34rem, 88vw" width="800" height="720" alt="">
+          </span>
+        </button>
       </div>
     </div>
   </div>
@@ -77,4 +81,91 @@ layout: default
     });
   })();
 
+  (function () {
+    var gag = document.querySelector(".hero-gag");
+    if (!gag) return;
+
+    var stage = gag.querySelector(".hero-photo");
+    var underline = document.querySelector(".hero-underline path");
+    var webkit = navigator.vendor === "Apple Computer, Inc.";
+    var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var connection = navigator.connection || {};
+    var frugal = connection.saveData || /2g/.test(connection.effectiveType || "");
+    var firstVisit = document.documentElement.classList.contains("intro-full");
+    var grace = 1500;
+    var poseLength = 2400;
+    var video = null;
+    var busy = false;
+
+    var finish = function () {
+      gag.classList.remove("is-playing", "is-posing");
+      busy = false;
+    };
+
+    var load = function () {
+      if (video) return video;
+      video = document.createElement("video");
+      video.className = "hero-gag-media";
+      video.muted = true;
+      video.playsInline = true;
+      video.preload = "auto";
+      video.setAttribute("aria-hidden", "true");
+      video.src = webkit ? gag.dataset.hevc : gag.dataset.webm;
+      video.addEventListener("playing", function () { gag.classList.add("is-playing"); });
+      video.addEventListener("ended", finish);
+      video.addEventListener("error", function () {
+        video.remove();
+        video = null;
+        finish();
+      });
+      stage.appendChild(video);
+      return video;
+    };
+
+    var play = function () {
+      if (busy) return;
+      busy = true;
+      var clip = load();
+      clip.currentTime = 0;
+      clip.play().catch(finish);
+    };
+
+    gag.addEventListener("click", play);
+
+    if (!firstVisit || calm || frugal || !underline) return;
+
+    var still = document.createElement("img");
+    still.className = "hero-gag-media hero-gag-pose";
+    still.alt = "";
+    still.setAttribute("aria-hidden", "true");
+    still.src = gag.dataset.still;
+    stage.appendChild(still);
+
+    var pose = function () {
+      if (busy || !still.complete || !still.naturalWidth) return;
+      busy = true;
+      gag.classList.add("is-posing");
+      setTimeout(finish, poseLength);
+    };
+
+    var cue = function () {
+      if (!video) return pose();
+      if (video.readyState >= 4) return play();
+      var timer = setTimeout(function () {
+        if (video) video.removeEventListener("canplaythrough", ready);
+        pose();
+      }, grace);
+      var ready = function () {
+        clearTimeout(timer);
+        play();
+      };
+      video.addEventListener("canplaythrough", ready, { once: true });
+    };
+
+    load();
+    underline.addEventListener("animationend", function drawn() {
+      underline.removeEventListener("animationend", drawn);
+      cue();
+    });
+  })();
 </script>

@@ -246,6 +246,49 @@
   filter: drop-shadow(0 24px 28px rgb(var(--color-brand-strong) / 0.22));
 }
 
+/* Hero gag: square clip registered to the photo's bottom 90%, so the mascot rises above it */
+
+.hero-gag {
+  cursor: pointer;
+  border-radius: var(--radius-lg);
+  transform-origin: 50% 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hero-gag-media {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-gag.is-playing video.hero-gag-media,
+.hero-gag.is-posing .hero-gag-pose {
+  opacity: 1;
+}
+
+.hero-gag.is-playing .hero-gag-photo,
+.hero-gag.is-posing .hero-gag-photo {
+  visibility: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-gag.is-posing .hero-gag-pose {
+    transform-origin: 20% 60%;
+    animation: pose-pop var(--duration-slow) var(--ease-spring) both;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) and (hover: hover) {
+  .hero-gag:not(.is-playing):not(.is-posing):hover {
+    animation: wiggle var(--duration-slow) var(--ease-out);
+  }
+}
+
 .parallax {
   transform: translate3d(calc(var(--px, 0) * var(--depth) * 1px), calc(var(--py, 0) * var(--depth) * 1px), 0);
   transition: transform 600ms var(--ease-out);
@@ -326,6 +369,17 @@
 @keyframes photo-pop {
   from { opacity: 0; transform: translateY(40%) scale(0.92); }
   to { opacity: 1; transform: none; }
+}
+
+@keyframes pose-pop {
+  from { transform: scale(0.94) rotate(-2deg); }
+  to { transform: none; }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: none; }
+  25% { transform: rotate(-1.5deg); }
+  60% { transform: rotate(1deg); }
 }
 
 /* Footer gag: registered to the still, bottom-anchored, so the lightbulb rises above the photo */
