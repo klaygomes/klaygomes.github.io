@@ -39,7 +39,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   {% if jekyll.environment == "production" %}
-    <link rel="stylesheet" href="{{ '/assets/css/main.build.css' | relative_url }}{{'?' + site.github.build_revision}}">
+    <link rel="stylesheet" href="{{ '/assets/css/main.build.css' | relative_url }}?v={{ site.time | date: '%s' }}">
   {% else %}
     <link rel="stylesheet" href="{{ '/assets/css/main.jekyll.css' | relative_url }}">
   {% endif %}
