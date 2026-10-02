@@ -1,5 +1,6 @@
 ---
 layout: post
+topic: Frontend
 title: "magic-cursor-wand: Give Your Pointer a Wand"
 excerpt: A small browser library that draws chalk lines, glitter and soft clouds behind the pointer on any web page. One script tag or one function call is enough to start.
 modified: 2026-09-26

@@ -49,13 +49,22 @@
   (function () {
     var toggle = document.getElementById("menu-toggle");
     var menu = document.getElementById("mobile-menu");
-    toggle.addEventListener("click", function () {
-      var open = toggle.getAttribute("aria-expanded") !== "true";
+    var setOpen = function (open) {
       toggle.setAttribute("aria-expanded", String(open));
       toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
       menu.classList.toggle("hidden", !open);
       toggle.querySelector(".menu-icon-open").classList.toggle("hidden", open);
       toggle.querySelector(".menu-icon-close").classList.toggle("hidden", !open);
+    };
+    toggle.addEventListener("click", function () {
+      var open = toggle.getAttribute("aria-expanded") !== "true";
+      setOpen(open);
+      if (open) menu.querySelector("a").focus();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || toggle.getAttribute("aria-expanded") !== "true") return;
+      setOpen(false);
+      toggle.focus();
     });
   })();
 </script>

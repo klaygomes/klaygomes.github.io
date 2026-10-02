@@ -1,5 +1,6 @@
 ---
 layout: post
+topic: Tooling
 title: "hurl-orchestra: AI first API automation testing"
 excerpt: Write each API test step as a small Hurl file, say which steps must pass first, and hurl-orchestra runs them in the right order and shows you which step broke.
 modified: 2026-04-05

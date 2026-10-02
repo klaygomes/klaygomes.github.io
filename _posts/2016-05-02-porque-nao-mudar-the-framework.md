@@ -1,5 +1,6 @@
 ---
 layout: post
+topic: .NET
 title: Why we are staying with Microsoft's .NET stack
 excerpt: Why I decided not to switch stacks when the opportunity came up inside the company.
 modified: 2016-05-05

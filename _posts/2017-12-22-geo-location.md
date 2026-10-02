@@ -1,5 +1,6 @@
 ---
 layout: post
+topic: Frontend
 title: "GeoLocation: a take-home challenge built with React, Redux and Sagas"
 excerpt: How I turned a recruitment challenge into a small React, Redux and Next.js app that puts you and any website on a map, and the design decisions I wrote down along the way.
 modified: 2017-12-22

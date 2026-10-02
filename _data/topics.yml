@@ -1,0 +1,8 @@
+- name: Low-level
+  blurb: Bare-metal ARM, STM32, C and assembly.
+- name: Frontend
+  blurb: React internals, browser libraries and UI experiments.
+- name: Tooling
+  blurb: Testing, automation, dotfiles and the tools around the code.
+- name: .NET
+  blurb: Notes from the C# and F# years.

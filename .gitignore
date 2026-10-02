@@ -12,3 +12,5 @@ _examples
 .jekyll-cache
 
 .env
+
+.impeccable/

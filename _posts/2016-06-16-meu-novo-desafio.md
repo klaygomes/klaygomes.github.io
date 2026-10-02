@@ -1,5 +1,6 @@
 ---
 layout: post
+topic: .NET
 title: "My new challenge: Learning F Sharp"
 excerpt: An index of the content I found on the internet about functional programming and FSharp.
 modified: 2016-06-16

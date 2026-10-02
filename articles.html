@@ -1,14 +1,44 @@
 ---
 layout: default
 title: Articles
-excerpt: Everything published on Esta couve flor, newest first.
+excerpt: Everything published on Esta couve flor, grouped by topic.
 ---
+{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
 <section class="py-16 md:py-24">
   <div class="container">
     <header class="mb-12 md:mb-16">
       <h1 class="font-display text-4xl font-extrabold tracking-tight text-brand-strong md:text-6xl">Articles</h1>
-      <p class="mt-4 max-w-prose font-display text-lg text-ink/75">{{ site.posts.size }} posts on embedded development, .NET, frontend and tooling, newest first.</p>
+      <p class="mt-4 max-w-prose font-display text-lg text-ink/75">{{ site.posts.size }} posts, grouped by topic, newest first in each.</p>
+      <div class="mt-8">{%- include topic-nav.html %}</div>
     </header>
-    {%- include article-list.html -%}
+    {%- for topic in site.data.topics -%}
+    {%- assign topic_posts = site.posts | where: "topic", topic.name -%}
+    {%- if topic_posts.size > 0 %}
+    <section id="topic-{{ topic.name | slugify }}" class="topic-section" aria-labelledby="topic-{{ topic.name | slugify }}-title">
+      <div class="mb-8 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+        <h2 id="topic-{{ topic.name | slugify }}-title" class="font-display text-3xl font-extrabold tracking-tight text-brand-strong md:text-4xl">{{ topic.name }}</h2>
+        <p class="font-display text-ink/75">{{ topic.blurb }} <span class="tabular-nums">{{ topic_posts.size }} {% if topic_posts.size == 1 %}post{% else %}posts{% endif %}</span></p>
+      </div>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+        {%- for post in topic_posts -%}
+        {%- assign index = forloop.index0 | modulo: 2 -%}
+        {%- include post-card.html post=post index=index date_format=date_format scope="-a" hide_topic=true -%}
+        {%- endfor -%}
+      </div>
+    </section>
+    {%- endif -%}
+    {%- endfor %}
+    {%- assign untopiced = site.posts | where_exp: "post", "post.topic == nil" -%}
+    {%- if untopiced.size > 0 %}
+    <section id="topic-other" class="topic-section" aria-labelledby="topic-other-title">
+      <h2 id="topic-other-title" class="mb-8 font-display text-3xl font-extrabold tracking-tight text-brand-strong md:text-4xl">Everything else</h2>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+        {%- for post in untopiced -%}
+        {%- include post-card.html post=post date_format=date_format scope="-a" -%}
+        {%- endfor -%}
+      </div>
+    </section>
+    {%- endif %}
   </div>
 </section>
+{%- include reveal.html -%}

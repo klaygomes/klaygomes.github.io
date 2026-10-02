@@ -1,0 +1,30 @@
+{%- assign archive = site.posts | slice: include.offset, site.posts.size -%}
+{%- if archive.size > 0 -%}
+{%- assign years = archive | group_by_exp: "post", "post.date | date: '%Y'" -%}
+<section class="bg-surface-sunken py-20 md:py-24" aria-labelledby="archive-title">
+  <div class="container">
+    <div class="mb-10 flex items-end justify-between gap-6 md:mb-14">
+      <h2 id="archive-title" class="font-display text-3xl font-extrabold tracking-tight text-brand-strong md:text-4xl">From the archive</h2>
+      <a href="{{ '/articles/' | relative_url }}" class="link-underline shrink-0 font-display font-semibold tabular-nums text-accent-strong">{{ archive.size }} older posts</a>
+    </div>
+    <div class="archive">
+      {%- for year in years %}
+      <div class="archive-year">
+        <h3 class="font-display text-2xl font-extrabold tabular-nums tracking-tight text-accent-strong md:text-3xl">{{ year.name }}</h3>
+        <ol class="archive-items">
+          {%- for post in year.items %}
+          <li class="archive-item">
+            <a href="{{ post.url | relative_url }}" class="archive-title"{% if post.lang %} hreflang="{{ post.lang }}"{% endif %}>{{ post.title | remove: " (in Portuguese)" }}</a>
+            <span class="archive-meta">
+              <time class="tabular-nums" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d" }}</time>
+              {%- include post-chips.html post=post %}
+            </span>
+          </li>
+          {%- endfor %}
+        </ol>
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+{%- endif -%}

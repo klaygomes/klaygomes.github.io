@@ -66,7 +66,8 @@ module.exports = {
         '.container': {
           width: '100%',
           marginInline: 'auto',
-          paddingInline: '1.25rem',
+          paddingLeft: '1.25rem',
+          paddingRight: '1.25rem',
           '@screen sm': {
             maxWidth: '640px',
           },

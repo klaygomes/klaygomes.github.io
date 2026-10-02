@@ -1,5 +1,6 @@
 ---
 layout: post
+topic: Tooling
 title: Using GNU Make as your Dotfiles manager 
 excerpt: It tells you how you can manage your dotfiles without any external dependencies.
 tags: [make, dotfiles, linux, blog]

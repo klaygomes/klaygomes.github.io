@@ -1,15 +1,12 @@
 ---
 layout: default
 ---
-{%- assign latest = site.posts.first -%}
-<section class="hero relative isolate overflow-hidden bg-highlight" aria-labelledby="hero-title">
-  <div class="hero-panel absolute inset-x-0 bottom-0 h-80 bg-accent md:inset-y-0 md:left-auto md:h-auto md:w-[36%]" aria-hidden="true"></div>
+<section class="hero relative isolate bg-highlight py-3 [contain:paint]" aria-labelledby="hero-title">
+  <div class="hero-panel absolute inset-x-0 bottom-0 h-44 bg-accent md:inset-y-0 md:left-auto md:h-auto md:w-[36%]" aria-hidden="true"></div>
 
-  <div class="container relative grid md:min-h-[min(calc(100dvh-5rem),52rem)] md:grid-cols-12 md:grid-rows-1">
-    <div class="relative z-10 flex flex-col justify-center pb-12 pt-12 md:col-span-8 md:py-24">
-      <p class="hero-rise font-display text-lg font-medium text-brand-strong md:text-xl" style="--d: 0">Welcome to</p>
-
-      <h1 id="hero-title" class="mt-2 font-display font-extrabold leading-[0.9] tracking-[-0.035em] text-accent-strong" aria-label="Esta couve flor">
+  <div class="container relative grid md:min-h-[min(calc(78dvh-5rem),38rem)] md:grid-cols-12 md:grid-rows-1">
+    <div class="relative z-10 flex flex-col justify-center pb-8 pt-6 md:col-span-8 md:py-14">
+      <h1 id="hero-title" class="font-display font-extrabold leading-[0.9] tracking-[-0.035em] text-accent-strong" aria-label="Esta couve flor">
         <span class="hero-line" aria-hidden="true">
           <span class="hero-word" style="--d: 1"><ruby>Esta<rt>stæ</rt></ruby></span><span class="hero-word text-leaf" style="--d: 2"><ruby>couve<rt>kōʹvə</rt></ruby></span><span class="hero-word" style="--d: 3"><ruby>flor<rt>flōr</rt></ruby></span>
           <svg class="hero-underline" viewBox="0 0 600 30" preserveAspectRatio="none" aria-hidden="true">
@@ -18,26 +15,27 @@ layout: default
         </span>
       </h1>
 
-      <p class="hero-rise mt-10 max-w-[34ch] text-pretty font-display text-xl leading-snug text-ink md:text-2xl" style="--d: 4">
-        React frontend, mixed with bare-metal embedded development on ARM and other low-level things.
+      <p class="hero-rise mt-6 max-w-[38ch] md:mt-10 text-pretty font-display text-xl leading-snug text-ink md:text-2xl" style="--d: 4">
+        Software engineer for over two decades and a lifelong learner. These days I use AI to build distributed systems on Linux, and I'm hooked on generative AI and dynamic, generative UIs.
+      </p>
+      <p class="hero-rise mt-4 max-w-[44ch] text-pretty font-display text-base leading-snug md:text-lg text-ink/80" style="--d: 4">
+        The archive goes back further: React internals, bare-metal ARM, tooling and the .NET years.
       </p>
 
-      <div class="hero-rise mt-10 flex flex-wrap items-center gap-x-6 gap-y-4" style="--d: 5">
-        {%- if latest %}
-        <a href="{{ latest.url | relative_url }}" class="btn-primary group">
-          Read the latest post
-          <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      <div class="hero-rise mt-8 flex flex-wrap md:mt-10 items-center gap-x-6 gap-y-4" style="--d: 5">
+        <a href="#writing" class="btn-primary group">
+          Start reading
+          <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 3v10M4 9l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" /></svg>
         </a>
-        {%- endif %}
-        <a href="{{ '/curso-stm32/' | relative_url }}" class="link-underline font-display text-lg font-semibold text-brand-strong">STM32 Course</a>
+        <a href="{{ '/about/' | relative_url }}" class="link-underline font-display text-lg font-semibold text-brand-strong">Who's Cleiton?</a>
       </div>
     </div>
 
-    <div class="hero-figure relative h-80 md:col-span-4 md:h-auto">
-      <div class="parallax absolute bottom-0 right-0 w-[min(88vw,26rem)] md:-right-6 md:w-[min(46vw,34rem)]" style="--depth: 14">
-        <button type="button" class="hero-gag block w-full" aria-label="Replay the cauliflower gag" data-webm="{{ '/assets/video/cleiton-mascot.webm' | relative_url }}?v={{ site.time | date: '%s' }}" data-hevc="{{ '/assets/video/cleiton-mascot.mp4' | relative_url }}?v={{ site.time | date: '%s' }}" data-still="{{ '/assets/img/cleiton-mascot.webp' | relative_url }}?v={{ site.time | date: '%s' }}">
+    <div class="hero-figure relative h-44 md:col-span-4 md:h-auto">
+      <div class="parallax absolute -bottom-3 right-0 w-[min(50vw,16rem)] md:-right-6 md:w-[min(46vw,34rem)]" style="--depth: 14">
+        <button type="button" class="hero-gag block w-full" aria-label="Play the cauliflower animation" data-webm="{{ '/assets/video/cleiton-mascot.webm' | relative_url }}?v={{ site.time | date: '%s' }}" data-hevc="{{ '/assets/video/cleiton-mascot.mp4' | relative_url }}?v={{ site.time | date: '%s' }}" data-still="{{ '/assets/img/cleiton-mascot.webp' | relative_url }}?v={{ site.time | date: '%s' }}">
           <span class="hero-photo relative block">
-            <img class="hero-gag-photo block w-full" src="{{ '/assets/img/cleiton-pointing.png' | relative_url }}" srcset="{{ '/assets/img/cleiton-pointing-400.png' | relative_url }} 400w, {{ '/assets/img/cleiton-pointing.png' | relative_url }} 800w" sizes="(min-width: 768px) 34rem, 88vw" width="800" height="720" alt="">
+            <img class="hero-gag-photo block w-full" src="{{ '/assets/img/cleiton-pointing.png' | relative_url }}" srcset="{{ '/assets/img/cleiton-pointing-400.png' | relative_url }} 400w, {{ '/assets/img/cleiton-pointing.png' | relative_url }} 800w" sizes="(min-width: 768px) 34rem, 50vw" width="800" height="720" alt="">
           </span>
         </button>
       </div>
@@ -45,15 +43,20 @@ layout: default
   </div>
 </section>
 
-<section class="relative bg-surface py-20 md:py-28" aria-labelledby="posts-title">
+<section id="writing" class="relative bg-surface pb-16 pt-10 md:py-20" aria-labelledby="posts-title">
   <div class="container">
-    <div class="mb-10 flex items-end justify-between gap-6 md:mb-14">
-      <h2 id="posts-title" class="font-display text-3xl font-extrabold tracking-tight text-brand-strong md:text-5xl">Latest writing</h2>
-      <a href="{{ '/articles/' | relative_url }}" class="link-underline shrink-0 font-display font-semibold text-accent-strong">All articles</a>
+    <div class="mb-10 md:mb-14">
+      <div class="flex items-end justify-between gap-6">
+        <h2 id="posts-title" class="font-display text-3xl font-extrabold tracking-tight text-brand-strong md:text-5xl">Latest writing</h2>
+        <a href="{{ '/articles/' | relative_url }}" class="link-underline shrink-0 font-display font-semibold text-accent-strong">All articles</a>
+      </div>
+      <div class="mt-6">{%- include topic-nav.html %}</div>
     </div>
-    {%- include article-list.html featured=true -%}
+    {%- include article-list.html featured=true limit=5 -%}
   </div>
 </section>
+
+{%- include archive-list.html offset=5 -%}
 
 <script>
   (function () {
@@ -91,6 +94,8 @@ layout: default
     var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var connection = navigator.connection || {};
     var frugal = connection.saveData || /2g/.test(connection.effectiveType || "");
+    var fast = !connection.effectiveType || connection.effectiveType === "4g";
+    var eager = fast && window.matchMedia("(pointer: fine)").matches;
     var firstVisit = document.documentElement.classList.contains("intro-full");
     var grace = 1500;
     var poseLength = 2400;
@@ -162,7 +167,7 @@ layout: default
       video.addEventListener("canplaythrough", ready, { once: true });
     };
 
-    load();
+    if (eager) load();
     underline.addEventListener("animationend", function drawn() {
       underline.removeEventListener("animationend", drawn);
       cue();

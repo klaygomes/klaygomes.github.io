@@ -1,5 +1,6 @@
 ---
 layout: post
+topic: Low-level
 title: "Understanding the Heart of the STM32: The Clock System"
 excerpt: The STM32 clock system is its heart. It uses sources like HSI/HSE and the PLL to generate the 72 MHz SYSCLK, setting the pace for the whole MCU.
 tags: [stm32, hsi, hse, pll, sysclk]

@@ -1,5 +1,6 @@
 ---
 layout: post
+topic: Frontend
 title: "MiniReact: a tiny React-like library to see what happens under the hood"
 excerpt: A tiny React-like library I wrote as a take-home exercise, with class components, a virtual DOM, a synchronous setState and a simple diff-and-patch step.
 modified: 2018-08-23

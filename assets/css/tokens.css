@@ -23,6 +23,9 @@
   --color-surface-sunken: var(--lilac-100);
   --color-surface-raised: var(--white-50);
 
+  /* Focus: yellow ring inside a purple halo, so one band always contrasts with the surface */
+  --focus-ring: 0 0 0 2px rgb(var(--color-brand-strong)), 0 0 0 5px rgb(var(--color-highlight)), 0 0 0 7px rgb(var(--color-brand-strong));
+
   /* Typography */
   --font-display: "Rubik", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Literata", ui-serif, Georgia, serif;

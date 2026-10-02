@@ -1,0 +1,9 @@
+{%- assign chip_post = include.post -%}
+{%- assign chip_topic = chip_post.topic -%}
+{%- if include.hide_topic %}{% assign chip_topic = nil %}{% endif -%}
+{%- if chip_topic or chip_post.lang == "pt-BR" -%}
+<span class="chip-row">
+  {%- if chip_topic %}<a class="chip{% if include.tone == 'dark' %} chip-dark{% endif %}" href="{{ '/articles/' | relative_url }}#topic-{{ chip_post.topic | slugify }}">{{ chip_post.topic }}</a>{% endif -%}
+  {%- if chip_post.lang == "pt-BR" %}<span class="chip chip-lang{% if include.tone == 'dark' %} chip-dark{% endif %}">In Portuguese</span>{% endif -%}
+</span>
+{%- endif -%}

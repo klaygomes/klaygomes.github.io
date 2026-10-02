@@ -1,5 +1,6 @@
 ---
 layout: post
+topic: Tooling
 title: "karma-typescript-preprocessor2: running TypeScript tests in Karma without temp files"
 excerpt: How a small Karma plugin compiled TypeScript in memory with gulp-typescript and a single tsconfig.json, and why its name ends with a 2.
 modified: 2015-11-11

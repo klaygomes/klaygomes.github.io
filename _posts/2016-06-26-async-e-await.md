@@ -1,5 +1,6 @@
 ---
 layout: post
+topic: .NET
 lang: pt-BR
 title: Introduction to async and await (in Portuguese)
 excerpt: A short introduction to async and await in .NET. My Portuguese translation of Stephen Cleary's article.

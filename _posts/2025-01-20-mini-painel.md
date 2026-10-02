@@ -1,5 +1,6 @@
 ---
 layout: post
+topic: Low-level
 title: "mini-painel: A Hobby Log About Talking to a Tiny USB Screen in C"
 excerpt: A work-in-progress hobby project in C that drives a cheap 3.5-inch USB display from a Mac. What works today, what I'm still poking at, and how to build it.
 modified: 2025-01-20

@@ -1,5 +1,6 @@
 ---
 layout: post
+topic: .NET
 title: Covariance and contravariance in C Sharp
 excerpt: One more of those features you use without knowing it exists.
 modified: 2016-06-18

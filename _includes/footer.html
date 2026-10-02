@@ -26,6 +26,8 @@
     if (!gag || !("IntersectionObserver" in window)) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     try { if (localStorage.getItem("ecf-idea-seen") === "1") return; } catch (e) { return; }
+    var connection = navigator.connection || {};
+    if (connection.saveData || (connection.effectiveType && connection.effectiveType !== "4g")) return;
 
     var webkit = navigator.vendor === "Apple Computer, Inc.";
     var video = null;
