@@ -1,0 +1,35 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@1,7..72,400&family=Rubik:wght@500;600;800&display=block" rel="stylesheet">
+<style>
+:root{--purple:72 15 123;--purple-700:126 35 179;--yellow:250 211 11;--magenta:198 63 117;--magenta-700:182 26 84;--green:62 107 15;--ink:37 6 60}
+*{margin:0;box-sizing:border-box}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{position:relative;background:rgb(var(--yellow));font-family:Rubik,sans-serif;color:rgb(var(--ink))}
+.panel{position:absolute;top:0;right:0;bottom:0;width:400px;background-color:rgb(var(--magenta));background-image:radial-gradient(circle at 1px 1px,rgb(var(--purple)/.22) 1.3px,transparent 0);background-size:18px 18px}
+.photo{position:absolute;right:-78px;bottom:0;height:560px;filter:drop-shadow(0 24px 28px rgb(var(--purple)/.25))}
+.copy{position:absolute;left:72px;top:64px;width:600px}
+.brand{display:flex;align-items:center;gap:14px;font-weight:600;font-size:24px;color:rgb(var(--purple))}
+.brand .tile{display:grid;place-items:center;width:56px;height:56px;border-radius:14px;background:rgb(var(--purple))}.brand img{width:44px;height:44px}
+h1{margin-top:52px;font-weight:800;font-size:92px;line-height:.9;letter-spacing:-.035em;color:rgb(var(--magenta-700));white-space:nowrap;position:relative;display:inline-block;padding-top:.42em;padding-bottom:.2em}
+h1 .leaf{color:rgb(var(--green))}
+ruby{ruby-position:over}
+rt{font-family:Literata,serif;font-style:italic;font-weight:400;font-size:19px;letter-spacing:0;color:rgb(var(--purple)/.75);padding-bottom:6px}
+h1 svg{position:absolute;left:0;bottom:0;width:100%;height:.22em;overflow:visible}
+h1 path{fill:none;stroke:rgb(var(--purple-700));stroke-width:6;stroke-linecap:round}
+.tag{margin-top:30px;font-weight:500;font-size:34px;line-height:1.2;max-width:15em;text-wrap:balance}
+.sub{margin-top:14px;font-weight:500;font-size:23px;line-height:1.3;color:rgb(var(--ink)/.8);white-space:nowrap}
+.who{position:absolute;left:72px;bottom:56px;display:flex;align-items:center;gap:16px;font-weight:600;font-size:22px}
+.who span{background:rgb(var(--purple));color:rgb(var(--yellow));padding:8px 16px;border-radius:10px}
+</style></head>
+<body>
+<div class="panel"></div>
+<img class="photo" src="../assets/img/cleiton-pointing.png" alt="">
+<div class="copy">
+  <div class="brand"><span class="tile"><img src="../assets/img/icon-stack.svg" alt=""></span>estacouveflor.com</div>
+  <h1><ruby>Esta<rt>stæ</rt></ruby><span class="leaf"><ruby>couve<rt>kōʹvə</rt></ruby></span><ruby>flor<rt>flōr</rt></ruby><svg viewBox="0 0 600 30" preserveAspectRatio="none"><path d="M4 20 C 110 6, 210 26, 320 14 S 520 6, 596 16"/></svg></h1>
+  <p class="tag">AI, distributed systems and generative UIs.</p>
+  <p class="sub">Plus notes on React, bare-metal ARM and .NET.</p>
+</div>
+<div class="who"><span>Cleiton Loiola</span>Software engineer, 20+ years</div>
+</body></html>
