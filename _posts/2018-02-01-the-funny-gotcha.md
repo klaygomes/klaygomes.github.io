@@ -1,7 +1,8 @@
 ---
 layout: post
-title: The small gotcha that make fell I know something 
-excerpt:  The moment I realized that I'm starting getting the linux felling
+topic: Tooling
+title: The small gotcha that made me feel I know something
+excerpt: The moment I realized I was starting to get the Linux feeling
 modified: 2018-02-01
 tags: [ti-life english]
 comments: true
