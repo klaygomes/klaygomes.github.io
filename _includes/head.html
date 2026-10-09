@@ -16,6 +16,9 @@
   <title>{{ page_title | escape }} | {{ site.title }}</title>
   <meta name="description" content="{{ page_description | escape }}">
   <meta name="author" content="{{ site.author.name }}">
+  {%- if page.noindex %}
+  <meta name="robots" content="noindex">
+  {%- endif %}
   <link rel="canonical" href="{{ page.url | absolute_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
 
