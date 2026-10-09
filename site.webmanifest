@@ -1,19 +1,26 @@
 {
+    "id": "/",
     "name": "Esta couve flor",
     "short_name": "Esta couve flor",
+    "description": "Software design is an art, and like any art it cannot be taught and learned as precise science, by means of theorems and formulas.",
+    "lang": "en",
+    "start_url": "/",
+    "scope": "/",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
             "sizes": "192x192",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any"
         },
         {
             "src": "/android-chrome-512x512.png",
             "sizes": "512x512",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "theme_color": "#480F7B",
+    "background_color": "#F7F2FB",
     "display": "standalone"
 }
