@@ -38,6 +38,9 @@ include:
 
 exclude:
   - package.json
+  - package-lock.json
+  - skills-lock.json
+  - TASKS.md
   - postcss.config.js
   - tailwind.config.js
   - yarn.lock
