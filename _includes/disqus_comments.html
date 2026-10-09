@@ -1,18 +1,28 @@
 {% if site.disqus-shortname %}
-<section id="disqus_thread"></section>
-<script type="text/javascript">
-   var disqus_developer = 1;
+<section class="comments-consent" aria-labelledby="comments-title" hidden>
+  <h2 id="comments-title" class="font-display text-2xl font-bold tracking-tight text-brand-strong">Comments</h2>
+  <p class="mt-3 text-pretty leading-relaxed">Comments are hosted by Disqus, which sets cookies and shares data with Disqus. Load comments? Read the <a class="link-underline font-semibold text-accent-strong" href="{{ '/privacy/' | relative_url }}">privacy page</a> for details.</p>
+  <button type="button" class="btn-primary mt-5">Load comments</button>
+</section>
+<div id="disqus_thread" tabindex="-1"></div>
+<script>
   (function () {
-    var disqusShortname = '{{ site.disqus-shortname }}';
-    function insertDisqusScript(shostname, file) {
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + shostname + '.disqus.com/' + file;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    };
-    insertDisqusScript(disqusShortname, 'embed.js');
-    insertDisqusScript(disqusShortname, 'count.js');
+    var consent = document.querySelector(".comments-consent");
+    var thread = document.getElementById("disqus_thread");
+    if (!consent || !thread) return;
+    consent.hidden = false;
+    consent.querySelector("button").addEventListener("click", function () {
+      window.disqus_config = function () {
+        this.page.url = {{ page.url | absolute_url | jsonify }};
+      };
+      var script = document.createElement("script");
+      script.src = "https://{{ site.disqus-shortname }}.disqus.com/embed.js";
+      script.async = true;
+      script.setAttribute("data-timestamp", String(Date.now()));
+      document.head.appendChild(script);
+      consent.remove();
+      thread.focus();
+    }, { once: true });
   })();
 </script>
 {% endif %}

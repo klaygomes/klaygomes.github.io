@@ -1,3 +1,7 @@
 @import "tokens";
 @import "main";
 @import "syntax";
+
+.btn-primary:focus-visible {
+  box-shadow: var(--focus-ring);
+}
