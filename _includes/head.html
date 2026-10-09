@@ -39,6 +39,19 @@
   {%- endif %}
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="{{ share_image | absolute_url }}">
+  {%- assign page_lang = page.lang | default: site.lang | default: "en-US" -%}
+  {%- assign home_url = '/' | absolute_url -%}
+  {%- assign person_id = '/#person' | absolute_url -%}
+  {%- if page.url == "/" %}
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":{{ '/#website' | absolute_url | jsonify }},"name":{{ site.title | jsonify }},"url":{{ home_url | jsonify }},"description":{{ site.description | strip | jsonify }},"inLanguage":{{ page_lang | jsonify }},"publisher":{"@id":{{ person_id | jsonify }}}},{"@type":"Person","@id":{{ person_id | jsonify }},"name":{{ site.author.name | jsonify }},"url":{{ '/about/' | absolute_url | jsonify }},"sameAs":["https://github.com/klaygomes","https://www.linkedin.com/in/klaygomes/"]}]}
+  </script>
+  {%- elsif page.collection == "posts" %}
+  {%- assign page_url = page.url | absolute_url %}
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":{{ page.title | jsonify }},"description":{{ page_description | jsonify }},"datePublished":{{ page.date | date_to_xmlschema | jsonify }},{%- if page.modified_date %}"dateModified":{{ page.modified_date | date_to_xmlschema | jsonify }},{% endif %}"author":{"@type":"Person","@id":{{ person_id | jsonify }},"name":{{ site.author.name | jsonify }},"url":{{ '/about/' | absolute_url | jsonify }}},"image":{{ share_image | absolute_url | jsonify }},"mainEntityOfPage":{"@type":"WebPage","@id":{{ page_url | jsonify }}},"url":{{ page_url | jsonify }},"inLanguage":{{ page_lang | jsonify }}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":{{ home_url | jsonify }}},{"@type":"ListItem","position":2,"name":"Articles","item":{{ '/articles/' | absolute_url | jsonify }}},{"@type":"ListItem","position":3,"name":{{ page.title | jsonify }},"item":{{ page_url | jsonify }}}]}]}
+  </script>
+  {%- endif %}
 
   <link rel="apple-touch-icon" sizes="180x180" href="{{ '/apple-touch-icon.png' | relative_url }}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicon-32x32.png' | relative_url }}">
