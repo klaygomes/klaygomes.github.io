@@ -6,9 +6,9 @@ Hosting: GitHub Pages behind Cloudflare. Response headers cannot be set from thi
 
 ## Lead (sequential, shared files)
 
-- [ ] L1 `_config.yml`: `include: [.well-known]` so Jekyll publishes `/.well-known/`. Accept: `_site/.well-known/` exists after build.
-- [ ] L2 Restore a working Jekyll build (Docker daemon returns 500, host Ruby zlib broken).
-- [ ] L3 Review merged diff against `master`, verify each teammate's evidence.
+- [x] L1 `_config.yml`: `include: [.well-known]` so Jekyll publishes `/.well-known/`. Accept: `_site/.well-known/` exists after build.
+- [x] L2 Restore a working Jekyll build. Docker VM never came up; fixed host Ruby with `brew install zlib libyaml` (approved), gems in scratchpad `BUNDLE_PATH`.
+- [x] L3 Review merged diff against `master`, verify each teammate's evidence.
 
 ## Teammate A: discovery and machine-readable files (owns new root files, `feed.xml`, `.well-known/`)
 
@@ -34,18 +34,23 @@ Hosting: GitHub Pages behind Cloudflare. Response headers cannot be set from thi
 
 ## Outside the repo (needs owner, Cloudflare dashboard)
 
-- [ ] HSTS `Strict-Transport-Security: max-age=31536000; includeSubDomains` (Required)
-- [ ] `X-Content-Type-Options: nosniff` (Required)
-- [ ] `Content-Security-Policy: frame-ancestors 'none'` + `X-Frame-Options: DENY` (Required, cannot be set by meta tag)
-- [ ] `Referrer-Policy`, `Permissions-Policy` headers (Recommended)
-- [ ] Cache-Control for fingerprinted assets (Required; GitHub Pages fixes `max-age=600`)
-- [ ] DNS CAA record (Recommended)
+Attempted from the dashboard; the HSTS change was blocked by the agent permission classifier (domain/cert changes), nothing was saved (verified: no HSTS header live, panel back to "Enable HSTS").
+
+
+- [ ] HSTS `Strict-Transport-Security: max-age=31536000; includeSubDomains`, preload off (Required). SSL/TLS → Edge Certificates → Enable HSTS. `mail.` subdomain checked: valid wildcard cert and HTTP→HTTPS already, so includeSubDomains is safe.
+- [ ] `X-Content-Type-Options: nosniff` (Required). Same HSTS dialog has a "No-Sniff header" toggle.
+- [ ] `Content-Security-Policy: frame-ancestors 'none'; upgrade-insecure-requests` + `X-Frame-Options: DENY` (Required, cannot be set by meta tag). Rules → Transform Rules → Response Header Transform, all incoming requests, Set static.
+- [ ] `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()` (Recommended). Same transform rule.
+- [ ] Cache-Control (Required): HTML at `max-age=600` already acceptable; no fingerprinted asset filenames exist (CSS uses `?v=`), so long immutable caching needs fingerprinting first. Left as is.
+- [x] DNS CAA record (Recommended): already present (letsencrypt, pki.goog, digicert, ssl.com, comodoca).
 
 ## Already compliant (checked live / in source)
 
 - [x] doctype, `lang`, charset, viewport, title, description, canonical, Open Graph, feed `rel=alternate`
 - [x] HTTPS, HTTP→HTTPS 301, apex→www 301, HTTP/2 + HTTP/3, compression (Accept-Encoding vary)
 - [x] Custom 404 returns real 404 status
+- [x] Minimum TLS version 1.2 (Cloudflare)
+- [x] No live cookies set by the site (`curl -I` shows no Set-Cookie)
 - [x] Skip link, `<main>` landmark, reduced-motion handling in footer/CSS
 - [x] Inline `lang: pt-BR` on two Portuguese posts
 
@@ -64,8 +69,14 @@ Hosting: GitHub Pages behind Cloudflare. Response headers cannot be set from thi
 - B: `about` and `curso-stm32` use `layout: post` without being posts; JSON-LD is gated on `page.collection == "posts"` so they get none.
 - B: post body language checked for all 16 posts; only the 2009 calls and 2016 async posts are Portuguese (both already `lang: pt-BR`).
 - B: no dark-mode styles exist, so `color-scheme` is `light`; switch to `light dark` if dark tokens are added.
-- C: `_layouts/post.html` includes Disqus unconditionally, ignoring `comments: false` (about.md sets it), so `/about/` and `/curso-stm32/` show the comments prompt. Gate the include on `page.comments != false`.
-- C: `/curso-stm32/` embeds 6 `youtube.com/embed` iframes that load on view and set YouTube cookies without consent; switch to `youtube-nocookie.com` or click-to-load. `/about/` hotlinks a stackexchange.com flair image. Both are disclosed on `/privacy/`.
+- [fixed 0f6370d] C: `_layouts/post.html` included Disqus unconditionally, ignoring `comments: false` (about.md sets it), so `/about/` and `/curso-stm32/` show the comments prompt. Gate the include on `page.comments != false`.
+- [fixed 423581b, now youtube-nocookie] C: `/curso-stm32/` embedded 6 `youtube.com/embed` iframes that load on view and set YouTube cookies without consent; switch to `youtube-nocookie.com` or click-to-load. `/about/` hotlinks a stackexchange.com flair image. Both are disclosed on `/privacy/`.
 - C: `android-chrome-512x512.png` fills the canvas edge to edge, so icons are `"purpose": "any"`; a padded maskable icon (content inside the 80% safe zone, brand background) is still needed.
 - C: `.btn-primary` had no visible keyboard focus (its `box-shadow` overrode the base `:focus-visible` ring); fixed site-wide in `main.postcss.css`.
 - C: Disqus `disqus_config` sets only `page.url` (canonical https URL); no `page.identifier`, since existing threads were created without one and a new identifier would orphan them. Threads created under an old domain/http URL may need Disqus's URL mapper.
+- Lead: B's JSON-LD read `modified_date`, but 14 posts use `modified`, so `dateModified` never rendered. Fixed in 3320610.
+- Lead: `package-lock.json`, `skills-lock.json` and `TASKS.md` were published to the site; excluded in 9bdea61.
+- Lead: `timezone: UTC` added (50c05eb) so local and CI timestamps match.
+- Open: self-host fonts (Recommended web-font item, also removes the Google Fonts IP disclosure).
+- Open: maskable 512px icon with safe-zone padding; SVG favicon.
+- Open: Agent Skills discovery, api-catalog, per-page Markdown endpoints, Speculation Rules: Recommended, not done.
