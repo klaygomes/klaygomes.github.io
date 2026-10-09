@@ -20,11 +20,11 @@ Hosting: GitHub Pages behind Cloudflare. Response headers cannot be set from thi
 
 ## Teammate B: head metadata and structured data (owns `_includes/head.html`, `_layouts/post.html`, `_layouts/page-index.html`, `_posts/*` front matter)
 
-- [ ] B1 `<meta name="color-scheme">` and `<meta name="referrer" content="strict-origin-when-cross-origin">`.
-- [ ] B2 Meta robots: `noindex` on `404.html` (via front matter flag rendered in head).
-- [ ] B3 JSON-LD: `WebSite` + `Person` on home, `BlogPosting` + `BreadcrumbList` on posts. Accept: parses as JSON, required fields present.
-- [ ] B4 `<link rel="sitemap">` discovery in head; posts in Portuguese carry `lang: pt-BR` (verify each post body language).
-- [ ] B5 Mixed content safety net: `<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">`.
+- [x] B1 `<meta name="color-scheme">` and `<meta name="referrer" content="strict-origin-when-cross-origin">`.
+- [x] B2 Meta robots: `noindex` on `404.html` (via front matter flag rendered in head).
+- [x] B3 JSON-LD: `WebSite` + `Person` on home, `BlogPosting` + `BreadcrumbList` on posts. Accept: parses as JSON, required fields present.
+- [x] B4 `<link rel="sitemap">` discovery in head; posts in Portuguese carry `lang: pt-BR` (verify each post body language).
+- [x] B5 Mixed content safety net: `<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">`.
 
 ## Teammate C: privacy, consent, resilience (owns `_includes/disqus_comments.html`, `_includes/footer.html`, new `privacy.md`, `site.webmanifest`, `browserconfig.xml`)
 
@@ -60,3 +60,7 @@ Hosting: GitHub Pages behind Cloudflare. Response headers cannot be set from thi
 - A5: the old feed piped `post.modified` through a nonexistent `to_xmlschema` filter and appended a fixed time, so `<updated>` was invalid for the post with `modified: 20-06-2021`. Now `date_to_xmlschema` with a fallback to `post.date`.
 - A2/A5: `_posts/2021-06-20-dotfiles-configuration.md` uses `modified: 20-06-2021` (DD-MM-YYYY string); it parses correctly today, but ISO `2021-06-20` would be safer (Teammate B owns `_posts/*`).
 - Sitemap/feed timestamps take the build machine's timezone (no `timezone:` in `_config.yml`); CI builds in UTC, so offsets differ between local and deployed builds.
+
+- B: `about` and `curso-stm32` use `layout: post` without being posts; JSON-LD is gated on `page.collection == "posts"` so they get none.
+- B: post body language checked for all 16 posts; only the 2009 calls and 2016 async posts are Portuguese (both already `lang: pt-BR`).
+- B: no dark-mode styles exist, so `color-scheme` is `light`; switch to `light dark` if dark tokens are added.
