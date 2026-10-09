@@ -77,6 +77,8 @@ Attempted from the dashboard; the HSTS change was blocked by the agent permissio
 - Lead: B's JSON-LD read `modified_date`, but 14 posts use `modified`, so `dateModified` never rendered. Fixed in 3320610.
 - Lead: `package-lock.json`, `skills-lock.json` and `TASKS.md` were published to the site; excluded in 9bdea61.
 - Lead: `timezone: UTC` added (50c05eb) so local and CI timestamps match.
+- Lead: `actions/upload-pages-artifact` drops dot-directories by default, so `/.well-known/` 404'd after the first deploy; fixed with `include-hidden-files: true`, verified live 200 `text/plain`.
+- Deployed 2026-10-09 (master 8a6cb83 + CI fix); live checks: robots.txt, sitemap.xml, llms.txt, security.txt, feed, /privacy/, manifest all 200 with correct types; lockfiles and TASKS.md 404; JSON-LD, dateModified, no Disqus before click, youtube-nocookie confirmed on production.
 - Open: self-host fonts (Recommended web-font item, also removes the Google Fonts IP disclosure).
 - Open: maskable 512px icon with safe-zone padding; SVG favicon.
 - Open: Agent Skills discovery, api-catalog, per-page Markdown endpoints, Speculation Rules: Recommended, not done.
