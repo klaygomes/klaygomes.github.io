@@ -1,0 +1,21 @@
+---
+layout: null
+sitemap: false
+permalink: /llms.txt
+---
+# {{ site.title }}
+
+> {{ site.description | strip_newlines | strip }} Personal blog of {{ site.author.name }}, a software engineer writing about software design, distributed systems, front-end engineering and embedded ARM.
+
+## Articles
+
+{% for post in site.posts -%}
+- [{{ post.title | strip }}]({{ site.url }}{{ post.url }}){% if post.excerpt %}: {{ post.excerpt | strip_html | strip_newlines | strip }}{% endif %}
+{% endfor %}
+## Pages
+
+{% for page in site.html_pages -%}
+{%- if page.url == "/about/" or page.url == "/articles/" or page.url == "/curso-stm32/" -%}
+- [{{ page.title | strip }}]({{ site.url }}{{ page.url }}){% if page.excerpt %}: {{ page.excerpt | strip_html | strip_newlines | strip }}{% endif %}
+{% endif -%}
+{%- endfor %}
