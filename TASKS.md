@@ -28,9 +28,9 @@ Hosting: GitHub Pages behind Cloudflare. Response headers cannot be set from thi
 
 ## Teammate C: privacy, consent, resilience (owns `_includes/disqus_comments.html`, `_includes/footer.html`, new `privacy.md`, `site.webmanifest`, `browserconfig.xml`)
 
-- [ ] C1 Disqus loads only after an explicit click (cookie consent, Required). Accept: no request to `disqus.com` on page load.
-- [ ] C2 `privacy.md` page describing what the site actually does (GitHub Pages, Cloudflare, Google Fonts, Disqus on opt-in, localStorage keys). Linked from footer.
-- [ ] C3 `site.webmanifest`: `id`, `start_url`, `scope`, brand `theme_color`, `lang`, maskable icon. Accept: valid JSON.
+- [x] C1 Disqus loads only after an explicit click (cookie consent, Required). Accept: no request to `disqus.com` on page load.
+- [x] C2 `privacy.md` page describing what the site actually does (GitHub Pages, Cloudflare, Google Fonts, Disqus on opt-in, localStorage keys). Linked from footer.
+- [x] C3 `site.webmanifest`: `id`, `start_url`, `scope`, brand `theme_color`, `lang`, maskable icon. Accept: valid JSON.
 
 ## Outside the repo (needs owner, Cloudflare dashboard)
 
@@ -64,3 +64,8 @@ Hosting: GitHub Pages behind Cloudflare. Response headers cannot be set from thi
 - B: `about` and `curso-stm32` use `layout: post` without being posts; JSON-LD is gated on `page.collection == "posts"` so they get none.
 - B: post body language checked for all 16 posts; only the 2009 calls and 2016 async posts are Portuguese (both already `lang: pt-BR`).
 - B: no dark-mode styles exist, so `color-scheme` is `light`; switch to `light dark` if dark tokens are added.
+- C: `_layouts/post.html` includes Disqus unconditionally, ignoring `comments: false` (about.md sets it), so `/about/` and `/curso-stm32/` show the comments prompt. Gate the include on `page.comments != false`.
+- C: `/curso-stm32/` embeds 6 `youtube.com/embed` iframes that load on view and set YouTube cookies without consent; switch to `youtube-nocookie.com` or click-to-load. `/about/` hotlinks a stackexchange.com flair image. Both are disclosed on `/privacy/`.
+- C: `android-chrome-512x512.png` fills the canvas edge to edge, so icons are `"purpose": "any"`; a padded maskable icon (content inside the 80% safe zone, brand background) is still needed.
+- C: `.btn-primary` had no visible keyboard focus (its `box-shadow` overrode the base `:focus-visible` ring); fixed site-wide in `main.postcss.css`.
+- C: Disqus `disqus_config` sets only `page.url` (canonical https URL); no `page.identifier`, since existing threads were created without one and a new identifier would orphan them. Threads created under an old domain/http URL may need Disqus's URL mapper.
