@@ -61,9 +61,11 @@ layout: default
       </section>
       {%- endif %}
 
+      {%- unless page.comments == false %}
       <div class="post-comments mt-16 max-w-prose">
         {%- include disqus_comments.html -%}
       </div>
+      {%- endunless %}
     </div>
   </div>
 </article>
