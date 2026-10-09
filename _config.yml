@@ -33,6 +33,9 @@ sass:
   sass_dir: ./assets/css
 
 
+include:
+  - .well-known
+
 exclude:
   - package.json
   - postcss.config.js
