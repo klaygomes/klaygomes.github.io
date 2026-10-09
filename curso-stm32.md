@@ -30,7 +30,7 @@ Watch the published lessons below and subscribe to the [course channel](https://
   <p>
     Learn how to program an STM32F1x using VSCode and GNU tools like Make, GDB and the Arm Toolchain. We will also teach you about CMSIS, HAL and AL, and how to find information in datasheets.
   </p>
-  <iframe loading="lazy" src="https://www.youtube.com/embed/EBRhNbFfEUM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+  <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/EBRhNbFfEUM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
   </iframe>
 </details>
 
@@ -39,7 +39,7 @@ Watch the published lessons below and subscribe to the [course channel](https://
   <p>
     In this video I go through the tools we will use in our course. You will get to know GNU Make, GDB, OpenOCD and the GNU ARM Embedded Toolchain. You will also understand what each one does and how they can be used.
   </p>
-  <iframe loading="lazy" src="https://www.youtube.com/embed/sly3cELme8c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+  <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/sly3cELme8c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
   </iframe>
 </details>
 
@@ -48,7 +48,7 @@ Watch the published lessons below and subscribe to the [course channel](https://
   <p>
     In this lesson you will learn how to install the GNU tools and OpenOCD from the console using package managers: Chocolatey for Windows; Brew on Mac and Linux. At the end we show how to download CMSIS and our support material.
   </p>
-  <iframe loading="lazy" src="https://www.youtube.com/embed/ZQlmDtA8Cjc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+  <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/ZQlmDtA8Cjc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
   </iframe>
 </details>
 
@@ -58,7 +58,7 @@ Watch the published lessons below and subscribe to the [course channel](https://
     In this lesson I explain how to create the initial directory structure of our project, plus more information about the files provided by CMSIS.
     We are very close to creating our hello world for the bluepill with the stm32f103.
   </p>
-  <iframe loading="lazy" src="https://www.youtube.com/embed/zlHsXD-Auek" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/zlHsXD-Auek" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </details>
 
 <details open>
@@ -67,7 +67,7 @@ Watch the published lessons below and subscribe to the [course channel](https://
     Improve the quality and size of your code by programming with only registers and CMSIS, without using STM32CubeMX. 
     In this video we configure GPIO C in Push-Pull mode to turn on the LED on pin PC13 of the blue pill board.
   </p>
-  <iframe loading="lazy" src="https://www.youtube.com/embed/YPVz3nV1ID4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/YPVz3nV1ID4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </details>
 
 <details open>
@@ -75,7 +75,7 @@ Watch the published lessons below and subscribe to the [course channel](https://
   <p>
     In this video, we show how to automate everything with Make. I will cover how to use Make to automate our project and manage its dependencies; we also take the chance to teach about GCC and how to use it for embedded software development.
   </p>
-  <iframe loading="lazy" src="https://www.youtube.com/embed/jgUuABfnuGM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/jgUuABfnuGM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </details>
 
 <details>

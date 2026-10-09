@@ -33,7 +33,7 @@ Posts have comments powered by [Disqus](https://disqus.com/). Nothing from Disqu
 
 ## Embedded content
 
-The [STM32 course page]({{ '/curso-stm32/' | relative_url }}) embeds videos from YouTube, and the [about page]({{ '/about/' | relative_url }}) shows a profile badge image from Stack Exchange. Opening those pages makes your browser contact those services, and their own privacy policies apply.
+The [STM32 course page]({{ '/curso-stm32/' | relative_url }}) embeds videos from YouTube in privacy-enhanced mode (youtube-nocookie.com), which sets no YouTube cookies until you play a video, and the [about page]({{ '/about/' | relative_url }}) shows a profile badge image from Stack Exchange. Opening those pages makes your browser contact those services, and their own privacy policies apply.
 
 ## What stays in your browser
 
