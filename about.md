@@ -18,8 +18,7 @@ Node, Docker on Linux based systems.
 After all, I consider myself a passionate Frontend Developer who loves to learn new things and work
 with edge technologies.
 
-If you are looking for my resume, [you will be happy to find the most recent version
-here](https://stackoverflow.com/cv/klaygomes).
+Looking for my resume? Try `ssh cleiton.se`, or open [cleiton.se](https://cleiton.se) in your browser.
 
 ## Programming Experience
 I work as a professional developer since 2004. Since then, I have learned many different languages
