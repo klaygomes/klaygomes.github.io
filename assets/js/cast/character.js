@@ -1,15 +1,14 @@
 import { isMotionAllowed, onMotionPreferenceChange } from '../motion.js';
+import { presets, spring } from '../spring.js';
 import { eyesMarkup, mouthAt } from './face.js';
 
 export const FRAME = 33;
 export const ease = {
   softLand: 'cubic-bezier(0.22, 0.75, 0.25, 1)',
-  snapSettle: 'cubic-bezier(0.04, 0.92, 0.12, 1)',
-  glide: 'cubic-bezier(0.3, 0.6, 0.45, 1)',
   inOut: 'cubic-bezier(0.45, 0, 0.55, 1)',
   accelExit: 'cubic-bezier(0.5, 0, 0.75, 0)',
-  popOver: 'cubic-bezier(0.3, 1.32, 0.55, 1)',
 };
+export const springs = Object.fromEntries(Object.keys(presets).map((name) => [name, spring(name)]));
 
 const LOOK_REACH = 7;
 const onScreen = new Set();
@@ -37,8 +36,8 @@ addEventListener('pointermove', (event) => {
   if (!pointerFrame) pointerFrame = requestAnimationFrame(followPointer);
 }, { passive: true });
 
-const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const between = ([min, max]) => min + Math.random() * (max - min);
+const settled = (animation) => animation.finished.catch(() => {});
 
 export class CharacterElement extends HTMLElement {
   static idleEvery = [2600, 6400];
@@ -49,7 +48,6 @@ export class CharacterElement extends HTMLElement {
     this.spec = JSON.parse(this.dataset.face ?? '{}');
     this.eyes = this.querySelector('.face__eyes');
     this.mouth = this.querySelector('.face__mouth');
-    this.running = new Set();
     this.addEventListener('pointerdown', () => this.cheer());
     onMotionPreferenceChange(() => this.visibilityChanged(onScreen.has(this)));
     visibility?.observe(this);
@@ -69,12 +67,31 @@ export class CharacterElement extends HTMLElement {
     return this.part(name).length > 0;
   }
 
+  targets(names) {
+    return [names].flat().flatMap((name) => (name === 'rig' ? [this.rig] : this.part(name)));
+  }
+
   move(names, keyframes, options) {
     if (!isMotionAllowed()) return Promise.resolve();
-    const elements = [names].flat().flatMap((name) => (name === 'rig' ? [this.rig] : this.part(name)));
-    const animations = elements.map((element) => element.animate(keyframes, { duration: 12 * FRAME, easing: ease.softLand, ...options }));
-    animations.forEach((animation) => this.running.add(animation));
-    return Promise.all(animations.map((animation) => animation.finished.catch(() => {}).finally(() => this.running.delete(animation))));
+    return Promise.all(this.targets(names).map((element) => settled(element.animate(keyframes, { duration: 12 * FRAME, easing: ease.softLand, ...options }))));
+  }
+
+  impulse(names, from, preset = 'wobbly', delay = 0) {
+    return this.move(names, [{ transform: from }, { transform: 'none' }], { ...springs[preset], delay });
+  }
+
+  async pose(names, to, frames = 5, easing = ease.softLand) {
+    if (!isMotionAllowed()) return () => {};
+    const animations = this.targets(names).map((element) => element.animate([{ transform: 'none' }, { transform: to }], { duration: frames * FRAME, easing, fill: 'forwards' }));
+    await Promise.all(animations.map(settled));
+    return () => animations.forEach((animation) => animation.cancel());
+  }
+
+  async swing(names, to, preset = 'wobbly', frames = 5) {
+    const release = await this.pose(names, to, frames);
+    const done = this.impulse(names, to, preset);
+    release();
+    return done;
   }
 
   visibilityChanged(visible) {
@@ -87,7 +104,7 @@ export class CharacterElement extends HTMLElement {
     this.idling = true;
     this.breath = this.rig.animate(
       [{ transform: 'scale(1, 1)' }, { transform: 'scale(1.015, 0.975)' }],
-      { duration: 1800 + Math.random() * 900, iterations: Infinity, direction: 'alternate', easing: ease.inOut },
+      { duration: 1800 + Math.random() * 900, iterations: Infinity, direction: 'alternate', easing: ease.inOut, composite: 'add' },
     );
     this.loop();
   }
@@ -96,7 +113,7 @@ export class CharacterElement extends HTMLElement {
     this.idling = false;
     this.breath?.cancel();
     clearTimeout(this.idleTimer);
-    if (this.eyes) this.eyes.removeAttribute('transform');
+    if (this.eyes) this.eyes.style.transform = '';
   }
 
   loop() {
@@ -115,61 +132,58 @@ export class CharacterElement extends HTMLElement {
     const dy = point[1] - (box.top + (box.height * ey) / 100);
     const distance = Math.hypot(dx, dy) || 1;
     const reach = Math.min(LOOK_REACH, distance / 40);
-    this.eyes.setAttribute('transform', `translate(${((dx / distance) * reach).toFixed(1)} ${((dy / distance) * reach * 0.7).toFixed(1)})`);
+    this.eyes.style.transform = `translate(${((dx / distance) * reach).toFixed(1)}px, ${((dy / distance) * reach * 0.7).toFixed(1)}px)`;
   }
 
   blink() {
     if (!isMotionAllowed()) return Promise.resolve();
     const eyes = [...this.querySelectorAll('.face__eye')];
-    return Promise.all(eyes.map((eye) => eye.animate([{ transform: 'scaleY(1)' }, { transform: 'scaleY(0.1)' }, { transform: 'scaleY(1)' }], { duration: 5 * FRAME, easing: ease.inOut }).finished.catch(() => {})));
+    return Promise.all(eyes.map((eye) => settled(eye.animate([{ transform: 'scaleY(1)' }, { transform: 'scaleY(0.1)', offset: 0.4 }, { transform: 'scaleY(1)' }], { duration: 6 * FRAME, easing: ease.inOut }))));
   }
 
   express({ mouth, eyes }, hold = 900) {
-    const before = { mouth: this.mouth?.innerHTML, eyes: this.eyes?.innerHTML };
+    if (!this.restFace) this.restFace = { mouth: this.mouth?.innerHTML, eyes: this.eyes?.innerHTML };
     if (mouth && this.mouth) this.mouth.innerHTML = mouthAt(this.spec, mouth);
     if (eyes && this.eyes) this.eyes.innerHTML = eyesMarkup(this.spec, eyes);
     clearTimeout(this.expressionTimer);
     this.expressionTimer = setTimeout(() => {
-      if (this.mouth) this.mouth.innerHTML = before.mouth;
-      if (this.eyes) this.eyes.innerHTML = before.eyes;
+      if (this.mouth) this.mouth.innerHTML = this.restFace.mouth;
+      if (this.eyes) this.eyes.innerHTML = this.restFace.eyes;
     }, hold);
   }
 
-  hop(height = 9) {
-    return this.move('rig', [
-      { transform: 'translateY(0) scale(1, 1)' },
-      { transform: 'translateY(0) scale(1.06, 0.92)', offset: 0.18 },
-      { transform: `translateY(-${height}%) scale(0.96, 1.05)`, offset: 0.5, easing: ease.accelExit },
-      { transform: 'translateY(0) scale(1.04, 0.95)', offset: 0.82 },
-      { transform: 'translateY(0) scale(1, 1)' },
-    ], { duration: 18 * FRAME, easing: ease.softLand });
+  async hop(height = 10) {
+    if (!isMotionAllowed()) return;
+    const crouch = await this.pose('rig', 'scale(1.08, 0.9)', 4);
+    const rise = this.rig.animate([{ transform: 'scale(1.08, 0.9)' }, { transform: `translateY(-${height}%) scale(0.95, 1.06)` }], { duration: 8 * FRAME, easing: 'cubic-bezier(0.2, 0.7, 0.35, 1)', fill: 'forwards' });
+    crouch();
+    await settled(rise);
+    const fall = this.rig.animate([{ transform: `translateY(-${height}%) scale(0.95, 1.06)` }, { transform: 'scale(1.1, 0.88)' }], { duration: 7 * FRAME, easing: 'cubic-bezier(0.55, 0, 0.9, 0.6)', fill: 'forwards' });
+    rise.cancel();
+    await settled(fall);
+    const land = this.impulse('rig', 'scale(1.1, 0.88)', 'bouncy');
+    fall.cancel();
+    await land;
   }
 
-  wave(times = 2) {
+  wave() {
     if (!this.has('arm')) return Promise.resolve();
-    const swing = Array.from({ length: times * 2 + 1 }, (_, i) => ({ transform: `rotate(${i % 2 ? -16 : i === 0 || i === times * 2 ? 0 : 10}deg)` }));
-    return this.move(['arm', 'prop'], swing, { duration: (times * 10 + 6) * FRAME, easing: ease.inOut });
+    return this.swing(['arm', 'prop'], 'rotate(-28deg)', 'wobbly');
   }
 
   fidget() {
-    return this.wave(1);
+    return this.wave();
   }
 
   async cheer() {
     if (this.busy || !isMotionAllowed()) return;
     this.busy = true;
-    this.express({ mouth: 'open', eyes: 'happy' }, 1100);
+    this.express({ mouth: 'open', eyes: 'happy' }, 1200);
     await Promise.all([this.hop(), this.celebrate()]);
     this.busy = false;
   }
 
   celebrate() {
     return this.wave();
-  }
-
-  async land({ from = 'translateY(-60%) scale(1.3)', delay = 0, duration = 12 * FRAME, easing = ease.softLand } = {}) {
-    if (!isMotionAllowed()) return;
-    await this.rig.animate([{ transform: from, filter: 'blur(6px)', opacity: 0.25, offset: 0 }, { opacity: 1, filter: 'blur(0)', offset: 0.35 }, { transform: 'none', filter: 'none', opacity: 1 }], { duration, delay, easing, fill: 'backwards' }).finished.catch(() => {});
-    await pause(2 * FRAME);
   }
 }

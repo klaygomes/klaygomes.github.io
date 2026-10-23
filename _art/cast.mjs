@@ -68,17 +68,21 @@ export const cast = Object.values(characters);
 const place = (character, x, y, size, rotate = 0, extra = {}) => ({ kind: 'character', character, x, y, size, rotate, ...extra });
 
 const BAR_OFFSET = 0.525;
-const BAR_LENGTH = 300;
+const BAR_LENGTH = 270;
 const crowns = { couve: 0.44, brocolis: 0.56, roxa: 0.4 };
 
 function stack(x, floor, frames) {
   let bar = floor;
-  return frames.map(([character, size, rotate]) => {
+  const placed = frames.map(([character, size, rotate]) => {
     const y = Math.round(bar - BAR_OFFSET * size);
     bar = y - crowns[character] * size + 10;
     return place(character, x, y, size, rotate, { bar: BAR_LENGTH, role: 'frame' });
   });
+  return { placed, top: bar };
 }
+
+const heroStack = stack(330, 800, [['couve', 150, -2], ['brocolis', 144, 2], ['roxa', 138, -3]]);
+const OVERFLOW_SIZE = 134;
 
 const hero = {
   id: 'hero',
@@ -87,9 +91,9 @@ const hero = {
   items: [
     { kind: 'sparkle', x: 170, y: 190, scale: 0.8, color: yellow },
     { kind: 'sparkle', x: 880, y: 120, scale: 0.5, color: white },
-    { kind: 'tray', x: 330, y: 962, width: 380, color: yellow },
-    ...stack(330, 932, [['couve', 180, -2], ['brocolis', 172, 2], ['roxa', 166, -3]]),
-    place('romanesco', 590, 400, 160, 28, { bar: 240, role: 'overflow' }),
+    { kind: 'tray', x: 330, y: 830, width: 340, color: yellow },
+    ...heroStack.placed,
+    place('romanesco', 580, 470, OVERFLOW_SIZE, 28, { bar: 210, role: 'overflow', land: { x: 330, y: Math.round(heroStack.top - BAR_OFFSET * OVERFLOW_SIZE), rotate: -2 } }),
   ],
 };
 

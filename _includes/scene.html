@@ -8,7 +8,7 @@
   {%- assign item_size = "calc(" | append: stage_size | append: " * " | append: item.width | append: " / 100)" -%}
   {%- assign item_narrow = nil -%}
   {%- if include.size_narrow %}{% assign item_narrow = "calc(" | append: include.size_narrow | append: " * " | append: item.width | append: " / 100)" %}{% endif %}
-  <div class="stage__item stage__frame" data-role="{{ item.role }}" style="left: {{ item.left }}%; top: {{ item.top }}%; width: {{ item.width }}%; --rotate: {{ item.rotate }}deg; --depth: {{ item.depth }}; --order: {{ item.order }}">
+  <div class="stage__item stage__frame" data-role="{{ item.role }}" style="left: {{ item.left }}%; top: {{ item.top }}%; width: {{ item.width }}%; --rotate: {{ item.rotate }}deg; --depth: {{ item.depth }}; --order: {{ item.order }}{% if item.land %}; --land-x: {{ item.land.x }}%; --land-y: {{ item.land.y }}%; --land-rotate: {{ item.land.rotate }}deg{% endif %}">
     {%- if item.bar %}
     <span class="stage__bar" style="left: {{ item.bar.left }}%; top: {{ item.bar.top }}%; width: {{ item.bar.width }}%; aspect-ratio: {{ item.bar.ratio }}"></span>
     {%- endif %}

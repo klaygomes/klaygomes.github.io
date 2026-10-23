@@ -1,50 +1,48 @@
-import { CharacterElement, FRAME, ease } from './character.js';
+import { CharacterElement, FRAME, springs } from './character.js';
 
 export class CauliflowerElement extends CharacterElement {
-  flutter(angle = 9, times = 1) {
-    const beat = (sign) => Array.from({ length: times * 2 + 1 }, (_, i) => ({ transform: `rotate(${i % 2 ? sign * angle : 0}deg)` }));
-    const duration = (times * 9 + 4) * FRAME;
+  flutter(angle = 10) {
     return Promise.all([
-      this.move('leaf-left', beat(-1), { duration, easing: ease.inOut }),
-      this.move('leaf-right', beat(1), { duration, easing: ease.inOut, delay: 2 * FRAME }),
+      this.impulse('leaf-left', `rotate(${-angle}deg)`, 'wobbly'),
+      this.impulse('leaf-right', `rotate(${angle}deg)`, 'wobbly', 2 * FRAME),
     ]);
   }
 
   fidget() {
-    return this.has('arm') && Math.random() < 0.5 ? this.wave(1) : this.flutter(6);
+    return this.has('arm') && Math.random() < 0.5 ? this.wave() : this.flutter(8);
   }
 
   celebrate() {
-    return Promise.all([this.flutter(18, 2), this.wave()]);
+    return Promise.all([this.flutter(22), this.wave()]);
   }
 }
 
 export class RomanescoElement extends CharacterElement {
-  tilt(angle = 6) {
-    return this.move(['head', 'face'], [{ transform: 'rotate(0)' }, { transform: `rotate(${angle}deg)` }, { transform: `rotate(${-angle / 2}deg)` }, { transform: 'rotate(0)' }], { duration: 24 * FRAME, easing: ease.inOut });
+  tilt(angle = 8) {
+    return this.impulse(['head', 'face'], `rotate(${angle}deg)`, 'wobbly');
   }
 
   fidget() {
-    return Math.random() < 0.5 ? this.tilt() : this.move(['arm', 'prop'], [{ transform: 'rotate(0)' }, { transform: 'rotate(-12deg)' }, { transform: 'rotate(0)' }], { duration: 16 * FRAME, easing: ease.inOut });
+    return Math.random() < 0.5 ? this.tilt() : this.impulse(['arm', 'prop'], 'rotate(-14deg)', 'bouncy');
   }
 
   celebrate() {
-    return Promise.all([this.tilt(14), this.wave(3)]);
+    return Promise.all([this.tilt(16), this.wave()]);
   }
 }
 
 export class BroccoliElement extends CharacterElement {
-  tipHat() {
-    return this.move('hat', [
-      { transform: 'translateY(0) rotate(0)' },
-      { transform: 'translateY(-22%) rotate(-16deg)', offset: 0.35 },
-      { transform: 'translateY(-22%) rotate(-16deg)', offset: 0.65 },
-      { transform: 'translateY(0) rotate(0)' },
-    ], { duration: 26 * FRAME, easing: ease.inOut });
+  async tipHat() {
+    const lifted = 'translateY(-24%) rotate(-18deg)';
+    const release = await this.pose('hat', lifted, 7);
+    await new Promise((resolve) => setTimeout(resolve, 10 * FRAME));
+    const done = this.impulse('hat', lifted, 'bouncy');
+    release();
+    return done;
   }
 
   tap() {
-    return this.move(['arm', 'prop'], [{ transform: 'rotate(0)' }, { transform: 'rotate(-20deg)' }, { transform: 'rotate(0)' }, { transform: 'rotate(-20deg)' }, { transform: 'rotate(0)' }], { duration: 20 * FRAME, easing: ease.inOut });
+    return this.impulse(['arm', 'prop'], 'rotate(-24deg)', 'wobbly');
   }
 
   fidget() {
@@ -57,15 +55,14 @@ export class BroccoliElement extends CharacterElement {
 }
 
 export class KaleElement extends CharacterElement {
-  rustle(amount = 3) {
-    return this.move(['head', 'face'], [{ transform: 'skewX(0)' }, { transform: `skewX(${amount}deg)` }, { transform: `skewX(${-amount}deg)` }, { transform: 'skewX(0)' }], { duration: 20 * FRAME, easing: ease.inOut });
+  rustle(amount = 5) {
+    return this.impulse(['head', 'face'], `skewX(${amount}deg)`, 'wobbly');
   }
 
   pushGlasses() {
     const glasses = this.querySelector('.face__glasses');
     if (!glasses) return Promise.resolve();
-    glasses.style.transformBox = 'fill-box';
-    return glasses.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(8px)', offset: 0.3 }, { transform: 'translateY(-3px)', offset: 0.7 }, { transform: 'translateY(0)' }], { duration: 18 * FRAME, easing: ease.softLand }).finished.catch(() => {});
+    return glasses.animate([{ transform: 'translateY(9px)' }, { transform: 'none' }], springs.bouncy).finished.catch(() => {});
   }
 
   fidget() {
@@ -73,7 +70,7 @@ export class KaleElement extends CharacterElement {
   }
 
   celebrate() {
-    return Promise.all([this.rustle(6), this.pushGlasses()]);
+    return Promise.all([this.rustle(9), this.pushGlasses()]);
   }
 }
 

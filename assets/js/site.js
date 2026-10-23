@@ -1,5 +1,6 @@
 import { isMotionAllowed, isReducedMotion, isUserDisabled, onMotionPreferenceChange, setUserDisabled } from './motion.js';
 import './cast/kinds.js';
+import { playOverflow } from './overflow.js';
 
 const FRAME = 33;
 
@@ -67,10 +68,9 @@ function reactToLandings() {
     if (event.animationName !== 'take-hit') return;
     event.target.querySelector('.character')?.express?.({ mouth: 'oh', eyes: 'squint' }, 16 * FRAME);
   });
-  stage.addEventListener('animationend', (event) => {
-    if (event.animationName !== 'overflow') return;
-    event.target.querySelector('.character')?.express?.({ mouth: 'open', eyes: 'happy' }, 30 * FRAME);
-  });
+  const overflow = stage.querySelector('[data-role="overflow"]');
+  const flight = playOverflow(overflow);
+  flight?.finished.then(() => overflow.querySelector('.character')?.express?.({ mouth: 'open', eyes: 'happy' }, 30 * FRAME)).catch(() => {});
 }
 
 wireMotionToggle();

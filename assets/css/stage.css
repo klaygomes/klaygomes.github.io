@@ -48,6 +48,10 @@
   overflow: visible;
 }
 
+.character__face .face__eyes {
+  transition: transform var(--spring-snappy-duration) var(--spring-snappy);
+}
+
 .character__face .face__eye,
 .character__face .face__glasses {
   transform-box: fill-box;
@@ -389,7 +393,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .footer-gag.is-pressed {
-    animation: gag-press calc(8 * var(--frame)) var(--ease-soft-land);
+    animation: gag-press var(--spring-wobbly-duration) linear;
   }
   .footer-gag.is-loading .footer-gag__think span {
     animation: think 0.9s var(--ease-glide) infinite both;
@@ -409,8 +413,8 @@
 }
 
 @keyframes gag-press {
-  0% { transform: none; }
-  30% { transform: scale(1.05, 0.93); }
+  0% { transform: none; animation-timing-function: cubic-bezier(0.2, 0.7, 0.35, 1); }
+  6% { transform: scale(1.06, 0.92); animation-timing-function: var(--spring-wobbly); }
   100% { transform: none; }
 }
 
@@ -521,7 +525,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .js:not(.motion-off) .hero-word {
-    animation: word-land var(--duration-land) var(--ease-soft-land) both;
+    animation: word-land var(--spring-gentle-duration) var(--spring-gentle) both;
     animation-delay: calc((var(--d) * 5 - 2) * var(--frame));
   }
 
@@ -535,7 +539,7 @@
   }
 
   .js:not(.motion-off) .hero-rise {
-    animation: word-land var(--duration-settle) var(--ease-soft-land) both;
+    animation: word-land var(--spring-gentle-duration) var(--spring-gentle) both;
     animation-delay: calc((var(--d) * 4 + 6) * var(--frame));
   }
 
@@ -544,7 +548,7 @@
   }
 
   .js:not(.motion-off) .stage--hero .stage__deco {
-    animation: deco-land var(--duration-land) var(--ease-soft-land) both;
+    animation: deco-land var(--spring-bouncy-duration) var(--spring-bouncy) both;
     animation-delay: calc((var(--order) * 2 + 4) * var(--frame));
   }
 
@@ -552,25 +556,29 @@
     --fall: calc(var(--order) - 3);
     transform-origin: 50% 92%;
     animation:
-      frame-fall calc(20 * var(--frame)) linear both,
-      take-hit calc(10 * var(--frame)) var(--ease-soft-land) both;
+      frame-fall calc(36 * var(--frame)) linear both,
+      take-hit var(--spring-wobbly-duration) linear both;
     animation-delay:
-      calc((var(--fall) * 11 + 6) * var(--frame)),
-      calc((var(--fall) * 11 + 6 + 11 + 14) * var(--frame));
+      calc((var(--fall) * 12 + 6) * var(--frame)),
+      calc((var(--fall) * 12 + 32) * var(--frame));
   }
 
   .js:not(.motion-off) .stage--hero [data-role="overflow"] {
-    animation: overflow calc(40 * var(--frame)) linear both;
-    animation-delay: calc(39 * var(--frame));
+    transform-origin: 50% 92%;
+  }
+
+  .js:not(.motion-off) .stage--hero [data-role="overflow"]:not(.is-scripted) {
+    opacity: 0;
+    animation: appear 1ms 2.5s forwards;
   }
 
   .js:not(.motion-off) .hero-figure {
-    animation: figure-rise calc(18 * var(--frame)) var(--ease-snap-settle) both;
+    animation: figure-rise var(--spring-gentle-duration) var(--spring-gentle) both;
     animation-delay: calc(10 * var(--frame));
   }
 
   .stage--closing .stage__frame .character {
-    transition: translate var(--duration-settle) var(--ease-snap-settle);
+    transition: translate var(--spring-bouncy-duration) var(--spring-bouncy);
     transition-delay: calc(var(--order) * 3 * var(--frame));
   }
 
@@ -615,24 +623,18 @@
 
 @keyframes frame-fall {
   0% { transform: translateY(calc(-100cqh - 110%)) rotate(-8deg); animation-timing-function: cubic-bezier(0.55, 0, 0.9, 0.6); }
-  70% { transform: translateY(0) rotate(0) scale(1, 1); animation-timing-function: var(--ease-soft-land); }
-  82% { transform: translateY(0) scale(1.07, 0.9); animation-timing-function: var(--ease-soft-land); }
+  38% { transform: translateY(0) rotate(0) scale(1.12, 0.84); animation-timing-function: var(--spring-bouncy); }
   100% { transform: none; }
 }
 
 @keyframes take-hit {
-  0% { scale: 1 1; }
-  35% { scale: 1.04 0.94; }
+  0% { scale: 1 1; animation-timing-function: cubic-bezier(0.2, 0.7, 0.35, 1); }
+  8% { scale: 1.05 0.92; animation-timing-function: var(--spring-wobbly); }
   100% { scale: 1 1; }
 }
 
-@keyframes overflow {
-  0% { transform: translate(-112%, calc(-48% - 100cqh - 110%)) rotate(-34deg); animation-timing-function: cubic-bezier(0.55, 0, 0.9, 0.6); }
-  28% { transform: translate(-112%, -48%) rotate(-28deg); animation-timing-function: var(--ease-soft-land); }
-  36% { transform: translate(-112%, -48%) rotate(-28deg) scale(1.07, 0.9); animation-timing-function: var(--ease-soft-land); }
-  46% { transform: translate(-108%, -50%) rotate(-31deg); animation-timing-function: var(--ease-in-out, ease-in-out); }
-  54% { transform: translate(-114%, -50%) rotate(-23deg); animation-timing-function: cubic-bezier(0.3, 1.32, 0.55, 1); }
-  100% { transform: none; }
+@keyframes appear {
+  to { opacity: 1; }
 }
 
 @keyframes figure-rise {
@@ -745,17 +747,17 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .js:not(.motion-off) .stage[class*="stage--persona"] .stage__frame {
-    animation: frame-drop calc(12 * var(--frame)) var(--ease-soft-land) both;
+    animation: frame-drop var(--spring-gentle-duration) var(--spring-gentle) both;
     animation-delay: calc((var(--order) * 3) * var(--frame));
   }
 
   .js:not(.motion-off) .stage[class*="stage--persona"] [data-role="lead"] {
-    animation: lead-land calc(18 * var(--frame)) var(--ease-snap-settle) both;
+    animation: lead-land var(--spring-bouncy-duration) var(--spring-bouncy) both;
     animation-delay: calc(4 * var(--frame));
   }
 
   .js:not(.motion-off) .stage[class*="stage--persona"] .stage__deco {
-    animation: deco-land var(--duration-land) var(--ease-soft-land) both;
+    animation: deco-land var(--spring-bouncy-duration) var(--spring-bouncy) both;
     animation-delay: calc((var(--order) * 2 + 8) * var(--frame));
   }
 
@@ -769,7 +771,7 @@
   }
 
   .js:not(.motion-off) .post-peek .character {
-    animation: peek calc(16 * var(--frame)) var(--ease-snap-settle) both;
+    animation: peek var(--spring-bouncy-duration) var(--spring-bouncy) both;
     animation-delay: calc(8 * var(--frame));
   }
 }
