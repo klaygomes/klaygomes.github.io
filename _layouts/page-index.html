@@ -27,10 +27,14 @@ layout: default
       </a>
       <a href="{{ '/about/' | relative_url }}" class="link-underline font-display text-lg font-semibold text-brand-strong">Who's Cleiton?</a>
     </div>
+    <button class="motion-toggle" type="button" aria-pressed="false" hidden>
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path class="motion-toggle__pause" d="M5 3v10M11 3v10" /><path class="motion-toggle__play" d="M5 3l8 5-8 5z" /></svg>
+      <span class="motion-toggle__label">Pause motion</span>
+    </button>
   </div>
 
-  <div class="hero-window">
-    <canvas class="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-window shader-ground" data-shader>
+    <canvas class="shader-canvas" aria-hidden="true"></canvas>
     {%- include scene.html name="hero" size="58vw" size_narrow="120vw" eager=true %}
     <div class="hero-figure">
       <button type="button" class="hero-gag block w-full" aria-label="Play the cauliflower animation" data-webm="{{ '/assets/video/cleiton-mascot.webm' | relative_url }}?v={{ site.time | date: '%s' }}" data-hevc="{{ '/assets/video/cleiton-mascot.mp4' | relative_url }}?v={{ site.time | date: '%s' }}" data-still="{{ '/assets/img/cleiton-mascot.webp' | relative_url }}?v={{ site.time | date: '%s' }}">
@@ -39,10 +43,6 @@ layout: default
         </span>
       </button>
     </div>
-    <button class="motion-toggle" type="button" aria-pressed="false" hidden>
-      <svg viewBox="0 0 16 16" aria-hidden="true"><path class="motion-toggle__pause" d="M5 3v10M11 3v10" /><path class="motion-toggle__play" d="M5 3l8 5-8 5z" /></svg>
-      <span class="motion-toggle__label">Pause motion</span>
-    </button>
   </div>
 </section>
 
@@ -154,4 +154,4 @@ layout: default
     });
   })();
 </script>
-<script type="module" src="{{ '/assets/js/hero-shader.js' | relative_url }}"></script>
+<script type="module" src="{{ '/assets/js/viscous-shader.js' | relative_url }}"></script>

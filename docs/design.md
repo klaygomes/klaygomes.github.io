@@ -4,27 +4,31 @@ How the site looks, moves and draws its cast. Tokens live in `assets/css/tokens.
 
 ## Color
 
-Every brand color is placed by its OKLCH hue, so the relationships are measurable rather than eyeballed.
+The page palette comes from the career trace card in the GitHub profile (`klaygomes/klaygomes`, `assets/trace-card.svg`): a warm, near-neutral engineering figure. Brand hues are placed by their OKLCH hue, so the relationships are measurable rather than eyeballed.
 
-| Token | Hex | OKLCH hue | Lightness | Role |
-|---|---|---|---|---|
-| `purple-700` | `#7E23B3` | 309° | 0.47 | brand |
-| `magenta-500` | `#C63F75` | 0° | 0.58 | accent |
-| `yellow-400` | `#FAD30B` | 95° | 0.87 | highlight |
-| `green-800` | `#3E6B0F` | 133° | 0.48 | leaf |
-| `pink-300` | `#EEA2D4` | 340° | 0.80 | blush |
-| `lilac-50` | `#F7F2FB` | 311° | 0.97 | surface |
+| Token | Hex | OKLCH hue | Role |
+|---|---|---|---|
+| `paper-50` | `#FBFAF7` | warm neutral | page surface |
+| `ink-900` | `#1F1A24` | violet-tinted neutral | text |
+| `rule-200` | `#E6E2DA` | warm neutral | hairlines, card outlines |
+| `gray-500` | `#9A94A1` | neutral | muted text |
+| `lilac-100` | `#EEE6F5` | 311° | tinted sections (post headers, archive) |
+| `purple-900` / `purple-700` | `#480F7B` / `#7E23B3` | 301° / 309° | nav, footer, links, markers |
+| `yellow-400` | `#FAD30B` | 95° | the one highlight |
+| `magenta-500` | `#C63F75` | 0° | wordmark and shader only |
+| `green-800` | `#3E6B0F` | 133° | wordmark and leaves |
 
 ```mermaid
 flowchart LR
   P[purple 309°] -- complementary, 176° apart --> G[leaf green 133°]
   P -- analogous, 51° --> M[magenta 0°]
-  M -- analogous --> B[blush 340°]
   P -. near-complement, accent only .-> Y[yellow 95°]
+  N[paper and ink, near-neutral] -. lets every hue pop .-> P
 ```
 
-- **60 / 30 / 10.** The lilac surface with grain and soft glows covers about 60%. The viscous hero field (magenta to purple, blush highlights) is the 30%. Yellow is the 10%: stack bars, sparkles, selection, the footer type.
-- **The cauliflower pops by itself.** Its leaf green sits almost exactly opposite the brand purple, so the mascot reads on any purple or magenta ground.
+- **60 / 30 / 10.** Paper and ink are the 60%. Lilac tints, hairlines and muted text are the 30%. Purple accents and a single yellow highlight (the stack bars, sparkles, footer type) are the 10%.
+- **Joy lives in the cast and the field.** The neutral ground makes the vegetables and the viscous shader (magenta, deep purple, lilac glints) the only saturated things on the page. Each `[data-shader]` surface can override `--shader-1..3`; the newest-post card uses a darker trio so its yellow headline stays readable.
+- **The cauliflower pops by itself.** Its leaf green sits almost exactly opposite the brand purple.
 - **The cast is one family.** Each vegetable keeps its real hue, but its gradient runs between two neighbours on the wheel and all of them share a lightness band (L 0.6 to 0.9, C 0.13 to 0.2).
 
 | Persona | Topic | Gradient | Prop |
@@ -35,7 +39,7 @@ flowchart LR
 | brócolis | Tooling | green 145° to teal 185° | hard hat, wrench |
 | couve (kale) | .NET | teal 172° to blue 236° | retro glasses |
 
-No chips or pills anywhere, and no dotted backgrounds. Texture comes only from grain and glows.
+No chips or pills anywhere, and no dotted backgrounds. Grain appears only inside shader surfaces.
 
 ## Organic shapes
 
@@ -136,4 +140,4 @@ sequenceDiagram
 
 ## Hero field
 
-`assets/js/hero-shader.js` is a WebGL2 fluid simulation that the pointer stirs, ported from the Guia do Crédito theme. It reads its three colors from `--shader-1..3`, drops to a cheaper mesh when frames run long, and falls back to drifting CSS gradients without WebGL.
+`assets/js/viscous-shader.js` is a WebGL2 fluid simulation that the pointer stirs, ported from the Guia do Crédito theme. It runs on every `[data-shader]` surface (the hero window and the newest-post card), each with its own `.shader-canvas`, and pauses when that surface leaves the screen. It reads its three colors from `--shader-1..3`, drops to a cheaper mesh when frames run long, and falls back to drifting CSS gradients without WebGL.

@@ -173,15 +173,10 @@
   stroke-width: 3.5;
 }
 
-.hero-window {
-  grid-area: window;
+.shader-ground {
   position: relative;
   isolation: isolate;
   overflow: clip;
-  min-height: min(124vw, 40rem);
-  container-type: size;
-  -webkit-mask: var(--curd-mask-band) center / 100% 100% no-repeat;
-  mask: var(--curd-mask-band) center / 100% 100% no-repeat;
   background-color: rgb(var(--shader-2));
   background-image:
     radial-gradient(60% 55% at 15% 20%, rgb(var(--shader-1)) 0%, transparent 70%),
@@ -191,23 +186,32 @@
   background-position: 50% 50%;
 }
 
-.hero-window::after {
+.hero-window {
+  grid-area: window;
+  min-height: min(124vw, 40rem);
+  container-type: size;
+  -webkit-mask: var(--curd-mask-band) center / 100% 100% no-repeat;
+  mask: var(--curd-mask-band) center / 100% 100% no-repeat;
+}
+
+.shader-ground::after {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 3;
+  z-index: -1;
   opacity: 0.5;
   mix-blend-mode: soft-light;
   pointer-events: none;
   background-image: var(--grain);
 }
 
-.hero-window.is-drifting {
+.shader-ground.is-drifting {
   animation: window-drift 38s linear infinite alternate;
 }
 
-.hero-canvas {
+.shader-canvas {
   position: absolute;
+  z-index: -1;
   inset: 0;
   width: 100%;
   height: 100%;
@@ -216,13 +220,13 @@
   touch-action: pan-y;
 }
 
-.hero-window.is-live .hero-canvas {
+.shader-ground.is-live .shader-canvas {
   opacity: 1;
 }
 
 .stage--hero {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   left: 50%;
   top: 50%;
   width: max(100cqw, 100cqh);
@@ -231,7 +235,7 @@
 
 .hero-figure {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   right: -4%;
   bottom: 0;
   width: 54%;
@@ -242,33 +246,26 @@
 }
 
 .motion-toggle {
-  position: absolute;
-  z-index: 4;
-  left: 1rem;
-  bottom: 1.75rem;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   min-height: 2.75rem;
-  padding: 0 0.75rem;
-  border-radius: var(--radius-md);
+  margin-top: 1.5rem;
   font-family: var(--font-display);
   font-size: 0.875rem;
-  font-weight: 600;
-  color: rgb(var(--color-surface-raised));
-  background: rgb(var(--color-brand-strong) / 0.55);
-  backdrop-filter: blur(6px);
-  transition: background-color var(--duration-fast) var(--ease-out);
+  font-weight: 500;
+  color: rgb(var(--color-muted));
+  transition: color var(--duration-fast) var(--ease-out);
 }
 .motion-toggle[hidden] {
   display: none;
 }
 .motion-toggle:hover {
-  background: rgb(var(--color-brand-strong) / 0.8);
+  color: rgb(var(--color-ink));
 }
 .motion-toggle svg {
-  width: 0.9rem;
-  height: 0.9rem;
+  width: 0.8rem;
+  height: 0.8rem;
   fill: none;
   stroke: currentColor;
   stroke-width: 2.4;
@@ -312,10 +309,6 @@
     right: -2%;
   }
 
-  .motion-toggle {
-    left: 13%;
-    bottom: 1.25rem;
-  }
 }
 
 /* Closing scene and footer */
@@ -332,6 +325,7 @@
 
 .site-footer {
   position: relative;
+  z-index: 2;
   margin-top: -1px;
   background: rgb(var(--color-brand-strong));
   color: rgb(var(--color-highlight));
@@ -352,7 +346,11 @@
 
 .footer-gag {
   position: relative;
+  display: block;
   flex: none;
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  -webkit-tap-highlight-color: transparent;
   width: 7rem;
   margin-top: clamp(-4.5rem, -8vw, -2.5rem);
 }
@@ -511,7 +509,7 @@
   }
 }
 
-.motion-off .hero-window.is-drifting {
+.motion-off .shader-ground.is-drifting {
   animation: none;
 }
 
@@ -627,10 +625,7 @@
 }
 
 .post-hero {
-  background:
-    radial-gradient(50% 80% at 85% 100%, var(--glow-accent), transparent 70%),
-    radial-gradient(40% 70% at 0% 0%, var(--glow-brand), transparent 70%),
-    rgb(var(--color-surface-sunken));
+  background: rgb(var(--color-surface-sunken));
 }
 
 .post-hero .curd {
@@ -704,4 +699,10 @@
 @keyframes peek {
   0% { translate: 0 55%; filter: blur(6px); }
   100% { translate: 0 0; filter: none; }
+}
+
+.card-featured {
+  --shader-1: var(--magenta-700);
+  --shader-2: var(--purple-900);
+  --shader-3: var(--purple-700);
 }

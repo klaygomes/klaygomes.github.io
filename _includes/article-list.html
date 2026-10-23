@@ -6,7 +6,8 @@
   {%- assign skip = 1 -%}
   {%- assign limit = limit | minus: 1 -%}
   <article class="reveal relative mb-6 md:mb-8">
-    <div class="card-featured group">
+    <div class="card-featured shader-ground group" data-shader>
+      <canvas class="shader-canvas" aria-hidden="true"></canvas>
       <div class="flex flex-wrap items-center gap-3 font-display text-sm font-semibold text-highlight">
         <span class="inline-flex items-center gap-1.5"><svg class="h-3.5 w-3.5" viewBox="-34 -34 68 68" aria-hidden="true"><path d="M0 -34 Q6 -6 34 0 Q6 6 0 34 Q-6 6 -34 0 Q-6 -6 0 -34Z" fill="currentColor"/></svg>Newest</span>
         <time class="tabular-nums" datetime="{{ lead.date | date_to_xmlschema }}">{{ lead.date | date: date_format }}</time>

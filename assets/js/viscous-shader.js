@@ -50,12 +50,12 @@ vec3 col=vC*(.62+.45*d);vec3 R=reflect(-V,N);vec3 env=mix(vec3(.72,.74,.8),vec3(
 col=mix(col,env,clamp(refl+fr*.3,0.,1.));float sp=pow(max(dot(R,L),0.),48.);col+=sp*(.1+min(vSp,1.5)*.3);col*=bright;
 col+=(hash(gl_FragCoord.xy+fract(t*7.)*100.)-.5)*.07;o=vec4(col,1);}`;
 
-function cssColor(name) {
-  const channels = getComputedStyle(document.documentElement).getPropertyValue(name).trim().split(/\s+/);
+function cssColor(element, name) {
+  const channels = getComputedStyle(element).getPropertyValue(name).trim().split(/\s+/);
   return channels.map((channel) => Number(channel) / 255);
 }
 
-function createRenderer(gl, quality, withFluid) {
+function createRenderer(gl, quality, withFluid, surface) {
   const compile = (type, source) => {
     const shader = gl.createShader(type);
     gl.shaderSource(shader, source);
@@ -187,9 +187,9 @@ function createRenderer(gl, quality, withFluid) {
   };
 
   const colors = {
-    c1: cssColor('--shader-1'),
-    c2: cssColor('--shader-2'),
-    c3: cssColor('--shader-3'),
+    c1: cssColor(surface, '--shader-1'),
+    c2: cssColor(surface, '--shader-2'),
+    c3: cssColor(surface, '--shader-3'),
   };
 
   return {
@@ -359,11 +359,9 @@ function createParallax(stage) {
   };
 }
 
-function startGround() {
-  const ground = document.querySelector('.hero-window');
-  const canvas = ground?.querySelector('.hero-canvas');
-  const hero = document.querySelector('.hero');
-  if (!ground || !canvas || !hero) return;
+function startGround(ground) {
+  const canvas = ground.querySelector('.shader-canvas');
+  if (!canvas) return;
 
   const fallBackToDrift = () => {
     ground.classList.remove('is-live');
@@ -383,7 +381,7 @@ function startGround() {
 
   let renderer;
   try {
-    renderer = createRenderer(gl, quality, fluidCapable);
+    renderer = createRenderer(gl, quality, fluidCapable, ground);
   } catch {
     fallBackToDrift();
     return;
@@ -462,11 +460,11 @@ function startGround() {
   new IntersectionObserver(([entry]) => {
     heroVisible = entry.isIntersecting;
     update();
-  }).observe(hero);
+  }).observe(ground);
   document.addEventListener('visibilitychange', update);
   onMotionPreferenceChange(update);
   update();
 }
 
 const whenIdle = window.requestIdleCallback ?? ((callback) => setTimeout(callback, 200));
-whenIdle(startGround, { timeout: 1500 });
+whenIdle(() => document.querySelectorAll('[data-shader]').forEach(startGround), { timeout: 1500 });

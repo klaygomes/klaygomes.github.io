@@ -4,9 +4,9 @@
 <footer class="site-footer h-card">
   <div class="container site-footer__body">
     <div class="site-footer__who">
-      <div class="footer-gag" data-webm="{{ '/assets/video/cleiton-idea.webm' | relative_url }}?v={{ site.time | date: '%s' }}" data-hevc="{{ '/assets/video/cleiton-idea.mp4' | relative_url }}?v={{ site.time | date: '%s' }}">
+      <button type="button" class="footer-gag" aria-label="Play the idea animation" data-webm="{{ '/assets/video/cleiton-idea.webm' | relative_url }}?v={{ site.time | date: '%s' }}" data-hevc="{{ '/assets/video/cleiton-idea.mp4' | relative_url }}?v={{ site.time | date: '%s' }}">
         <img class="footer-gag-still" src="{{ '/assets/img/cleiton-footer.png' | relative_url }}" width="200" height="180" alt="{{ site.author.name }}, hand on chin, looking up at the cast">
-      </div>
+      </button>
       <div>
         <p class="p-name font-display text-xl font-bold">{{ site.author.name | escape }}</p>
         <a class="u-email link-underline mt-1 inline-block font-display text-sm text-highlight/85" href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
@@ -55,16 +55,17 @@
 
   (function () {
     var gag = document.querySelector(".footer-gag");
-    if (!gag || !("IntersectionObserver" in window)) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    try { if (localStorage.getItem("ecf-idea-seen") === "1") return; } catch (e) { return; }
-    var connection = navigator.connection || {};
-    if (connection.saveData || (connection.effectiveType && connection.effectiveType !== "4g")) return;
-
+    if (!gag) return;
     var webkit = navigator.vendor === "Apple Computer, Inc.";
+    var connection = navigator.connection || {};
+    var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var frugal = connection.saveData || (connection.effectiveType && connection.effectiveType !== "4g");
+    var seen = true;
+    try { seen = localStorage.getItem("ecf-idea-seen") === "1"; } catch (e) {}
     var video = null;
 
     var load = function () {
+      if (video) return video;
       video = document.createElement("video");
       video.className = "footer-gag-video";
       video.muted = true;
@@ -76,24 +77,36 @@
         gag.classList.add("is-playing");
         try { localStorage.setItem("ecf-idea-seen", "1"); } catch (e) {}
       });
+      video.addEventListener("ended", function () { gag.classList.remove("is-playing"); });
       video.addEventListener("error", function () {
         gag.classList.remove("is-playing");
         video.remove();
+        video = null;
       });
       gag.appendChild(video);
+      return video;
     };
+
+    var play = function () {
+      var clip = load();
+      clip.currentTime = 0;
+      clip.play().catch(function () {});
+    };
+
+    gag.addEventListener("click", play);
+
+    if (seen || calm || frugal || !("IntersectionObserver" in window)) return;
 
     var preload = new IntersectionObserver(function (entries) {
       if (!entries[0].isIntersecting) return;
       preload.disconnect();
-      if (!video) load();
+      load();
     }, { rootMargin: "0px 0px 600px 0px" });
 
     var trigger = new IntersectionObserver(function (entries) {
       if (entries[0].intersectionRatio < 0.9) return;
       trigger.disconnect();
-      if (!video) load();
-      video.play().catch(function () { video.remove(); });
+      play();
     }, { threshold: 0.9 });
 
     preload.observe(gag);

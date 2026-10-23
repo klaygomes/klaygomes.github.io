@@ -8,113 +8,95 @@
         "type": "deco",
         "kind": "sparkle",
         "order": 0,
-        "left": 9.4,
-        "top": 11.4,
-        "width": 7.2,
+        "left": 13.8,
+        "top": 15.8,
+        "width": 6.4,
         "svg": "<svg viewBox=\"-40 -40 80 80\" aria-hidden=\"true\"><g transform=\"rotate(0)\"><path d=\"M0 -34 Q6 -6 34 0 Q6 6 0 34 Q-6 6 -34 0 Q-6 -6 0 -34Z\" fill=\"#fad30b\"/></g></svg>"
       },
       {
         "type": "deco",
         "kind": "sparkle",
         "order": 1,
-        "left": 87.8,
-        "top": 7.4,
-        "width": 4.4,
+        "left": 86,
+        "top": 10,
+        "width": 4,
         "svg": "<svg viewBox=\"-40 -40 80 80\" aria-hidden=\"true\"><g transform=\"rotate(0)\"><path d=\"M0 -34 Q6 -6 34 0 Q6 6 0 34 Q-6 6 -34 0 Q-6 -6 0 -34Z\" fill=\"#fdfdfd\"/></g></svg>"
       },
       {
         "type": "deco",
-        "kind": "ball",
-        "order": 2,
-        "left": 7.7,
-        "top": 58.3,
-        "width": 5.4,
-        "svg": "<svg viewBox=\"-36 -36 72 72\" aria-hidden=\"true\"><g transform=\"rotate(0)\"><circle r=\"30\" fill=\"#fad30b\"/><circle cx=\"-10\" cy=\"-11\" r=\"8\" fill=\"#fff\" opacity=\"0.7\"/></g></svg>"
-      },
-      {
-        "type": "deco",
-        "kind": "squiggle",
-        "order": 3,
-        "left": 48.5,
-        "top": 53,
-        "width": 15,
-        "svg": "<svg viewBox=\"-75 -30 150 60\" aria-hidden=\"true\"><g transform=\"rotate(-64)\"><path d=\"M-60 0 q15 -30 30 0 t30 0 t30 0 t30 0\" fill=\"none\" stroke=\"#eea2d4\" stroke-width=\"12\" stroke-linecap=\"round\"/></g></svg>"
-      },
-      {
-        "type": "deco",
         "kind": "tray",
-        "order": 4,
-        "left": 7.5,
-        "top": 88.3,
-        "width": 51,
-        "svg": "<svg viewBox=\"-255 -75 510 150\" aria-hidden=\"true\"><g transform=\"rotate(0)\"><path d=\"M-235 -110 V0 H235 V-110\" fill=\"none\" stroke=\"#fad30b\" stroke-width=\"38\" stroke-linecap=\"round\" stroke-linejoin=\"round\" transform=\"translate(0 55)\"/></g></svg>"
+        "order": 2,
+        "left": 11,
+        "top": 88.7,
+        "width": 44,
+        "svg": "<svg viewBox=\"-220 -75 440 150\" aria-hidden=\"true\"><g transform=\"rotate(0)\"><path d=\"M-200 -110 V0 H200 V-110\" fill=\"none\" stroke=\"#fad30b\" stroke-width=\"38\" stroke-linecap=\"round\" stroke-linejoin=\"round\" transform=\"translate(0 55)\"/></g></svg>"
       },
       {
         "type": "character",
         "character": "couve",
         "role": "frame",
-        "order": 5,
-        "left": 15,
-        "top": 56.7,
-        "width": 36,
+        "order": 3,
+        "left": 18,
+        "top": 65.1,
+        "width": 30,
         "rotate": -2,
-        "depth": 0.5,
+        "depth": 0.4,
         "bar": {
-          "width": 91.7,
-          "top": 89.1,
-          "ratio": 9.71,
-          "left": 4.2
+          "width": 90,
+          "top": 88.1,
+          "ratio": 7.94,
+          "left": 5
         }
       },
       {
         "type": "character",
         "character": "brocolis",
         "role": "frame",
-        "order": 6,
-        "left": 16.4,
-        "top": 29.2,
-        "width": 34.8,
+        "order": 4,
+        "left": 18.6,
+        "top": 43.1,
+        "width": 28.8,
         "rotate": 3,
-        "depth": 0.5,
+        "depth": 0.4,
         "bar": {
-          "width": 86.2,
-          "top": 88.9,
-          "ratio": 8.82,
-          "left": 6.9
+          "width": 89.9,
+          "top": 87.9,
+          "ratio": 7.62,
+          "left": 5
         }
       },
       {
         "type": "character",
         "character": "roxa",
         "role": "frame",
-        "order": 7,
-        "left": 16,
-        "top": 0.2,
-        "width": 32.4,
+        "order": 5,
+        "left": 19.2,
+        "top": 19.2,
+        "width": 27.6,
         "rotate": -4,
-        "depth": 0.5,
+        "depth": 0.4,
         "bar": {
-          "width": 86.4,
-          "top": 88.5,
-          "ratio": 8.24,
-          "left": 6.8
+          "width": 89.9,
+          "top": 87.6,
+          "ratio": 7.29,
+          "left": 5.1
         }
       },
       {
         "type": "character",
         "character": "romanesco",
         "role": "overflow",
-        "order": 8,
-        "left": 50.2,
-        "top": 7.2,
-        "width": 27.6,
+        "order": 6,
+        "left": 48,
+        "top": 11,
+        "width": 24,
         "rotate": 28,
-        "depth": 0.4,
+        "depth": 0.3,
         "bar": {
-          "width": 76.1,
-          "top": 87.6,
-          "ratio": 6.18,
-          "left": 12
+          "width": 79.2,
+          "top": 86.7,
+          "ratio": 5.59,
+          "left": 10.4
         }
       }
     ]
@@ -196,20 +178,11 @@
         "role": "rider",
         "order": 6,
         "left": 69.8,
-        "top": 35.9,
+        "top": 22,
         "width": 25.5,
         "rotate": -19,
         "depth": 0.6,
         "bar": null
-      },
-      {
-        "type": "deco",
-        "kind": "ball",
-        "order": 7,
-        "left": 92,
-        "top": 29.9,
-        "width": 4.1,
-        "svg": "<svg viewBox=\"-36 -36 72 72\" aria-hidden=\"true\"><g transform=\"rotate(0)\"><circle r=\"30\" fill=\"#fad30b\"/><circle cx=\"-10\" cy=\"-11\" r=\"8\" fill=\"#fff\" opacity=\"0.7\"/></g></svg>"
       }
     ]
   },

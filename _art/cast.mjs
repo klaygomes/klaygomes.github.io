@@ -67,20 +67,28 @@ export const cast = Object.values(characters);
 
 const place = (character, x, y, size, rotate = 0, extra = {}) => ({ kind: 'character', character, x, y, size, rotate, ...extra });
 
+const BAR_OFFSET = 0.525;
+const crowns = { couve: 0.44, brocolis: 0.56, roxa: 0.4 };
+
+function stack(x, floor, frames) {
+  let bar = floor;
+  return frames.map(([character, size, rotate]) => {
+    const y = Math.round(bar - BAR_OFFSET * size);
+    bar = y - crowns[character] * size + 10;
+    return place(character, x, y, size, rotate, { bar: Math.round(size * 1.08), role: 'frame' });
+  });
+}
+
 const hero = {
   id: 'hero',
   width: 1000,
   height: 1000,
   items: [
-    { kind: 'sparkle', x: 130, y: 150, scale: 0.9, color: yellow },
-    { kind: 'sparkle', x: 900, y: 96, scale: 0.55, color: white },
-    { kind: 'ball', x: 104, y: 610, scale: 0.75, color: yellow },
-    { kind: 'squiggle', x: 560, y: 560, rotate: -64, color: pink },
-    { kind: 'tray', x: 330, y: 958, width: 470, color: yellow },
-    place('couve', 330, 747, 300, -2, { bar: 330, role: 'frame' }),
-    place('brocolis', 338, 466, 290, 3, { bar: 300, role: 'frame' }),
-    place('roxa', 322, 164, 270, -4, { bar: 280, role: 'frame' }),
-    place('romanesco', 640, 210, 230, 28, { bar: 210, role: 'overflow' }),
+    { kind: 'sparkle', x: 170, y: 190, scale: 0.8, color: yellow },
+    { kind: 'sparkle', x: 880, y: 120, scale: 0.5, color: white },
+    { kind: 'tray', x: 330, y: 962, width: 400, color: yellow },
+    ...stack(330, 932, [['couve', 250, -2], ['brocolis', 240, 3], ['roxa', 230, -4]]),
+    place('romanesco', 600, 230, 200, 28, { bar: 190, role: 'overflow' }),
   ],
 };
 
@@ -95,7 +103,9 @@ function slopeDegrees(x) {
   return (Math.atan2(closingWave(x + step) - closingWave(x - step), 2 * step) * 180) / Math.PI;
 }
 
-const rider = (character, x, size) => place(character, x, Math.round(closingWave(x) - size * 0.17), size, Math.round(slopeDegrees(x)), { role: 'rider' });
+const floats = { brocolis: 0.4 };
+
+const rider = (character, x, size) => place(character, x, Math.round(closingWave(x) - size * (floats[character] ?? 0.17)), size, Math.round(slopeDegrees(x)), { role: 'rider' });
 
 const closing = {
   id: 'closing',
@@ -109,7 +119,6 @@ const closing = {
     rider('couveflor', 800, 390),
     rider('roxa', 1060, 330),
     rider('brocolis', 1320, 340),
-    { kind: 'ball', x: 1505, y: 200, scale: 0.9, color: yellow },
   ],
 };
 
