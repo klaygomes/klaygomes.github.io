@@ -1,5 +1,7 @@
 @import "tokens";
+@import "art";
 @import "main";
+@import "stage";
 @import "syntax";
 
 .btn-primary:focus-visible {

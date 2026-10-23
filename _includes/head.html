@@ -7,8 +7,13 @@
   <script>
     (function (root) {
       var seen = false;
-      try { seen = localStorage.getItem("ecf-intro-seen") === "1"; } catch (e) { seen = true; }
+      var still = false;
+      try {
+        seen = localStorage.getItem("ecf-intro-seen") === "1";
+        still = localStorage.getItem("ecf-motion") === "off";
+      } catch (e) { seen = true; }
       root.classList.add("js", seen ? "intro-quick" : "intro-full");
+      if (still) root.classList.add("motion-off");
     })(document.documentElement);
   </script>
   {%- assign page_description = page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 -%}

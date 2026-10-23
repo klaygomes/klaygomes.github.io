@@ -2,13 +2,15 @@
 <html lang="{{ page.lang | default: site.lang | default: "en-US" }}">
 {%- include head.html -%}
 
-<body class="flex min-h-[100dvh] flex-col bg-surface font-body text-ink antialiased">
+<body class="flex min-h-[100dvh] flex-col font-body text-ink antialiased">
   <a href="#content" class="skip-link">Skip to content</a>
   {%- include nav.html -%}
   <main id="content" class="grow" tabindex="-1">
     {{ content }}
   </main>
   {%- include footer.html -%}
+  <p class="sr-status sr-only" role="status" aria-live="polite"></p>
+  <script type="module" src="{{ '/assets/js/site.js' | relative_url }}"></script>
 </body>
 
 </html>

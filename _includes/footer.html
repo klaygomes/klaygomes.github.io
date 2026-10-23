@@ -1,27 +1,58 @@
-<footer class="site-footer h-card mt-auto bg-brand-strong text-highlight">
-  <div class="container flex flex-col gap-8 pt-12 md:flex-row md:items-end md:justify-between md:pt-10">
-    <div class="flex items-end gap-5">
-      <div class="footer-gag relative -mb-px shrink-0" data-webm="{{ '/assets/video/cleiton-idea.webm' | relative_url }}?v={{ site.time | date: '%s' }}" data-hevc="{{ '/assets/video/cleiton-idea.mp4' | relative_url }}?v={{ site.time | date: '%s' }}">
-        <img class="footer-gag-still block h-28 w-auto md:h-32" src="{{ '/assets/img/cleiton-footer.png' | relative_url }}" width="200" height="180" alt="{{ site.author.name }}, hand on chin, looking up thoughtfully">
+<div class="closing">
+  {%- include scene.html name="closing" size="100vw" %}
+</div>
+<footer class="site-footer h-card">
+  <div class="container site-footer__body">
+    <div class="site-footer__who">
+      <div class="footer-gag" data-webm="{{ '/assets/video/cleiton-idea.webm' | relative_url }}?v={{ site.time | date: '%s' }}" data-hevc="{{ '/assets/video/cleiton-idea.mp4' | relative_url }}?v={{ site.time | date: '%s' }}">
+        <img class="footer-gag-still" src="{{ '/assets/img/cleiton-footer.png' | relative_url }}" width="200" height="180" alt="{{ site.author.name }}, hand on chin, looking up at the cast">
       </div>
-      <div class="pb-6">
-        <p class="p-name font-display text-lg font-bold">{{ site.author.name | escape }}</p>
-        <a class="u-email link-underline mt-1 inline-block font-display text-sm text-highlight/80" href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
-        <p class="mt-3 max-w-[46ch] text-sm italic leading-relaxed text-highlight/70">{{ site.description | escape }}</p>
+      <div>
+        <p class="p-name font-display text-xl font-bold">{{ site.author.name | escape }}</p>
+        <a class="u-email link-underline mt-1 inline-block font-display text-sm text-highlight/85" href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
+        <p class="mt-3 max-w-[46ch] text-sm italic leading-relaxed text-highlight/75">{{ site.description | escape }}</p>
       </div>
     </div>
-    <div class="flex flex-col gap-3 pb-6 font-display text-sm text-highlight/70 md:items-end">
-      <ul class="flex flex-wrap gap-x-5 gap-y-2 font-medium text-highlight">
-        <li><a class="link-underline" href="{{ '/feed.xml' | relative_url }}">RSS</a></li>
-        <li><a class="link-underline" href="https://github.com/klaygomes" rel="noopener">GitHub</a></li>
-        <li><a class="link-underline" href="https://www.linkedin.com/in/klaygomes/" rel="noopener">LinkedIn</a></li>
-        <li><a class="link-underline" href="{{ '/privacy/' | relative_url }}">Privacy</a></li>
+
+    <div class="site-footer__ssh">
+      <p class="font-display text-sm text-highlight/75">My resume also lives in a terminal.</p>
+      <div class="ssh-line">
+        <svg class="ssh-line__clock" viewBox="0 0 160 24" preserveAspectRatio="none" aria-hidden="true"><path d="M0 20H8V4H18V20H28V4H38V20H48V4H58V20H68V4H78V20H88V4H98V20H108V4H118V20H128V4H138V20H148V4H160" /></svg>
+        <code class="ssh-line__command"><span aria-hidden="true">$ </span>ssh cleiton.se</code>
+        <button type="button" class="ssh-line__copy" data-copy="ssh cleiton.se">Copy</button>
+      </div>
+      <p class="font-display text-xs text-highlight/60">Or run <code class="font-mono">npx cleiton</code> anywhere Node lives.</p>
+    </div>
+
+    <nav class="site-footer__nav" aria-label="Footer">
+      <ul>
+        <li><a href="{{ '/feed.xml' | relative_url }}">RSS</a></li>
+        <li><a href="https://github.com/klaygomes" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/klaygomes/" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://stackoverflow.com/users/136258/cleiton" rel="noopener">Stack Overflow</a></li>
+        <li><a href="{{ '/privacy/' | relative_url }}">Privacy</a></li>
       </ul>
-      <p>© {{ site.time | date: "%Y" }} · Built with <a class="link-underline" href="https://jekyllrb.com/">Jekyll</a></p>
-    </div>
+    </nav>
+  </div>
+  <div class="container site-footer__legal">
+    <p>© {{ site.time | date: "%Y" }} {{ site.author.name }}</p>
+    <p>Built with <a class="link-underline" href="https://jekyllrb.com/">Jekyll</a> and a lot of cauliflower</p>
   </div>
 </footer>
 <script>
+  (function () {
+    var copy = document.querySelector(".ssh-line__copy");
+    if (!copy || !navigator.clipboard) return;
+    copy.addEventListener("click", function () {
+      navigator.clipboard.writeText(copy.dataset.copy).then(function () {
+        copy.textContent = "Copied";
+        var status = document.querySelector(".sr-status");
+        if (status) status.textContent = "Command copied.";
+        setTimeout(function () { copy.textContent = "Copy"; }, 1800);
+      });
+    });
+  })();
+
   (function () {
     var gag = document.querySelector(".footer-gag");
     if (!gag || !("IntersectionObserver" in window)) return;
