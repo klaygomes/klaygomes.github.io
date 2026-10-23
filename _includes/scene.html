@@ -1,0 +1,22 @@
+{%- assign scene = site.data.scenes[include.name] -%}
+{%- assign stage_size = include.size | default: "100vw" -%}
+<div class="stage stage--{{ include.name }} {{ include.class }}"{% if include.greet %} data-greet="{{ include.greet }}"{% endif %} style="aspect-ratio: {{ scene.width }} / {{ scene.height }}" aria-hidden="true">
+  {%- for item in scene.items -%}
+  {%- if item.type == "deco" %}
+  <span class="stage__item stage__deco stage__deco--{{ item.kind }}" style="left: {{ item.left }}%; top: {{ item.top }}%; width: {{ item.width }}%; --depth: 0.2; --order: {{ item.order }}">{{ item.svg }}</span>
+  {%- else -%}
+  {%- assign item_size = "calc(" | append: stage_size | append: " * " | append: item.width | append: " / 100)" -%}
+  {%- assign item_narrow = nil -%}
+  {%- if include.size_narrow %}{% assign item_narrow = "calc(" | append: include.size_narrow | append: " * " | append: item.width | append: " / 100)" %}{% endif %}
+  <div class="stage__item stage__frame" data-role="{{ item.role }}" style="left: {{ item.left }}%; top: {{ item.top }}%; width: {{ item.width }}%; --rotate: {{ item.rotate }}deg; --depth: {{ item.depth }}; --order: {{ item.order }}">
+    {%- if item.bar %}
+    <span class="stage__bar" style="left: {{ item.bar.left }}%; top: {{ item.bar.top }}%; width: {{ item.bar.width }}%; aspect-ratio: {{ item.bar.ratio }}"></span>
+    {%- endif %}
+    {% include character.html name=item.character size=item_size size_narrow=item_narrow eager=include.eager %}
+  </div>
+  {%- endif -%}
+  {%- endfor -%}
+  {%- if scene.wave %}
+  <svg class="stage__wave" viewBox="0 0 {{ scene.width }} {{ scene.height }}" preserveAspectRatio="none"><path d="{{ scene.wave }}"/></svg>
+  {%- endif %}
+</div>

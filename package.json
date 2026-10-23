@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "start": "bundle exec jekyll serve --livereload",
-    "build": "NODE_ENV=production postcss assets/css/main.postcss.css -o assets/css/main.build.css"
+    "build": "NODE_ENV=production postcss assets/css/main.postcss.css -o assets/css/main.build.css",
+    "art": "node _art/build.mjs"
   },
   "devDependencies": {
     "autoprefixer": "^10.6.1",

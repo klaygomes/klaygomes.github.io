@@ -1,0 +1,460 @@
+{
+  "hero": {
+    "width": 1000,
+    "height": 1000,
+    "wave": null,
+    "items": [
+      {
+        "type": "deco",
+        "kind": "sparkle",
+        "order": 0,
+        "left": 9.4,
+        "top": 11.4,
+        "width": 7.2,
+        "svg": "<svg viewBox=\"-40 -40 80 80\" aria-hidden=\"true\"><g transform=\"rotate(0)\"><path d=\"M0 -34 Q6 -6 34 0 Q6 6 0 34 Q-6 6 -34 0 Q-6 -6 0 -34Z\" fill=\"#fad30b\"/></g></svg>"
+      },
+      {
+        "type": "deco",
+        "kind": "sparkle",
+        "order": 1,
+        "left": 87.8,
+        "top": 7.4,
+        "width": 4.4,
+        "svg": "<svg viewBox=\"-40 -40 80 80\" aria-hidden=\"true\"><g transform=\"rotate(0)\"><path d=\"M0 -34 Q6 -6 34 0 Q6 6 0 34 Q-6 6 -34 0 Q-6 -6 0 -34Z\" fill=\"#fdfdfd\"/></g></svg>"
+      },
+      {
+        "type": "deco",
+        "kind": "ball",
+        "order": 2,
+        "left": 7.7,
+        "top": 58.3,
+        "width": 5.4,
+        "svg": "<svg viewBox=\"-36 -36 72 72\" aria-hidden=\"true\"><g transform=\"rotate(0)\"><circle r=\"30\" fill=\"#fad30b\"/><circle cx=\"-10\" cy=\"-11\" r=\"8\" fill=\"#fff\" opacity=\"0.7\"/></g></svg>"
+      },
+      {
+        "type": "deco",
+        "kind": "squiggle",
+        "order": 3,
+        "left": 48.5,
+        "top": 53,
+        "width": 15,
+        "svg": "<svg viewBox=\"-75 -30 150 60\" aria-hidden=\"true\"><g transform=\"rotate(-64)\"><path d=\"M-60 0 q15 -30 30 0 t30 0 t30 0 t30 0\" fill=\"none\" stroke=\"#eea2d4\" stroke-width=\"12\" stroke-linecap=\"round\"/></g></svg>"
+      },
+      {
+        "type": "deco",
+        "kind": "tray",
+        "order": 4,
+        "left": 7.5,
+        "top": 88.3,
+        "width": 51,
+        "svg": "<svg viewBox=\"-255 -75 510 150\" aria-hidden=\"true\"><g transform=\"rotate(0)\"><path d=\"M-235 -110 V0 H235 V-110\" fill=\"none\" stroke=\"#fad30b\" stroke-width=\"38\" stroke-linecap=\"round\" stroke-linejoin=\"round\" transform=\"translate(0 55)\"/></g></svg>"
+      },
+      {
+        "type": "character",
+        "character": "couve",
+        "role": "frame",
+        "order": 5,
+        "left": 15,
+        "top": 56.7,
+        "width": 36,
+        "rotate": -2,
+        "depth": 0.5,
+        "bar": {
+          "width": 91.7,
+          "top": 89.1,
+          "ratio": 9.71,
+          "left": 4.2
+        }
+      },
+      {
+        "type": "character",
+        "character": "brocolis",
+        "role": "frame",
+        "order": 6,
+        "left": 16.4,
+        "top": 29.2,
+        "width": 34.8,
+        "rotate": 3,
+        "depth": 0.5,
+        "bar": {
+          "width": 86.2,
+          "top": 88.9,
+          "ratio": 8.82,
+          "left": 6.9
+        }
+      },
+      {
+        "type": "character",
+        "character": "roxa",
+        "role": "frame",
+        "order": 7,
+        "left": 16,
+        "top": 0.2,
+        "width": 32.4,
+        "rotate": -4,
+        "depth": 0.5,
+        "bar": {
+          "width": 86.4,
+          "top": 88.5,
+          "ratio": 8.24,
+          "left": 6.8
+        }
+      },
+      {
+        "type": "character",
+        "character": "romanesco",
+        "role": "overflow",
+        "order": 8,
+        "left": 50.2,
+        "top": 7.2,
+        "width": 27.6,
+        "rotate": 28,
+        "depth": 0.4,
+        "bar": {
+          "width": 76.1,
+          "top": 87.6,
+          "ratio": 6.18,
+          "left": 12
+        }
+      }
+    ]
+  },
+  "closing": {
+    "width": 1600,
+    "height": 560,
+    "wave": "M0 497L20 497.5L40 496.9L60 495.5L80 493.5L100 491.3L120 489.1L140 487.3L160 486L180 485.3L200 485.2L220 485.7L240 486.6L260 487.7L280 488.6L300 489.1L320 489L340 487.9L360 485.8L380 482.6L400 478.2L420 473L440 467L460 460.6L480 454.2L500 448.1L520 442.8L540 438.5L560 435.7L580 434.3L600 434.5L620 436.3L640 439.5L660 443.9L680 449L700 454.7L720 460.4L740 465.9L760 470.8L780 474.9L800 478L820 480.2L840 481.4L860 481.9L880 481.8L900 481.4L920 481L940 480.9L960 481.2L980 482.2L1000 483.8L1020 486.1L1040 489L1060 492.2L1080 495.4L1100 498.4L1120 500.8L1140 502.3L1160 502.7L1180 501.7L1200 499.3L1220 495.5L1240 490.4L1260 484.3L1280 477.4L1300 470.2L1320 463.1L1340 456.4L1360 450.6L1380 445.9L1400 442.5L1420 440.6L1440 440.1L1460 441L1480 442.9L1500 445.8L1520 449.1L1540 452.6L1560 456.1L1580 459.1L1600 461.5L1600 560L0 560Z",
+    "items": [
+      {
+        "type": "deco",
+        "kind": "sparkle",
+        "order": 0,
+        "left": 38.8,
+        "top": 8.9,
+        "width": 5,
+        "svg": "<svg viewBox=\"-40 -40 80 80\" aria-hidden=\"true\"><g transform=\"rotate(0)\"><path d=\"M0 -34 Q6 -6 34 0 Q6 6 0 34 Q-6 6 -34 0 Q-6 -6 0 -34Z\" fill=\"#fad30b\"/></g></svg>"
+      },
+      {
+        "type": "deco",
+        "kind": "squiggle",
+        "order": 1,
+        "left": 69.7,
+        "top": 14.3,
+        "width": 9.4,
+        "svg": "<svg viewBox=\"-75 -30 150 60\" aria-hidden=\"true\"><g transform=\"rotate(-20)\"><path d=\"M-60 0 q15 -30 30 0 t30 0 t30 0 t30 0\" fill=\"none\" stroke=\"#eea2d4\" stroke-width=\"12\" stroke-linecap=\"round\"/></g></svg>"
+      },
+      {
+        "type": "character",
+        "character": "couve",
+        "role": "rider",
+        "order": 2,
+        "left": 5.1,
+        "top": 41.8,
+        "width": 24.8,
+        "rotate": 2,
+        "depth": 0.6,
+        "bar": null
+      },
+      {
+        "type": "character",
+        "character": "romanesco",
+        "role": "rider",
+        "order": 3,
+        "left": 21.8,
+        "top": 34.3,
+        "width": 24,
+        "rotate": -10,
+        "depth": 0.5,
+        "bar": null
+      },
+      {
+        "type": "character",
+        "character": "couveflor",
+        "role": "rider",
+        "order": 4,
+        "left": 35.4,
+        "top": 31.8,
+        "width": 29.3,
+        "rotate": 8,
+        "depth": 0.7,
+        "bar": null
+      },
+      {
+        "type": "character",
+        "character": "roxa",
+        "role": "rider",
+        "order": 5,
+        "left": 53.9,
+        "top": 42.5,
+        "width": 24.8,
+        "rotate": 9,
+        "depth": 0.6,
+        "bar": null
+      },
+      {
+        "type": "character",
+        "character": "brocolis",
+        "role": "rider",
+        "order": 6,
+        "left": 69.8,
+        "top": 35.9,
+        "width": 25.5,
+        "rotate": -19,
+        "depth": 0.6,
+        "bar": null
+      },
+      {
+        "type": "deco",
+        "kind": "ball",
+        "order": 7,
+        "left": 92,
+        "top": 29.9,
+        "width": 4.1,
+        "svg": "<svg viewBox=\"-36 -36 72 72\" aria-hidden=\"true\"><g transform=\"rotate(0)\"><circle r=\"30\" fill=\"#fad30b\"/><circle cx=\"-10\" cy=\"-11\" r=\"8\" fill=\"#fff\" opacity=\"0.7\"/></g></svg>"
+      }
+    ]
+  },
+  "persona-low-level": {
+    "width": 1000,
+    "height": 760,
+    "wave": null,
+    "items": [
+      {
+        "type": "deco",
+        "kind": "sparkle",
+        "order": 0,
+        "left": 10.8,
+        "top": 10.3,
+        "width": 6.4,
+        "svg": "<svg viewBox=\"-40 -40 80 80\" aria-hidden=\"true\"><g transform=\"rotate(0)\"><path d=\"M0 -34 Q6 -6 34 0 Q6 6 0 34 Q-6 6 -34 0 Q-6 -6 0 -34Z\" fill=\"#fad30b\"/></g></svg>"
+      },
+      {
+        "type": "deco",
+        "kind": "squiggle",
+        "order": 1,
+        "left": 81,
+        "top": 13.9,
+        "width": 12,
+        "svg": "<svg viewBox=\"-75 -30 150 60\" aria-hidden=\"true\"><g transform=\"rotate(-25)\"><path d=\"M-60 0 q15 -30 30 0 t30 0 t30 0 t30 0\" fill=\"none\" stroke=\"#eea2d4\" stroke-width=\"12\" stroke-linecap=\"round\"/></g></svg>"
+      },
+      {
+        "type": "character",
+        "character": "couveflor",
+        "role": "friend",
+        "order": 2,
+        "left": -0.8,
+        "top": 42.4,
+        "width": 39.6,
+        "rotate": -8,
+        "depth": 0.6,
+        "bar": null
+      },
+      {
+        "type": "character",
+        "character": "brocolis",
+        "role": "friend",
+        "order": 3,
+        "left": 64,
+        "top": 47.4,
+        "width": 36,
+        "rotate": 8,
+        "depth": 0.5,
+        "bar": null
+      },
+      {
+        "type": "character",
+        "character": "romanesco",
+        "role": "lead",
+        "order": 4,
+        "left": 16.4,
+        "top": 5.8,
+        "width": 67.2,
+        "rotate": 0,
+        "depth": 0.9,
+        "bar": null
+      }
+    ]
+  },
+  "persona-frontend": {
+    "width": 1000,
+    "height": 760,
+    "wave": null,
+    "items": [
+      {
+        "type": "deco",
+        "kind": "sparkle",
+        "order": 0,
+        "left": 10.8,
+        "top": 10.3,
+        "width": 6.4,
+        "svg": "<svg viewBox=\"-40 -40 80 80\" aria-hidden=\"true\"><g transform=\"rotate(0)\"><path d=\"M0 -34 Q6 -6 34 0 Q6 6 0 34 Q-6 6 -34 0 Q-6 -6 0 -34Z\" fill=\"#fad30b\"/></g></svg>"
+      },
+      {
+        "type": "deco",
+        "kind": "squiggle",
+        "order": 1,
+        "left": 81,
+        "top": 13.9,
+        "width": 12,
+        "svg": "<svg viewBox=\"-75 -30 150 60\" aria-hidden=\"true\"><g transform=\"rotate(-25)\"><path d=\"M-60 0 q15 -30 30 0 t30 0 t30 0 t30 0\" fill=\"none\" stroke=\"#eea2d4\" stroke-width=\"12\" stroke-linecap=\"round\"/></g></svg>"
+      },
+      {
+        "type": "character",
+        "character": "couveflor",
+        "role": "friend",
+        "order": 2,
+        "left": -0.8,
+        "top": 42.4,
+        "width": 39.6,
+        "rotate": -8,
+        "depth": 0.6,
+        "bar": null
+      },
+      {
+        "type": "character",
+        "character": "romanesco",
+        "role": "friend",
+        "order": 3,
+        "left": 64,
+        "top": 47.4,
+        "width": 36,
+        "rotate": 8,
+        "depth": 0.5,
+        "bar": null
+      },
+      {
+        "type": "character",
+        "character": "roxa",
+        "role": "lead",
+        "order": 4,
+        "left": 16.4,
+        "top": 5.8,
+        "width": 67.2,
+        "rotate": 0,
+        "depth": 0.9,
+        "bar": null
+      }
+    ]
+  },
+  "persona-tooling": {
+    "width": 1000,
+    "height": 760,
+    "wave": null,
+    "items": [
+      {
+        "type": "deco",
+        "kind": "sparkle",
+        "order": 0,
+        "left": 10.8,
+        "top": 10.3,
+        "width": 6.4,
+        "svg": "<svg viewBox=\"-40 -40 80 80\" aria-hidden=\"true\"><g transform=\"rotate(0)\"><path d=\"M0 -34 Q6 -6 34 0 Q6 6 0 34 Q-6 6 -34 0 Q-6 -6 0 -34Z\" fill=\"#fad30b\"/></g></svg>"
+      },
+      {
+        "type": "deco",
+        "kind": "squiggle",
+        "order": 1,
+        "left": 81,
+        "top": 13.9,
+        "width": 12,
+        "svg": "<svg viewBox=\"-75 -30 150 60\" aria-hidden=\"true\"><g transform=\"rotate(-25)\"><path d=\"M-60 0 q15 -30 30 0 t30 0 t30 0 t30 0\" fill=\"none\" stroke=\"#eea2d4\" stroke-width=\"12\" stroke-linecap=\"round\"/></g></svg>"
+      },
+      {
+        "type": "character",
+        "character": "couve",
+        "role": "friend",
+        "order": 2,
+        "left": -0.8,
+        "top": 42.4,
+        "width": 39.6,
+        "rotate": -8,
+        "depth": 0.6,
+        "bar": null
+      },
+      {
+        "type": "character",
+        "character": "roxa",
+        "role": "friend",
+        "order": 3,
+        "left": 64,
+        "top": 47.4,
+        "width": 36,
+        "rotate": 8,
+        "depth": 0.5,
+        "bar": null
+      },
+      {
+        "type": "character",
+        "character": "brocolis",
+        "role": "lead",
+        "order": 4,
+        "left": 16.4,
+        "top": 5.8,
+        "width": 67.2,
+        "rotate": 0,
+        "depth": 0.9,
+        "bar": null
+      }
+    ]
+  },
+  "persona-dotnet": {
+    "width": 1000,
+    "height": 760,
+    "wave": null,
+    "items": [
+      {
+        "type": "deco",
+        "kind": "sparkle",
+        "order": 0,
+        "left": 10.8,
+        "top": 10.3,
+        "width": 6.4,
+        "svg": "<svg viewBox=\"-40 -40 80 80\" aria-hidden=\"true\"><g transform=\"rotate(0)\"><path d=\"M0 -34 Q6 -6 34 0 Q6 6 0 34 Q-6 6 -34 0 Q-6 -6 0 -34Z\" fill=\"#fad30b\"/></g></svg>"
+      },
+      {
+        "type": "deco",
+        "kind": "squiggle",
+        "order": 1,
+        "left": 81,
+        "top": 13.9,
+        "width": 12,
+        "svg": "<svg viewBox=\"-75 -30 150 60\" aria-hidden=\"true\"><g transform=\"rotate(-25)\"><path d=\"M-60 0 q15 -30 30 0 t30 0 t30 0 t30 0\" fill=\"none\" stroke=\"#eea2d4\" stroke-width=\"12\" stroke-linecap=\"round\"/></g></svg>"
+      },
+      {
+        "type": "character",
+        "character": "brocolis",
+        "role": "friend",
+        "order": 2,
+        "left": -0.8,
+        "top": 42.4,
+        "width": 39.6,
+        "rotate": -8,
+        "depth": 0.6,
+        "bar": null
+      },
+      {
+        "type": "character",
+        "character": "couveflor",
+        "role": "friend",
+        "order": 3,
+        "left": 64,
+        "top": 47.4,
+        "width": 36,
+        "rotate": 8,
+        "depth": 0.5,
+        "bar": null
+      },
+      {
+        "type": "character",
+        "character": "couve",
+        "role": "lead",
+        "order": 4,
+        "left": 16.4,
+        "top": 5.8,
+        "width": 67.2,
+        "rotate": 0,
+        "depth": 0.9,
+        "bar": null
+      }
+    ]
+  }
+}

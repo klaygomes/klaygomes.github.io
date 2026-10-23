@@ -42,6 +42,7 @@ exclude:
   - package-lock.json
   - skills-lock.json
   - TASKS.md
+  - assets/js/package.json
   - postcss.config.js
   - tailwind.config.js
   - yarn.lock

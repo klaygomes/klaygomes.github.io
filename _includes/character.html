@@ -1,0 +1,37 @@
+{%- assign c = site.data.cast[include.name] -%}
+{%- assign size = include.size | default: "12rem" -%}
+{%- assign tag = "ecf-" | append: c.kind -%}
+{%- if include.flat -%}
+{%- assign flat_set = "" -%}
+{%- for w in c.flat.widths %}{% capture flat_entry %}{{ '/assets/img/art/' | append: c.flat.file | append: '-' | append: w | append: '.webp' | relative_url }} {{ w }}w{% endcapture %}{% assign flat_set = flat_set | append: flat_entry %}{% unless forloop.last %}{% assign flat_set = flat_set | append: ', ' %}{% endunless %}{% endfor -%}
+<img class="character-flat {{ include.class }}" src="{{ '/assets/img/art/' | append: c.flat.file | append: '-' | append: c.flat.widths[0] | append: '.webp' | relative_url }}" srcset="{{ flat_set }}" sizes="{{ size }}" width="{{ c.flat.widths[0] }}" height="{{ c.flat.widths[0] }}" alt="" loading="lazy" decoding="async">
+{%- else -%}
+{%- assign head = c.parts | where: "name", "head" | first -%}
+{%- assign face_done = false -%}
+<{{ tag }} class="character {{ include.class }}" data-character="{{ include.name }}" data-face='{{ c.face.spec | jsonify }}' data-eyes="{{ c.face.eyes[0] }} {{ c.face.eyes[1] }}"{% if include.style %} style="{{ include.style }}"{% endif %}>
+  <span class="character__rig">
+    {%- for part in c.parts -%}
+    {%- if face_done == false and part.z > c.face.z %}
+    <svg class="character__face" data-part="face" viewBox="-40 -40 480 480" style="transform-origin: {{ head.pivot[0] }}% {{ head.pivot[1] }}%" aria-hidden="true">{{ c.face.svg }}</svg>
+    {%- assign face_done = true -%}
+    {%- endif -%}
+    {%- assign avif = "" -%}{%- assign webp = "" -%}
+    {%- for w in part.widths -%}
+    {%- capture src %}{{ '/assets/img/art/' | append: part.file | append: '-' | append: w | relative_url }}{% endcapture -%}
+    {%- assign avif = avif | append: src | append: '.avif ' | append: w | append: 'w' -%}
+    {%- assign webp = webp | append: src | append: '.webp ' | append: w | append: 'w' -%}
+    {%- unless forloop.last %}{% assign avif = avif | append: ', ' %}{% assign webp = webp | append: ', ' %}{% endunless -%}
+    {%- endfor -%}
+    {%- assign part_sizes = "calc(" | append: size | append: " * " | append: part.width | append: " / 100)" -%}
+    {%- if include.size_narrow %}{% assign part_sizes = "(min-width: 60rem) " | append: part_sizes | append: ", calc(" | append: include.size_narrow | append: " * " | append: part.width | append: " / 100)" %}{% endif %}
+    <picture class="character__part" data-part="{{ part.name }}" style="left: {{ part.left }}%; top: {{ part.top }}%; width: {{ part.width }}%; transform-origin: {{ part.origin[0] }}% {{ part.origin[1] }}%">
+      <source type="image/avif" srcset="{{ avif }}" sizes="{{ part_sizes }}">
+      <img src="{{ '/assets/img/art/' | append: part.file | append: '-' | append: part.widths[0] | append: '.webp' | relative_url }}" srcset="{{ webp }}" sizes="{{ part_sizes }}" width="{{ part.widths[0] }}" height="{{ part.widths[0] | divided_by: part.ratio | round }}" alt="" decoding="async"{% if include.eager %} fetchpriority="high"{% else %} loading="lazy"{% endif %}>
+    </picture>
+    {%- endfor -%}
+    {%- if face_done == false %}
+    <svg class="character__face" data-part="face" viewBox="-40 -40 480 480" style="transform-origin: {{ head.pivot[0] }}% {{ head.pivot[1] }}%" aria-hidden="true">{{ c.face.svg }}</svg>
+    {%- endif %}
+  </span>
+</{{ tag }}>
+{%- endif -%}
