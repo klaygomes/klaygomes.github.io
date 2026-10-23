@@ -116,21 +116,21 @@ The timings follow measured motion-design practice: things land decelerating, a 
 | snap settle | `--ease-snap-settle` | hero objects, closing riders, Cleiton's photo |
 | glide | `--ease-glide` | marker strokes |
 | accel exit | `--ease-accel-exit` | falls and exits |
+| fall | inline in `@keyframes frame-fall` | gravity: accelerates until impact |
 | pop over | inline in `@keyframes overflow` | the one spring: the romanesco knocked off the stack |
 
 ```mermaid
 sequenceDiagram
   participant W as Words
-  participant M as Marker
   participant S as Stack
   participant R as Romanesco
   participant C as Cleiton
   Note over W,C: frame 0, the shader is already flowing
   W->>W: Esta, couve, flor land 5 frames apart
   C->>C: photo rises (frame 10)
-  S->>S: kale, broccoli, purple drop in, 3 frames apart (15 to 21)
-  M->>M: strokes draw (18 and 27)
-  R->>R: falls onto the stack, then springs off (26 to 60)
+  S->>S: kale, broccoli, purple fall into the tray one by one (6, 17, 28), accelerating, then squash on impact
+  S->>S: the frame below takes the hit and squints with an "oh" face
+  R->>R: falls last, lands on top, wobbles, and springs off the stack (39 to 79)
   Note over W,C: the gag video cues when the marker finishes
 ```
 

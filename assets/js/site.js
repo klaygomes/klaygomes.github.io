@@ -60,6 +60,20 @@ function greetWhenLanded() {
   });
 }
 
+function reactToLandings() {
+  const stage = document.querySelector('.stage--hero');
+  if (!stage) return;
+  stage.addEventListener('animationstart', (event) => {
+    if (event.animationName !== 'take-hit') return;
+    event.target.querySelector('.character')?.express?.({ mouth: 'oh', eyes: 'squint' }, 16 * FRAME);
+  });
+  stage.addEventListener('animationend', (event) => {
+    if (event.animationName !== 'overflow') return;
+    event.target.querySelector('.character')?.express?.({ mouth: 'open', eyes: 'happy' }, 30 * FRAME);
+  });
+}
+
 wireMotionToggle();
+reactToLandings();
 popNearPageEnd();
 greetWhenLanded();

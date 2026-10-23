@@ -485,13 +485,19 @@
   }
 
   .js:not(.motion-off) .stage--hero [data-role="frame"] {
-    animation: frame-drop calc(12 * var(--frame)) var(--ease-soft-land) both;
-    animation-delay: calc((var(--order) * 3 + 0) * var(--frame));
+    --fall: calc(var(--order) - 3);
+    transform-origin: 50% 92%;
+    animation:
+      frame-fall calc(20 * var(--frame)) linear both,
+      take-hit calc(10 * var(--frame)) var(--ease-soft-land) both;
+    animation-delay:
+      calc((var(--fall) * 11 + 6) * var(--frame)),
+      calc((var(--fall) * 11 + 6 + 11 + 14) * var(--frame));
   }
 
   .js:not(.motion-off) .stage--hero [data-role="overflow"] {
-    animation: overflow calc(34 * var(--frame)) linear both;
-    animation-delay: calc(26 * var(--frame));
+    animation: overflow calc(40 * var(--frame)) linear both;
+    animation-delay: calc(39 * var(--frame));
   }
 
   .js:not(.motion-off) .hero-figure {
@@ -543,12 +549,26 @@
   100% { transform: none; filter: none; opacity: 1; }
 }
 
+@keyframes frame-fall {
+  0% { transform: translateY(calc(-100cqh - 110%)) rotate(-8deg); animation-timing-function: cubic-bezier(0.55, 0, 0.9, 0.6); }
+  70% { transform: translateY(0) rotate(0) scale(1, 1); animation-timing-function: var(--ease-soft-land); }
+  82% { transform: translateY(0) scale(1.07, 0.9); animation-timing-function: var(--ease-soft-land); }
+  100% { transform: none; }
+}
+
+@keyframes take-hit {
+  0% { scale: 1 1; }
+  35% { scale: 1.04 0.94; }
+  100% { scale: 1 1; }
+}
+
 @keyframes overflow {
-  0% { transform: translate(-112%, -150%) rotate(-28deg); opacity: 0; animation-timing-function: var(--ease-accel-exit); }
-  8% { opacity: 1; }
-  32% { transform: translate(-112%, -48%) rotate(-28deg); animation-timing-function: var(--ease-soft-land); }
-  44% { transform: translate(-104%, -52%) rotate(-20deg); animation-timing-function: cubic-bezier(0.3, 1.32, 0.55, 1); }
-  100% { transform: none; opacity: 1; }
+  0% { transform: translate(-112%, calc(-48% - 100cqh - 110%)) rotate(-34deg); animation-timing-function: cubic-bezier(0.55, 0, 0.9, 0.6); }
+  28% { transform: translate(-112%, -48%) rotate(-28deg); animation-timing-function: var(--ease-soft-land); }
+  36% { transform: translate(-112%, -48%) rotate(-28deg) scale(1.07, 0.9); animation-timing-function: var(--ease-soft-land); }
+  46% { transform: translate(-108%, -50%) rotate(-31deg); animation-timing-function: var(--ease-in-out, ease-in-out); }
+  54% { transform: translate(-114%, -50%) rotate(-23deg); animation-timing-function: cubic-bezier(0.3, 1.32, 0.55, 1); }
+  100% { transform: none; }
 }
 
 @keyframes figure-rise {
