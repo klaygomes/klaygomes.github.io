@@ -1,0 +1,9 @@
+{%- assign meta_post = include.post -%}
+{%- assign meta_topic = site.data.topics | where: "name", meta_post.topic | first -%}
+{%- if include.hide_topic %}{% assign meta_topic = nil %}{% endif -%}
+{%- if meta_topic or meta_post.lang == "pt-BR" -%}
+<span class="post-meta{% if include.tone == 'dark' %} post-meta--dark{% endif %}">
+  {%- if meta_topic %}<a class="post-meta__topic" href="{{ meta_topic.slug | prepend: '/' | append: '/' | relative_url }}">{{ meta_topic.name }}</a>{% endif -%}
+  {%- if meta_post.lang == "pt-BR" %}<span class="post-meta__lang">In Portuguese</span>{% endif -%}
+</span>
+{%- endif -%}

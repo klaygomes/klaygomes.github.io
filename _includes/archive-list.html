@@ -1,7 +1,8 @@
 {%- assign archive = site.posts | slice: include.offset, site.posts.size -%}
 {%- if archive.size > 0 -%}
 {%- assign years = archive | group_by_exp: "post", "post.date | date: '%Y'" -%}
-<section class="bg-surface-sunken py-20 md:py-24" aria-labelledby="archive-title">
+<span class="curd mt-16 text-surface-sunken md:mt-20" aria-hidden="true"></span>
+<section class="bg-surface-sunken pb-20 pt-10 md:pb-24 md:pt-14" aria-labelledby="archive-title">
   <div class="container">
     <div class="mb-10 flex items-end justify-between gap-6 md:mb-14">
       <h2 id="archive-title" class="font-display text-3xl font-extrabold tracking-tight text-brand-strong md:text-4xl">From the archive</h2>
@@ -17,7 +18,7 @@
             <a href="{{ post.url | relative_url }}" class="archive-title"{% if post.lang %} hreflang="{{ post.lang }}"{% endif %}>{{ post.title | remove: " (in Portuguese)" }}</a>
             <span class="archive-meta">
               <time class="tabular-nums" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d" }}</time>
-              {%- include post-chips.html post=post %}
+              {%- include post-meta.html post=post %}
             </span>
           </li>
           {%- endfor %}

@@ -4,7 +4,7 @@ const token = (name) => `rgb(var(--color-${name}) / <alpha-value>)`
 module.exports = {
   content: [
     './_drafts/*.html',
-    './_includes/*.html',
+    './_includes/**/*.html',
     './_layouts/*.html',
     './_posts/*.md',
     './*.md',
@@ -27,6 +27,7 @@ module.exports = {
           DEFAULT: token('accent'),
           strong: token('accent-strong'),
         },
+        blush: token('blush'),
         leaf: token('leaf'),
         ink: token('ink'),
         surface: {

@@ -5,23 +5,35 @@
   --yellow-400: 250 211 11;
   --magenta-500: 198 63 117;
   --magenta-700: 182 26 84;
+  --pink-300: 238 162 212;
   --green-800: 62 107 15;
   --ink-950: 37 6 60;
   --lilac-50: 247 242 251;
   --lilac-100: 237 227 245;
   --white-50: 253 253 253;
 
-  /* Semantic colors */
+  /* Semantic colors: see docs/design.md for the hue relationships */
   --color-brand: var(--purple-700);
   --color-brand-strong: var(--purple-900);
   --color-highlight: var(--yellow-400);
   --color-accent: var(--magenta-500);
   --color-accent-strong: var(--magenta-700);
+  --color-blush: var(--pink-300);
   --color-leaf: var(--green-800);
   --color-ink: var(--ink-950);
   --color-surface: var(--lilac-50);
   --color-surface-sunken: var(--lilac-100);
   --color-surface-raised: var(--white-50);
+
+  /* Viscous hero field */
+  --shader-1: var(--magenta-500);
+  --shader-2: var(--purple-700);
+  --shader-3: var(--pink-300);
+
+  /* Ground: grain and soft glows, after the profile card */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.29 0 0 0 0 0.06 0 0 0 0 0.48 0 0 0 0.11 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --glow-brand: rgb(var(--color-brand) / 0.14);
+  --glow-accent: rgb(var(--color-accent) / 0.12);
 
   /* Focus: yellow ring inside a purple halo, so one band always contrasts with the surface */
   --focus-ring: 0 0 0 2px rgb(var(--color-brand-strong)), 0 0 0 5px rgb(var(--color-highlight)), 0 0 0 7px rgb(var(--color-brand-strong));
@@ -36,16 +48,25 @@
   --radius-sm: 0.375rem;
   --radius-md: 0.75rem;
   --radius-lg: 1.25rem;
+  --curd-height: clamp(1.25rem, 3vw, 2.25rem);
 
   /* Elevation: shadows tinted with the brand purple, light from above */
   --shadow-card: 0 1px 2px rgb(var(--purple-900) / 0.08), 0 8px 24px -12px rgb(var(--purple-900) / 0.25);
   --shadow-lift: 0 2px 4px rgb(var(--purple-900) / 0.1), 0 18px 40px -16px rgb(var(--purple-900) / 0.35);
+  --shadow-cast: drop-shadow(0 0.9rem 0.9rem rgb(var(--purple-900) / 0.2));
 
-  /* Motion */
+  /* Motion: measured curves, see docs/design.md */
+  --frame: 33ms;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-soft-land: cubic-bezier(0.22, 0.75, 0.25, 1);
+  --ease-snap-settle: cubic-bezier(0.04, 0.92, 0.12, 1);
+  --ease-glide: cubic-bezier(0.3, 0.6, 0.45, 1);
+  --ease-accel-exit: cubic-bezier(0.5, 0, 0.75, 0);
   --duration-fast: 200ms;
   --duration-base: 300ms;
+  --duration-land: 400ms;
+  --duration-settle: 560ms;
   --duration-slow: 700ms;
   --intro-step: 140ms;
 
@@ -56,5 +77,7 @@
 
 .intro-quick {
   --duration-slow: 450ms;
+  --duration-settle: 400ms;
   --intro-step: 50ms;
+  --frame: 16ms;
 }

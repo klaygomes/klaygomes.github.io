@@ -8,9 +8,9 @@
   <article class="reveal relative mb-6 md:mb-8">
     <div class="card-featured group">
       <div class="flex flex-wrap items-center gap-3 font-display text-sm font-semibold text-highlight">
-        <span class="rounded-sm bg-highlight px-2 py-0.5 text-xs uppercase tracking-[0.12em] text-brand-strong">Newest</span>
+        <span class="inline-flex items-center gap-1.5"><svg class="h-3.5 w-3.5" viewBox="-34 -34 68 68" aria-hidden="true"><path d="M0 -34 Q6 -6 34 0 Q6 6 0 34 Q-6 6 -34 0 Q-6 -6 0 -34Z" fill="currentColor"/></svg>Newest</span>
         <time class="tabular-nums" datetime="{{ lead.date | date_to_xmlschema }}">{{ lead.date | date: date_format }}</time>
-        {%- include post-chips.html post=lead tone="dark" %}
+        {%- include post-meta.html post=lead tone="dark" %}
       </div>
       <h3 class="mt-5 max-w-[22ch] text-balance font-display text-3xl font-extrabold leading-[1.05] tracking-tight text-highlight md:text-5xl">
         <a class="card-link" href="{{ lead.url | relative_url }}"{% if lead.lang %} hreflang="{{ lead.lang }}"{% endif %}>{{ lead.title | remove: " (in Portuguese)" }}</a>

@@ -1,10 +1,10 @@
 <nav class="topic-nav" aria-label="Browse by topic">
   <span class="topic-nav-label">Browse by topic</span>
-  <ul class="flex flex-wrap gap-2">
+  <ul>
     {%- for topic in site.data.topics -%}
     {%- assign topic_posts = site.posts | where: "topic", topic.name -%}
     {%- if topic_posts.size > 0 %}
-    <li><a class="topic-link" href="{{ '/articles/' | relative_url }}#topic-{{ topic.name | slugify }}">{{ topic.name }}<span class="topic-count">{{ topic_posts.size }}</span></a></li>
+    <li><a class="topic-link" href="{{ topic.slug | prepend: '/' | append: '/' | relative_url }}">{% include character.html name=topic.persona flat=true size="2.5rem" %}<span class="topic-name">{{ topic.name }}</span><span class="topic-count">{{ topic_posts.size }}</span></a></li>
     {%- endif -%}
     {%- endfor %}
   </ul>

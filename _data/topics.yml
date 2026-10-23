@@ -1,8 +1,20 @@
 - name: Low-level
+  slug: low-level
+  persona: romanesco
   blurb: Bare-metal ARM, STM32, C and assembly.
+  intro: Registers, clock trees and the toolchain under everything else. The romanesco keeps the STM32 close.
 - name: Frontend
+  slug: frontend
+  persona: roxa
   blurb: React internals, browser libraries and UI experiments.
+  intro: How React and the browser really work, plus the small libraries that came out of it.
 - name: Tooling
+  slug: tooling
+  persona: brocolis
   blurb: Testing, automation, dotfiles and the tools around the code.
+  intro: Tests, automation and dotfiles. Everything that makes the code easier to live with.
 - name: .NET
+  slug: dotnet
+  persona: couve
   blurb: Notes from the C# and F# years.
+  intro: Notes from the C# and F# years, kept for anyone still on that road.
