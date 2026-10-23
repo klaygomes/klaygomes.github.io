@@ -108,16 +108,19 @@ classDiagram
 
 ## Motion
 
-The timings follow measured motion-design practice: things land decelerating, a typical move is about 12 frames (0.4 s at 30 fps, `--frame` is 33 ms), elements arrive by moving with opacity only as a helper, and there is at most one visible spring per page.
+Motion is physical: things fall under gravity, and everything that settles does so on a simulated damped spring, so arrivals overshoot and wobble instead of easing to a stop.
 
-| Curve | Token | Use |
+- `assets/js/spring.js` solves the damped harmonic oscillator for four presets and samples each into a CSS `linear()` easing plus its settle time. The build writes them as `--spring-gentle`, `--spring-bouncy`, `--spring-wobbly`, `--spring-snappy` (and `-duration`) into `assets/css/art.css`; the components import the same presets.
+- Gestures are impulses: a part is displaced (an arm raised, a leaf bent, a hat lifted) and released into a spring, so a wave or a flutter oscillates and settles by itself.
+- The romanesco's overflow is simulated in `assets/js/overflow.js`: a gravity fall onto the computed top of the stack, a spring squash, a nudge, a ballistic arc (constant drift sideways, gravity downwards, tilting toward the throw) and a spring landing, sampled at 60 fps into keyframes and synced to the CSS timeline. It turns about its own centre; squashes stay anchored at its feet.
+- The stack reacts: the frame below takes each hit with an "oh" face; when the romanesco lands on top the tower sways (more the higher the level), everyone panics with worried brows and a wavy mouth and trembles until it lands, then they blink with relief.
+
+| Spring | Stiffness / damping | Use |
 |---|---|---|
-| soft land | `--ease-soft-land` | most entrances |
-| snap settle | `--ease-snap-settle` | hero objects, closing riders, Cleiton's photo |
-| glide | `--ease-glide` | marker strokes |
-| accel exit | `--ease-accel-exit` | falls and exits |
-| fall | inline in `@keyframes frame-fall` | gravity: accelerates until impact |
-| pop over | inline in `@keyframes overflow` | the one spring: the romanesco knocked off the stack |
+| gentle | 120 / 15 | text, photo, cards entering |
+| bouncy | 210 / 13 | landings, peeks, riders, hat tips |
+| wobbly | 190 / 8 | waves, flutters, sways, take-hit |
+| snappy | 420 / 30 | eyes following the pointer, card hover |
 
 ```mermaid
 sequenceDiagram
@@ -128,9 +131,11 @@ sequenceDiagram
   Note over W,C: frame 0, the shader is already flowing
   W->>W: Esta, couve, flor land 5 frames apart
   C->>C: photo rises (frame 10)
-  S->>S: kale, broccoli, purple fall into the tray one by one (6, 17, 28), accelerating, then squash on impact
+  S->>S: kale, broccoli, purple fall into the tray every 9 frames (6, 15, 24), accelerating, then squash on impact
   S->>S: the frame below takes the hit and squints with an "oh" face
-  R->>R: falls last, lands on top, wobbles, and springs off the stack (39 to 79)
+  R->>R: falls last onto the top (33 to 45), the tower sways and everyone panics
+  R->>R: nudged, then thrown off on an arc, lands with a spring, and grins
+  S->>S: relief: smiles and blinks
   Note over W,C: the gag video cues when the marker finishes
 ```
 

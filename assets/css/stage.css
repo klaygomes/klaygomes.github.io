@@ -559,13 +559,10 @@
       frame-fall calc(36 * var(--frame)) linear both,
       take-hit var(--spring-wobbly-duration) linear both;
     animation-delay:
-      calc((var(--fall) * 12 + 6) * var(--frame)),
-      calc((var(--fall) * 12 + 32) * var(--frame));
+      calc((var(--fall) * 9 + 6) * var(--frame)),
+      calc((var(--fall) * 9 + 28) * var(--frame));
   }
 
-  .js:not(.motion-off) .stage--hero [data-role="overflow"] {
-    transform-origin: 50% 92%;
-  }
 
   .js:not(.motion-off) .stage--hero [data-role="overflow"]:not(.is-scripted) {
     opacity: 0;
