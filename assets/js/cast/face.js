@@ -7,6 +7,7 @@ const eye = {
   sleepy: (cx, y) => `<path d="M${cx - 13} ${y - 3} Q${cx} ${y + 11} ${cx + 13} ${y - 3}" ${stroke(7)}/>`,
   happy: (cx, y) => `<path d="M${cx - 13} ${y + 4} Q${cx} ${y - 12} ${cx + 13} ${y + 4}" ${stroke(7)}/>`,
   dots: (cx, y) => `<circle cx="${cx}" cy="${y}" r="9" fill="${INK}"/><circle cx="${cx + 3}" cy="${y - 3}" r="2.6" fill="#fff"/>`,
+  worried: (cx, y, side) => `<circle cx="${cx}" cy="${y + 2}" r="8.5" fill="${INK}"/><circle cx="${cx + 2.5}" cy="${y - 0.5}" r="2.4" fill="#fff"/><path d="M${cx - 14 * side} ${y - 15} L${cx + 10 * side} ${y - 24}" ${stroke(6)}/>`,
   squint: (cx, y, side) => `<path d="M${cx - 11 * side} ${y - 10} L${cx + 11 * side} ${y} L${cx - 11 * side} ${y + 10}" ${stroke(7)}/>`,
 };
 
@@ -15,6 +16,7 @@ export const mouths = {
   smile: (x, y) => `<path d="M${x - 18} ${y} Q${x} ${y + 18} ${x + 18} ${y}" ${stroke(7)}/>`,
   open: (x, y) => `<path d="M${x - 20} ${y - 4} Q${x} ${y + 34} ${x + 20} ${y - 4} Z" fill="${INK}"/><path d="M${x - 10} ${y + 12} Q${x} ${y + 6} ${x + 10} ${y + 12} Q${x} ${y + 22} ${x - 10} ${y + 12}Z" fill="${CHEEK}"/>`,
   grin: (x, y) => `<path d="M${x - 24} ${y - 2} Q${x} ${y + 26} ${x + 24} ${y - 2} Z" fill="${INK}"/>`,
+  wavy: (x, y) => `<path d="M${x - 22} ${y + 4} q5.5 -9 11 0 t11 0 t11 0 t11 0" ${stroke(6)}/>`,
   oh: (x, y) => `<ellipse cx="${x}" cy="${y + 6}" rx="9" ry="12" fill="${INK}"/>`,
 };
 

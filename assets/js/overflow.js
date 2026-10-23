@@ -56,5 +56,9 @@ export function playOverflow(frame, { delay = 42 * FRAME } = {}) {
   const animation = frame.animate(frames, { duration: ((frames.length - 1) / FPS) * 1000, delay, easing: 'linear', fill: 'backwards' });
   const cue = document.getAnimations().find((running) => running.animationName === 'frame-fall');
   if (cue?.startTime != null) animation.startTime = cue.startTime;
-  return animation;
+  const at = (seconds) => delay + seconds * 1000;
+  const impactAt = at(fallTime);
+  const knockAt = at((fall.length + impact.length + nudge.length - 2) / FPS);
+  const landAt = at((fall.length + impact.length + nudge.length + arc.length - 3) / FPS);
+  return { animation, impactAt, knockAt, landAt };
 }

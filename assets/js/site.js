@@ -1,6 +1,7 @@
 import { isMotionAllowed, isReducedMotion, isUserDisabled, onMotionPreferenceChange, setUserDisabled } from './motion.js';
 import './cast/kinds.js';
 import { playOverflow } from './overflow.js';
+import { springs } from './cast/character.js';
 
 const FRAME = 33;
 
@@ -61,6 +62,26 @@ function greetWhenLanded() {
   });
 }
 
+function sway(frames, direction, strength) {
+  frames.forEach((frame, level) => {
+    const angle = direction * strength * (1 + level * 0.9);
+    frame.animate(
+      [{ transform: `translateX(${angle * 0.6}%) rotate(${angle}deg)` }, { transform: 'none' }],
+      { ...springs.wobbly, delay: level * FRAME, composite: 'add' },
+    );
+  });
+}
+
+function panic(characters, until) {
+  characters.forEach((character, index) => {
+    character.express?.({ mouth: 'wavy', eyes: 'worried' }, until);
+    character.rig?.animate(
+      [{ transform: 'rotate(0)' }, { transform: 'rotate(-3deg) translateX(-1%)' }, { transform: 'rotate(3deg) translateX(1%)' }, { transform: 'rotate(0)' }],
+      { duration: 7 * FRAME, iterations: Math.max(1, Math.floor(until / (7 * FRAME))), delay: index * FRAME, composite: 'add' },
+    );
+  });
+}
+
 function reactToLandings() {
   const stage = document.querySelector('.stage--hero');
   if (!stage) return;
@@ -68,9 +89,27 @@ function reactToLandings() {
     if (event.animationName !== 'take-hit') return;
     event.target.querySelector('.character')?.express?.({ mouth: 'oh', eyes: 'squint' }, 16 * FRAME);
   });
+
   const overflow = stage.querySelector('[data-role="overflow"]');
-  const flight = playOverflow(overflow);
-  flight?.finished.then(() => overflow.querySelector('.character')?.express?.({ mouth: 'open', eyes: 'happy' }, 30 * FRAME)).catch(() => {});
+  const show = playOverflow(overflow);
+  if (!show) return;
+  const frames = [...stage.querySelectorAll('[data-role="frame"]')];
+  const stacked = frames.map((frame) => frame.querySelector('.character')).filter(Boolean);
+  const romanesco = overflow.querySelector('.character');
+  const origin = show.animation.startTime ?? document.timeline.currentTime;
+  const after = (ms, action) => setTimeout(action, Math.max(0, origin + ms - document.timeline.currentTime));
+
+  after(show.impactAt + 4 * FRAME, () => {
+    sway(frames, 1, 2.2);
+    panic(stacked, show.landAt - show.impactAt + 6 * FRAME);
+    romanesco?.express?.({ mouth: 'oh', eyes: 'worried' }, show.knockAt - show.impactAt);
+  });
+  after(show.knockAt, () => sway(frames, -1, 3.2));
+  after(show.landAt, () => romanesco?.express?.({ mouth: 'open', eyes: 'happy' }, 30 * FRAME));
+  after(show.landAt + 10 * FRAME, () => stacked.forEach((character, index) => setTimeout(() => {
+    character.express?.({ mouth: 'smile', eyes: 'happy' }, 18 * FRAME);
+    character.blink?.();
+  }, index * 3 * FRAME)));
 }
 
 wireMotionToggle();
