@@ -1,5 +1,5 @@
 {%- assign nav_links = "About:/about/,Articles:/articles/,STM32 Course:/curso-stm32/" | split: "," -%}
-<header class="sticky top-0 z-nav bg-brand-strong/95 text-highlight shadow-[0_1px_0_rgb(var(--color-highlight)/0.15)] backdrop-blur">
+<header class="sticky top-0 z-nav bg-brand-strong text-highlight">
   <nav class="container flex h-16 items-center gap-6 md:h-20" aria-label="Main">
     <a class="group flex shrink-0 items-center gap-3 rounded-md" href="{{ "/" | relative_url }}" title="{{ site.title }}">
       <img src="{{ '/assets/img/icon-stack.svg' | relative_url }}" class="h-11 w-11 transition-transform duration-300 ease-out group-hover:-rotate-6 group-hover:scale-105 md:h-14 md:w-14" alt="" width="56" height="56">
