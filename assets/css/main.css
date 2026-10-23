@@ -148,8 +148,7 @@
     transform-origin: left;
     transition: transform var(--duration-slow) var(--ease-out);
   }
-  .card:hover,
-  .card-featured:hover {
+  .card:hover {
     transform: translateY(-4px);
     box-shadow: inset 0 0 0 1px rgb(var(--color-rule)), var(--shadow-lift);
   }
@@ -175,8 +174,7 @@
     outline: 2px solid transparent;
     box-shadow: var(--focus-ring);
   }
-  .card:active,
-  .card-featured:active {
+  .card:active {
     transform: translateY(-1px) scale(0.995);
   }
 
