@@ -1,0 +1,33 @@
+---
+layout: default
+---
+{%- assign topic = site.data.topics | where: "slug", page.slug | first -%}
+{%- assign topic_posts = site.posts | where: "topic", topic.name -%}
+{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+<section class="topic-hero" aria-labelledby="topic-title">
+  <div class="container topic-hero__grid">
+    <div class="topic-hero__copy">
+      <p class="hero-rise font-display text-sm font-semibold text-accent-strong md:text-base" style="--d: 0"><a class="link-underline" href="{{ '/articles/' | relative_url }}">Articles</a> <span aria-hidden="true">/</span> {{ topic_posts.size }} {% if topic_posts.size == 1 %}post{% else %}posts{% endif %}</p>
+      <h1 id="topic-title" class="topic-hero__title font-display font-extrabold tracking-[-0.03em] text-brand-strong">
+        <span class="topic-marked">{{ topic.name }}<svg class="hero-marker" viewBox="0 0 600 34" preserveAspectRatio="none" aria-hidden="true"><path d="M6 14 C 110 4, 230 22, 330 12 S 520 4, 594 12" pathLength="1" /><path d="M70 28 C 170 20, 300 30, 410 24 S 520 20, 560 25" pathLength="1" /></svg></span>
+      </h1>
+      <p class="hero-rise mt-6 max-w-[40ch] text-pretty font-display text-xl leading-snug text-ink md:text-2xl" style="--d: 2">{{ topic.intro }}</p>
+    </div>
+    <div class="topic-hero__art">
+      {%- include scene.html name=page.scene size="34rem" size_narrow="92vw" eager=true greet=16 %}
+    </div>
+  </div>
+</section>
+<span class="curd text-surface-raised" aria-hidden="true"></span>
+<section class="topic-posts bg-surface-raised pb-16 pt-8 md:pb-24" aria-label="{{ topic.name }} posts">
+  <div class="container">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+      {%- for post in topic_posts -%}
+      {%- assign index = forloop.index0 | modulo: 2 -%}
+      {%- include post-card.html post=post index=index date_format=date_format scope="-t" hide_topic=true -%}
+      {%- endfor -%}
+    </div>
+    <div class="mt-14">{%- include topic-nav.html %}</div>
+  </div>
+</section>
+{%- include reveal.html -%}

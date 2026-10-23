@@ -16,7 +16,7 @@ excerpt: Everything published on Esta couve flor, grouped by topic.
     {%- if topic_posts.size > 0 %}
     <section id="topic-{{ topic.name | slugify }}" class="topic-section" aria-labelledby="topic-{{ topic.name | slugify }}-title">
       <div class="mb-8 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-        <h2 id="topic-{{ topic.name | slugify }}-title" class="font-display text-3xl font-extrabold tracking-tight text-brand-strong md:text-4xl">{{ topic.name }}</h2>
+        <h2 id="topic-{{ topic.name | slugify }}-title" class="topic-head font-display text-3xl font-extrabold tracking-tight text-brand-strong md:text-4xl"><span class="topic-head__persona" aria-hidden="true">{% include character.html name=topic.persona size="4.5rem" %}</span><a class="topic-head__link" href="{{ topic.slug | prepend: '/' | append: '/' | relative_url }}">{{ topic.name }}</a></h2>
         <p class="font-display text-ink/75">{{ topic.blurb }} <span class="tabular-nums">{{ topic_posts.size }} {% if topic_posts.size == 1 %}post{% else %}posts{% endif %}</span></p>
       </div>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">

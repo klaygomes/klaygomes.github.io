@@ -4,9 +4,11 @@ layout: default
 {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
 {%- assign words = content | strip_html | number_of_words -%}
 {%- assign minutes = words | divided_by: 200 | at_least: 1 -%}
+{%- assign post_topic = site.data.topics | where: "name", page.topic | first -%}
+{%- assign peek = post_topic.persona | default: "couveflor" -%}
 <article itemscope itemtype="http://schema.org/BlogPosting">
-  <header class="post-hero relative isolate overflow-hidden bg-highlight">
-    <div class="container relative pb-14 pt-14 md:pb-20 md:pt-20">
+  <header class="post-hero relative isolate">
+    <div class="container relative pb-10 pt-12 md:pb-16 md:pt-20">
       <p class="hero-rise flex flex-wrap items-center gap-x-3 gap-y-1 font-display text-sm font-medium text-brand-strong md:text-base" style="--d: 0">
         {%- if page.date -%}
         <time class="dt-published tabular-nums" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: date_format }}</time>
@@ -26,7 +28,14 @@ layout: default
       {%- if page.excerpt %}
       <p class="hero-rise mt-6 max-w-[48ch] text-pretty text-xl leading-snug text-accent-strong md:text-2xl" style="--d: 2" itemprop="description">{{ page.excerpt | strip_html | strip }}</p>
       {%- endif %}
+      {%- if post_topic %}
+      <p class="hero-rise mt-6 font-display text-sm font-semibold" style="--d: 3"><a class="link-underline text-brand" href="{{ post_topic.slug | prepend: '/' | append: '/' | relative_url }}">More {{ post_topic.name }}</a></p>
+      {%- endif %}
+      <div class="post-peek" data-greet="20" data-role="peek" aria-hidden="true">
+        {%- include character.html name=peek size="13rem" size_narrow="8rem" eager=true %}
+      </div>
     </div>
+    <span class="curd text-surface" aria-hidden="true"></span>
   </header>
 
   <div class="container grid gap-12 py-12 md:py-16 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-16">
