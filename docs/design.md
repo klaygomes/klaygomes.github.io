@@ -130,17 +130,20 @@ sequenceDiagram
   participant C as Cleiton
   Note over W,C: frame 0, the shader is already flowing
   W->>W: Esta, couve, flor land 5 frames apart
+  Note over S,C: the stage waits, paused, until the whole hero window is on screen
   C->>C: photo rises (frame 10)
   S->>S: kale, broccoli, purple fall into the tray every 9 frames (6, 15, 24), accelerating, then squash on impact
   S->>S: the frame below takes the hit and squints with an "oh" face
   R->>R: falls last onto the top (33 to 45), the tower sways and everyone panics
   R->>R: nudged, then thrown off on an arc, lands with a spring, and grins
   S->>S: relief: smiles and blinks
-  Note over W,C: the gag video cues when the marker finishes
+  Note over W,C: Cleiton's clip plays only when the photo is clicked
 ```
 
 - Choreography is CSS and runs only with `.js` and no `.motion-off`, so content is never hidden otherwise.
 - `prefers-reduced-motion` and the hero's "Pause motion" button (stored as `ecf-motion` in localStorage) stop the shader, the idle loops and every entrance.
+- On phones the hero window sits below the copy, so `.hero-window.is-waiting` pauses the stage animations at their first frame and `site.js` releases them once the window is fully in view under the sticky header.
+- Cleiton's two clips (the hero photo and the footer "idea") are easter eggs: they play only on click, never on their own. The video is fetched on hover, focus or touch for the hero, and near view for the footer.
 - The closing riders wait under the wave and rise when the footer's last row is in view, then cheer one after another.
 
 ## Hero field

@@ -59,10 +59,7 @@
     if (!gag) return;
     var webkit = navigator.vendor === "Apple Computer, Inc.";
     var connection = navigator.connection || {};
-    var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var frugal = connection.saveData || (connection.effectiveType && connection.effectiveType !== "4g");
-    var seen = true;
-    try { seen = localStorage.getItem("ecf-idea-seen") === "1"; } catch (e) {}
     var video = null;
 
     var load = function () {
@@ -77,7 +74,6 @@
       video.addEventListener("playing", function () {
         gag.classList.remove("is-loading");
         gag.classList.add("is-playing");
-        try { localStorage.setItem("ecf-idea-seen", "1"); } catch (e) {}
       });
       video.addEventListener("ended", function () { gag.classList.remove("is-playing"); });
       video.addEventListener("error", function () {
@@ -114,15 +110,6 @@
       load();
     }, { rootMargin: "0px 0px 600px 0px" });
 
-    if (seen || calm) return preload.observe(gag);
-
-    var trigger = new IntersectionObserver(function (entries) {
-      if (entries[0].intersectionRatio < 0.9) return;
-      trigger.disconnect();
-      play();
-    }, { threshold: 0.9 });
-
     preload.observe(gag);
-    trigger.observe(gag);
   })();
 </script>

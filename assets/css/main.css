@@ -383,25 +383,16 @@
   pointer-events: none;
 }
 
-.hero-gag.is-playing video.hero-gag-media,
-.hero-gag.is-posing .hero-gag-pose {
+.hero-gag.is-playing video.hero-gag-media {
   opacity: 1;
 }
 
-.hero-gag.is-playing .hero-gag-photo,
-.hero-gag.is-posing .hero-gag-photo {
+.hero-gag.is-playing .hero-gag-photo {
   visibility: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .hero-gag.is-posing .hero-gag-pose {
-    transform-origin: 20% 60%;
-    animation: pose-pop var(--spring-bouncy-duration) var(--spring-bouncy) both;
-  }
-}
-
 @media (prefers-reduced-motion: no-preference) and (hover: hover) {
-  .hero-gag:not(.is-playing):not(.is-posing):hover {
+  .hero-gag:not(.is-playing):hover {
     animation: wiggle var(--duration-slow) var(--ease-out);
   }
 }
@@ -425,11 +416,6 @@
   html {
     scroll-behavior: auto;
   }
-}
-
-@keyframes pose-pop {
-  from { transform: scale(0.94) rotate(-2deg); }
-  to { transform: none; }
 }
 
 @keyframes wiggle {

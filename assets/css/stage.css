@@ -588,6 +588,12 @@
     animation-delay: calc(10 * var(--frame));
   }
 
+  .js .hero-window.is-waiting .stage--hero,
+  .js .hero-window.is-waiting .stage--hero *,
+  .js .hero-window.is-waiting .hero-figure {
+    animation-play-state: paused;
+  }
+
   .stage--closing .stage__frame .character {
     transition: translate var(--spring-bouncy-duration) var(--spring-bouncy);
     transition-delay: calc(var(--order) * 3 * var(--frame));

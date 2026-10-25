@@ -82,6 +82,26 @@ function panic(characters, until) {
   });
 }
 
+function whenHeroInView(start) {
+  const hero = document.querySelector('.hero-window.is-waiting');
+  if (!hero) return start();
+  const release = () => {
+    hero.classList.remove('is-waiting');
+    const falls = document.getAnimations().filter((animation) => animation.animationName === 'frame-fall');
+    Promise.all(falls.map((animation) => animation.ready)).then(start);
+  };
+  if (!('IntersectionObserver' in window)) return release();
+  const header = document.querySelector('header.sticky')?.offsetHeight ?? 0;
+  const observer = new IntersectionObserver(([entry]) => {
+    const visible = entry.intersectionRect.height;
+    const room = (entry.rootBounds?.height ?? innerHeight) * 0.92;
+    if (!entry.isIntersecting || (entry.intersectionRatio < 0.97 && visible < room)) return;
+    observer.disconnect();
+    release();
+  }, { rootMargin: `-${header}px 0px 0px 0px`, threshold: Array.from({ length: 21 }, (_, i) => i / 20) });
+  observer.observe(hero);
+}
+
 function reactToLandings() {
   const stage = document.querySelector('.stage--hero');
   if (!stage) return;
@@ -113,6 +133,6 @@ function reactToLandings() {
 }
 
 wireMotionToggle();
-reactToLandings();
+whenHeroInView(reactToLandings);
 popNearPageEnd();
 greetWhenLanded();

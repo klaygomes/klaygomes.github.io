@@ -32,7 +32,7 @@ It is a small site, but I treated it like a product.
 - **Design tokens.** Every color, radius, shadow and easing lives in [`assets/css/tokens.css`](assets/css/tokens.css) and reaches Tailwind through `var()`, so most of a rebrand happens in one file.
 - **A cast drawn by code.** A cauliflower and its relatives (romanesco, purple cauliflower, broccoli, kale), one per topic, are generated in [`_art/`](_art), cut into parts and rigged as custom elements, so every leaf, arm and hard hat moves on its own. How it fits together is in [`docs/design.md`](docs/design.md).
 - **Motion.** A viscous WebGL field you can stir with the pointer, a stack of vegetables that overflows on arrival, and two small video gags with transparent backgrounds (VP9 for Chrome and Firefox, HEVC for Safari), loaded only when needed.
-- **Respectful by default.** Nothing moves for people who ask for reduced motion, the hero gag skips Save-Data connections and is a real button you can replay from the keyboard.
+- **Respectful by default.** Nothing moves for people who ask for reduced motion, and the two video gags are easter eggs: they play only when clicked, as real buttons you can replay from the keyboard.
 - **Phones first.** Every page is checked at 390 px wide with zero sideways scrolling.
 
 <div align="center">

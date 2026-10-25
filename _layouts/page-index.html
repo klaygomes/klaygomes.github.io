@@ -33,11 +33,11 @@ layout: default
     </button>
   </div>
 
-  <div class="hero-window shader-ground" data-shader>
+  <div class="hero-window shader-ground is-waiting" data-shader>
     <canvas class="shader-canvas" aria-hidden="true"></canvas>
     {%- include scene.html name="hero" size="58vw" size_narrow="120vw" eager=true %}
     <div class="hero-figure">
-      <button type="button" class="hero-gag block w-full" aria-label="Play the cauliflower animation" data-webm="{{ '/assets/video/cleiton-mascot.webm' | relative_url }}?v={{ site.time | date: '%s' }}" data-hevc="{{ '/assets/video/cleiton-mascot.mp4' | relative_url }}?v={{ site.time | date: '%s' }}" data-still="{{ '/assets/img/cleiton-mascot.webp' | relative_url }}?v={{ site.time | date: '%s' }}">
+      <button type="button" class="hero-gag block w-full" aria-label="Play the cauliflower animation" data-webm="{{ '/assets/video/cleiton-mascot.webm' | relative_url }}?v={{ site.time | date: '%s' }}" data-hevc="{{ '/assets/video/cleiton-mascot.mp4' | relative_url }}?v={{ site.time | date: '%s' }}" >
         <span class="hero-photo relative block">
           <img class="hero-gag-photo block w-full" src="{{ '/assets/img/cleiton-pointing.png' | relative_url }}" srcset="{{ '/assets/img/cleiton-pointing-400.png' | relative_url }} 400w, {{ '/assets/img/cleiton-pointing.png' | relative_url }} 800w" sizes="(min-width: 60rem) 26vw, 52vw" width="800" height="720" alt="" fetchpriority="high">
         </span>
@@ -69,21 +69,12 @@ layout: default
     if (!gag) return;
 
     var stage = gag.querySelector(".hero-photo");
-    var underline = document.querySelector(".hero-marker path:last-child");
     var webkit = navigator.vendor === "Apple Computer, Inc.";
-    var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var connection = navigator.connection || {};
-    var frugal = connection.saveData || /2g/.test(connection.effectiveType || "");
-    var fast = !connection.effectiveType || connection.effectiveType === "4g";
-    var eager = fast && window.matchMedia("(pointer: fine)").matches;
-    var firstVisit = document.documentElement.classList.contains("intro-full");
-    var grace = 1500;
-    var poseLength = 2400;
     var video = null;
     var busy = false;
 
     var finish = function () {
-      gag.classList.remove("is-playing", "is-posing");
+      gag.classList.remove("is-playing");
       busy = false;
     };
 
@@ -115,43 +106,10 @@ layout: default
       clip.play().catch(finish);
     };
 
-    gag.addEventListener("click", play);
-
-    if (!firstVisit || calm || frugal || !underline) return;
-
-    var still = document.createElement("img");
-    still.className = "hero-gag-media hero-gag-pose";
-    still.alt = "";
-    still.setAttribute("aria-hidden", "true");
-    still.src = gag.dataset.still;
-    stage.appendChild(still);
-
-    var pose = function () {
-      if (busy || !still.complete || !still.naturalWidth) return;
-      busy = true;
-      gag.classList.add("is-posing");
-      setTimeout(finish, poseLength);
-    };
-
-    var cue = function () {
-      if (!video) return pose();
-      if (video.readyState >= 4) return play();
-      var timer = setTimeout(function () {
-        if (video) video.removeEventListener("canplaythrough", ready);
-        pose();
-      }, grace);
-      var ready = function () {
-        clearTimeout(timer);
-        play();
-      };
-      video.addEventListener("canplaythrough", ready, { once: true });
-    };
-
-    if (eager) load();
-    underline.addEventListener("animationend", function drawn() {
-      underline.removeEventListener("animationend", drawn);
-      cue();
+    ["pointerenter", "focus", "touchstart"].forEach(function (name) {
+      gag.addEventListener(name, load, { once: true, passive: true });
     });
+    gag.addEventListener("click", play);
   })();
 </script>
 <script type="module" src="{{ '/assets/js/viscous-shader.js' | relative_url }}"></script>
