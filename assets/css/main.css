@@ -366,6 +366,7 @@
 /* Hero gag: square clip registered to the photo's bottom 90%, so the mascot rises above it */
 
 .hero-gag {
+  position: relative;
   cursor: pointer;
   border-radius: var(--radius-lg);
   transform-origin: 50% 100%;
@@ -392,7 +393,7 @@
 }
 
 @media (prefers-reduced-motion: no-preference) and (hover: hover) {
-  .hero-gag:not(.is-playing):hover {
+  .hero-gag:not(.is-playing):not(.is-loading):not(.is-pressed):hover {
     animation: wiggle var(--duration-slow) var(--ease-out);
   }
 }

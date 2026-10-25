@@ -143,7 +143,7 @@ sequenceDiagram
 - Choreography is CSS and runs only with `.js` and no `.motion-off`, so content is never hidden otherwise.
 - `prefers-reduced-motion` and the hero's "Pause motion" button (stored as `ecf-motion` in localStorage) stop the shader, the idle loops and every entrance.
 - On phones the hero window sits below the copy, so `.hero-window.is-waiting` pauses the stage animations at their first frame and `site.js` releases them once the window is fully in view under the sticky header.
-- Cleiton's two clips (the hero photo and the footer "idea") are easter eggs: they play only on click, never on their own. The video is fetched on hover, focus or touch for the hero, and near view for the footer.
+- Cleiton's two clips (the hero photo and the footer "idea") are easter eggs: they play only on click, never on their own. Each clip is fetched once its button is near view (or on first hover, focus or touch on slow or Save-Data connections), and a tap squashes the button and shows thinking dots until the video plays.
 - The closing riders wait under the wave and rise when the footer's last row is in view, then cheer one after another.
 
 ## Hero field

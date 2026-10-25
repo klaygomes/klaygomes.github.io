@@ -41,6 +41,7 @@ layout: default
         <span class="hero-photo relative block">
           <img class="hero-gag-photo block w-full" src="{{ '/assets/img/cleiton-pointing.png' | relative_url }}" srcset="{{ '/assets/img/cleiton-pointing-400.png' | relative_url }} 400w, {{ '/assets/img/cleiton-pointing.png' | relative_url }} 800w" sizes="(min-width: 60rem) 26vw, 52vw" width="800" height="720" alt="" fetchpriority="high">
         </span>
+        <span class="gag-think" aria-hidden="true"><span></span><span></span><span></span></span>
       </button>
     </div>
   </div>
@@ -73,8 +74,11 @@ layout: default
     var video = null;
     var busy = false;
 
+    var connection = navigator.connection || {};
+    var frugal = connection.saveData || (connection.effectiveType && connection.effectiveType !== "4g");
+
     var finish = function () {
-      gag.classList.remove("is-playing");
+      gag.classList.remove("is-playing", "is-loading");
       busy = false;
     };
 
@@ -87,7 +91,10 @@ layout: default
       video.preload = "auto";
       video.setAttribute("aria-hidden", "true");
       video.src = webkit ? gag.dataset.hevc : gag.dataset.webm;
-      video.addEventListener("playing", function () { gag.classList.add("is-playing"); });
+      video.addEventListener("playing", function () {
+        gag.classList.remove("is-loading");
+        gag.classList.add("is-playing");
+      });
       video.addEventListener("ended", finish);
       video.addEventListener("error", function () {
         video.remove();
@@ -99,8 +106,12 @@ layout: default
     };
 
     var play = function () {
+      gag.classList.remove("is-pressed");
+      void gag.offsetWidth;
+      gag.classList.add("is-pressed");
       if (busy) return;
       busy = true;
+      gag.classList.add("is-loading");
       var clip = load();
       clip.currentTime = 0;
       clip.play().catch(finish);
@@ -110,6 +121,17 @@ layout: default
       gag.addEventListener(name, load, { once: true, passive: true });
     });
     gag.addEventListener("click", play);
+    gag.addEventListener("animationend", function (event) {
+      if (event.animationName === "gag-press") gag.classList.remove("is-pressed");
+    });
+
+    if (frugal || !("IntersectionObserver" in window)) return;
+    var preload = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      preload.disconnect();
+      load();
+    });
+    preload.observe(gag);
   })();
 </script>
 <script type="module" src="{{ '/assets/js/viscous-shader.js' | relative_url }}"></script>
